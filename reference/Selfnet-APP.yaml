@@ -7,6 +7,68 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
+  '/campaigns/{id}/rewards':
+    get:
+      summary: Available rewards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailableRewards'
+      operationId: get-rewards
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: card_id
+          description: 'Id of the card, used to detect the current campaign'
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign id
+  '/campaigns/{id}/rewards/history':
+    get:
+      summary: Rewards redemption history
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rewards:
+                    type: array
+                    x-stoplight:
+                      id: t0yunwico5u3b
+                    items:
+                      $ref: '#/components/schemas/RewardRedemption'
+      operationId: get-rewards-log
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: start_range
+          description: UNIX datetime
+        - schema:
+            type: string
+          in: query
+          name: end_range
+          description: UNIX datetime
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Campaign id
   /cards:
     get:
       summary: Card List
@@ -248,55 +310,6 @@ paths:
                 $ref: '#/components/schemas/RechargeDetails'
       operationId: get-recharges-id
       description: ''
-  /rewards:
-    get:
-      summary: Available rewards
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AvailableRewards'
-      operationId: get-rewards
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: card_id
-          description: 'Id of the card, used to detect the current campaign'
-  /rewards/history:
-    get:
-      summary: Rewards redemption history
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  rewards:
-                    type: array
-                    x-stoplight:
-                      id: t0yunwico5u3b
-                    items:
-                      $ref: '#/components/schemas/RewardRedemption'
-      operationId: get-rewards-log
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: start_range
-          description: UNIX datetime
-        - schema:
-            type: string
-          in: query
-          name: end_range
-          description: UNIX datetime
-    parameters: []
   /transactions:
     parameters: []
     get:
@@ -657,6 +670,12 @@ components:
           type: string
           x-stoplight:
             id: bufc9wm1kv858
+        prices:
+          type: array
+          x-stoplight:
+            id: gqhsjw0ji95yj
+          items:
+            $ref: '#/components/schemas/Price'
     Invoice:
       title: Invoice
       x-stoplight:
@@ -708,6 +727,24 @@ components:
           type: string
           x-stoplight:
             id: mgpuxsbo40ho7
+    Price:
+      title: Prices
+      x-stoplight:
+        id: hdhifgrj9qkxx
+      type: object
+      properties:
+        price_level:
+          type: integer
+          x-stoplight:
+            id: uu419r7j4zyno
+        product_name:
+          type: string
+          x-stoplight:
+            id: mvok01gs4byqw
+        price:
+          type: integer
+          x-stoplight:
+            id: i8z43d6ogjbbe
     PrintableInvoice:
       title: PrintableInvoice
       x-stoplight:
