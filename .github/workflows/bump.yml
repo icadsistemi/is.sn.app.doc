@@ -16,6 +16,6 @@ jobs:
         with:
           doc: ${{ vars.BUMP_DOC_ID }}
           token: ${{ secrets.BUMP_TOKEN }}
-          file: reference/is-pos-pax-api.yaml
+          file: reference/Selfnet-APP.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
