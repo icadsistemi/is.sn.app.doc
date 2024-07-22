@@ -3,10 +3,71 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.2
+  version: 1.0.0-alpha.3
 servers:
   - url: 'http://localhost:3000'
 paths:
+  /cards:
+    get:
+      summary: Card List
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cards:
+                    type: array
+                    x-stoplight:
+                      id: c6spbq91dos9p
+                    items:
+                      $ref: '#/components/schemas/Card'
+      operationId: get-cards
+  '/cards/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Card details
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDetails'
+      operationId: get-cards-id
+    patch:
+      summary: ''
+      operationId: patch-cards-id
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardInput'
+  /configuration:
+    get:
+      summary: Info for basic settings
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Configuration'
+      operationId: get-configuration
+    parameters: []
   /fuelcoupons:
     get:
       summary: GET active fuel coupons
@@ -46,6 +107,47 @@ paths:
               schema:
                 $ref: '#/components/schemas/FuelCouponDetails'
       operationId: get-fuelcoupons-id
+  /fuelstations:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fuel_stations:
+                    type: array
+                    x-stoplight:
+                      id: 1bb41owrix5ly
+                    items:
+                      $ref: '#/components/schemas/FuelStation'
+      operationId: get-fuelstations
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: supplier_id
+        - schema:
+            type: number
+          in: query
+          name: latitude
+          description: 'Optional, used for nearby fuel stations'
+        - schema:
+            type: number
+          in: query
+          name: longitude
+          description: 'Optional, used for nearby fuel stations'
+        - schema:
+            type: array
+          in: query
+          name: articles
+          description: 'Optional, used to filter fuel stations'
+      requestBody:
+        content: {}
   /invoices:
     get:
       summary: GET invoices
@@ -146,6 +248,55 @@ paths:
                 $ref: '#/components/schemas/RechargeDetails'
       operationId: get-recharges-id
       description: ''
+  /rewards:
+    get:
+      summary: Available rewards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailableRewards'
+      operationId: get-rewards
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: card_id
+          description: 'Id of the card, used to detect the current campaign'
+  /rewards/history:
+    get:
+      summary: Rewards redemption history
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rewards:
+                    type: array
+                    x-stoplight:
+                      id: t0yunwico5u3b
+                    items:
+                      $ref: '#/components/schemas/RewardRedemption'
+      operationId: get-rewards-log
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: start_range
+          description: UNIX datetime
+        - schema:
+            type: string
+          in: query
+          name: end_range
+          description: UNIX datetime
+    parameters: []
   /transactions:
     parameters: []
     get:
@@ -193,6 +344,225 @@ paths:
         content: {}
 components:
   schemas:
+    AvailableRewards:
+      title: AvailableRewards
+      x-stoplight:
+        id: fr57ne7dwt7y4
+      type: object
+      description: A campaign with all its rewards
+      properties:
+        campaign:
+          type: object
+          x-stoplight:
+            id: oebjyjx33hh0z
+          properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: 4t0w46y4rbzfi
+            name:
+              type: string
+              x-stoplight:
+                id: f7sj80ani49ra
+            type:
+              type: integer
+              x-stoplight:
+                id: q9mbsmfcc7e0u
+              description: |-
+                Allowed values are:
+
+                1: this is a OIL campaign
+                2: this is a NON OIL campaign
+                3: this is a mixed campaign
+        rewards:
+          type: array
+          x-stoplight:
+            id: 69fgsbhyaynsi
+          description: |
+            Arrray of available rewards
+          items:
+            $ref: '#/components/schemas/Reward'
+    Card:
+      title: Card
+      x-stoplight:
+        id: ui8svs2lq963m
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+          x-stoplight:
+            id: 4czx7eeevzile
+        type:
+          type: integer
+          x-stoplight:
+            id: 8vrxk1lghlpmq
+          description: 'Id of the card type, used for look up'
+        is_enabled:
+          type: boolean
+          x-stoplight:
+            id: 2fjdwjjh8g6az
+    CardDetails:
+      title: CardDetails
+      x-stoplight:
+        id: hq2l6i2tjrrpe
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+          x-stoplight:
+            id: dkma05dhehpa2
+        pan:
+          type: string
+          x-stoplight:
+            id: cpn47j3ck8d1u
+        type:
+          type: integer
+          x-stoplight:
+            id: i2fojlseu17lx
+          description: 'Id of the card type, used for look up'
+        is_enabled:
+          type: boolean
+          x-stoplight:
+            id: v2lmxruu2vhdk
+        expiration_date:
+          type: string
+          x-stoplight:
+            id: 9g28b06waxmec
+          format: date
+        residue:
+          type: number
+          x-stoplight:
+            id: j5e7quphl1zw6
+        daily_residue:
+          type: number
+          x-stoplight:
+            id: c9286rm4j2xpv
+        indoor:
+          type: boolean
+          x-stoplight:
+            id: k6avhm2pm91uj
+        outdoor:
+          type: boolean
+          x-stoplight:
+            id: gvwqik6f6aarp
+        vehicle:
+          type: object
+          x-stoplight:
+            id: twxz90ogrjrld
+          properties:
+            plate:
+              type: string
+              x-stoplight:
+                id: mwc5kr35fm0y6
+            driver:
+              type: string
+              x-stoplight:
+                id: n4z0p4bj3m60c
+    CardInput:
+      title: CardInput
+      x-stoplight:
+        id: ht6jdydr3tyt8
+      type: object
+      properties:
+        is_enabled:
+          type: boolean
+          x-stoplight:
+            id: zdv6j0siho952
+    Configuration:
+      title: Configuration
+      x-stoplight:
+        id: uc18ur7i0wznr
+      type: object
+      properties:
+        product_families:
+          type: array
+          x-stoplight:
+            id: xna473gbitqni
+          items:
+            x-stoplight:
+              id: y7e2j0ynoit8e
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: abhav1804k248
+              name:
+                type: string
+                x-stoplight:
+                  id: dfslmcuauay6a
+        payment_methods:
+          type: array
+          x-stoplight:
+            id: pijv3xzyc39rj
+          items:
+            x-stoplight:
+              id: 7mn8vzdrsul3w
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: l1so9toxmay8y
+              name:
+                type: string
+                x-stoplight:
+                  id: bqukawav6gyhj
+        card_types:
+          type: array
+          x-stoplight:
+            id: c804okwmhazrl
+          items:
+            x-stoplight:
+              id: dja1bnvb8eagu
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: 62aqulwe794mp
+              name:
+                type: string
+                x-stoplight:
+                  id: 06w4dwzdkc7q1
+        fuel_coupon_types:
+          type: array
+          x-stoplight:
+            id: lr6fg66cspf7m
+          items:
+            x-stoplight:
+              id: gnvvwprr2pc2r
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: vfqkv58dewj3d
+              name:
+                type: string
+                x-stoplight:
+                  id: uvn21hdlml2af
+        measure_units:
+          type: array
+          x-stoplight:
+            id: ecqt3isulse7y
+          items:
+            x-stoplight:
+              id: m50spida877r9
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: ab6yr2cgoc8tr
+              name:
+                type: string
+                x-stoplight:
+                  id: m417ujyr2ia43
     FuelCoupon:
       title: FuelCoupon
       x-stoplight:
@@ -205,6 +575,7 @@ components:
           type: string
           x-stoplight:
             id: nv1q5pheoeuna
+          description: Fuel coupon code
         expiration_date:
           type: string
           x-stoplight:
@@ -214,6 +585,7 @@ components:
           type: integer
           x-stoplight:
             id: 6bmsu3klayd1k
+          description: 'Id of the fuel coupon type, used for look up'
     FuelCouponDetails:
       title: FuelCouponDetails
       x-stoplight:
@@ -234,15 +606,57 @@ components:
           type: string
           x-stoplight:
             id: j7zvc47321b1v
+          description: Value to be rendered in the QRcode / barcode
         residue:
           type: number
           x-stoplight:
             id: htlw37w6f62w1
+          description: Residue of the fuel coupon
         expiration_date:
           type: string
           x-stoplight:
             id: 3h5txjkrzj3yz
           format: date
+    FuelStation:
+      title: FuelStation
+      x-stoplight:
+        id: hnosbaortwcvo
+      type: object
+      properties:
+        latitude:
+          type: number
+          x-stoplight:
+            id: nlrqmpgkglhrd
+        longitude:
+          type: number
+          x-stoplight:
+            id: s50rw9vka97j8
+        distance:
+          type: number
+          x-stoplight:
+            id: 6zhnvrmk0tx2t
+          description: |
+            The value is set when the gps coordinates are sent as input in search fuel stations method. The value is the cartesian distance in km from input gps to the current fuel station
+        name:
+          type: string
+          x-stoplight:
+            id: oygiilx0oai67
+        address:
+          type: string
+          x-stoplight:
+            id: gs48zxthggw3f
+        city:
+          type: string
+          x-stoplight:
+            id: w1zwdh3sosnut
+        zip_code:
+          type: string
+          x-stoplight:
+            id: a3oes5nq0z4pu
+        phone_number:
+          type: string
+          x-stoplight:
+            id: bufc9wm1kv858
     Invoice:
       title: Invoice
       x-stoplight:
@@ -279,10 +693,12 @@ components:
           type: string
           x-stoplight:
             id: 0gilxih0xgf0x
+          description: 'Id of the invoice status, used for look up'
         document_type:
           type: string
           x-stoplight:
             id: 6l3hvd416s4q9
+          description: 'Id of the invoice document type, used for look up'
         date:
           type: string
           x-stoplight:
@@ -304,6 +720,7 @@ components:
           type: string
           x-stoplight:
             id: d4o5q1ltjfksm
+          description: Base64 string representing the invoice pdf
     Recharge:
       title: Recharge
       x-stoplight:
@@ -320,6 +737,32 @@ components:
           type: string
           x-stoplight:
             id: tfcduyof411dd
+    Reward:
+      title: Reward
+      x-stoplight:
+        id: 4gitxn0t0lbks
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            id reward
+        name:
+          type: string
+          x-stoplight:
+            id: ryxcec4luvqt7
+          description: |
+            reward name
+        points:
+          type: integer
+          x-stoplight:
+            id: fntxqabzgus2o
+        is_fuelcoupon:
+          type: boolean
+          x-stoplight:
+            id: 4yrs3xua2vzxi
+          description: |
+            true if the reward is a fuelcoupon
     RechargeDetails:
       title: RechargeDetails
       x-stoplight:
@@ -367,10 +810,44 @@ components:
               type: number
               x-stoplight:
                 id: 36zbozr8hf7q7
-            method_id:
+            method:
               type: integer
               x-stoplight:
                 id: 5ockm6wtpxxrh
+              description: 'Id of the payment method type, used for look up'
+    RewardRedemption:
+      title: RewardRedemption
+      x-stoplight:
+        id: 3btmj3062jcvm
+      type: object
+      properties:
+        datetime:
+          type: string
+          x-stoplight:
+            id: oop1xc00u7v26
+          format: date-time
+        reward:
+          type: object
+          x-stoplight:
+            id: a255fpeuinlsx
+          properties:
+            name:
+              type: string
+              x-stoplight:
+                id: 29ivo9h75r97d
+            points:
+              type: integer
+              x-stoplight:
+                id: 42849zbra3fc1
+        fuel_station:
+          type: object
+          x-stoplight:
+            id: 6733fgqmm60ws
+          properties:
+            name:
+              type: string
+              x-stoplight:
+                id: jyl34vm6kezx9
     TransactionOutput:
       title: TransactionOutput
       x-stoplight:
