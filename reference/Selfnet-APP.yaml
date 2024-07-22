@@ -7,6 +7,45 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
+  /fuelcoupons:
+    get:
+      summary: GET active fuel coupons
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fuel_coupons:
+                    type: array
+                    x-stoplight:
+                      id: ssgcthg8hayg0
+                    items:
+                      $ref: '#/components/schemas/FuelCoupon'
+      operationId: get-fuelcoupons
+      requestBody:
+        content: {}
+  '/fuelcoupons/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET fuel coupon details
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelCouponDetails'
+      operationId: get-fuelcoupons-id
   /invoices:
     get:
       summary: GET invoices
@@ -33,6 +72,80 @@ paths:
           in: query
           name: end_range
           description: UNIX datetme. Used only if type == "processing".
+      security:
+        - Cognito: []
+  '/invoices/{id}/print':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Id of the requested invoice
+    get:
+      summary: GET printable invoice PDF
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintableInvoice'
+      operationId: get-invoices-id-print
+      security:
+        - Cognito: []
+  /recharges:
+    get:
+      summary: GET recharges
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recharges:
+                    type: array
+                    x-stoplight:
+                      id: y86wq9njqcdnd
+                    items:
+                      $ref: '#/components/schemas/Recharge'
+      operationId: get-recharges
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: start_range
+          description: UNIX datetime
+        - schema:
+            type: string
+          in: query
+          name: end_range
+          description: UNIX datetime
+      requestBody:
+        content: {}
+  '/recharges/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET recharge details
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechargeDetails'
+      operationId: get-recharges-id
+      description: ''
   /transactions:
     parameters: []
     get:
@@ -80,6 +193,56 @@ paths:
         content: {}
 components:
   schemas:
+    FuelCoupon:
+      title: FuelCoupon
+      x-stoplight:
+        id: mn168mq6fhhzs
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+          x-stoplight:
+            id: nv1q5pheoeuna
+        expiration_date:
+          type: string
+          x-stoplight:
+            id: 8tfw0e57cl3i4
+          format: date
+        type:
+          type: integer
+          x-stoplight:
+            id: 6bmsu3klayd1k
+    FuelCouponDetails:
+      title: FuelCouponDetails
+      x-stoplight:
+        id: wdke87sdt6b0h
+      type: object
+      properties:
+        id:
+          type: integer
+        indoor:
+          type: boolean
+          x-stoplight:
+            id: iz4uh2xkrlxh7
+        outdoor:
+          type: boolean
+          x-stoplight:
+            id: owkiiqwcvovst
+        value:
+          type: string
+          x-stoplight:
+            id: j7zvc47321b1v
+        residue:
+          type: number
+          x-stoplight:
+            id: htlw37w6f62w1
+        expiration_date:
+          type: string
+          x-stoplight:
+            id: 3h5txjkrzj3yz
+          format: date
     Invoice:
       title: Invoice
       x-stoplight:
@@ -129,6 +292,85 @@ components:
           type: string
           x-stoplight:
             id: mgpuxsbo40ho7
+    PrintableInvoice:
+      title: PrintableInvoice
+      x-stoplight:
+        id: ciuyui668ac1n
+      type: object
+      properties:
+        id:
+          type: integer
+        base64:
+          type: string
+          x-stoplight:
+            id: d4o5q1ltjfksm
+    Recharge:
+      title: Recharge
+      x-stoplight:
+        id: a9u2otdthzpwy
+      type: object
+      properties:
+        id:
+          type: integer
+        datetime:
+          type: string
+          x-stoplight:
+            id: qjgbx3dbir2lr
+        amount:
+          type: string
+          x-stoplight:
+            id: tfcduyof411dd
+    RechargeDetails:
+      title: RechargeDetails
+      x-stoplight:
+        id: z6qujeewio9a1
+      type: object
+      properties:
+        id:
+          type: integer
+        residue:
+          type: number
+          x-stoplight:
+            id: 7hilp81zd5hnn
+        card:
+          type: object
+          x-stoplight:
+            id: 0b9s2j1bhbgpq
+          properties:
+            pan:
+              type: string
+              x-stoplight:
+                id: mwbbuehh0v0ou
+            code:
+              type: string
+              x-stoplight:
+                id: 5zfhfkbz410sr
+        fuel_station:
+          type: object
+          x-stoplight:
+            id: 5spfwfp5bu42f
+          properties:
+            name:
+              type: string
+              x-stoplight:
+                id: v7jfchbma82e7
+        payment:
+          type: object
+          x-stoplight:
+            id: rpxpqvnber3yy
+          properties:
+            amount:
+              type: number
+              x-stoplight:
+                id: mw9m278blwvlq
+            rebate:
+              type: number
+              x-stoplight:
+                id: 36zbozr8hf7q7
+            method_id:
+              type: integer
+              x-stoplight:
+                id: 5ockm6wtpxxrh
     TransactionOutput:
       title: TransactionOutput
       x-stoplight:
@@ -229,3 +471,5 @@ components:
           tokenUrl: ''
           refreshUrl: ''
           scopes: {}
+security:
+  - Cognito: []
