@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: '1.0'
+  version: 1.0.0-alpha.2
 servers:
   - url: 'http://localhost:3000'
 paths:
@@ -224,3 +224,8 @@ components:
   securitySchemes:
     Cognito:
       type: oauth2
+      flows:
+        password:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
