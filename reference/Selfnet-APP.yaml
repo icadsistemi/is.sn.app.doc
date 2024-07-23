@@ -9,7 +9,7 @@ servers:
 paths:
   /campaigns:
     get:
-      summary: Available rewards
+      summary: Get all reward campaigns
       tags: []
       responses:
         '200':
@@ -25,12 +25,12 @@ paths:
                       id: xcldit0w9tgv1
                     items:
                       $ref: '#/components/schemas/Campaign'
-      operationId: get-rewards
+      operationId: get-rewards-campaigns
       parameters: []
     parameters: []
   '/campaigns/{id}':
     get:
-      summary: Available rewards
+      summary: Retrieve rewards campaign details
       tags: []
       responses:
         '200':
@@ -39,7 +39,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignDetails'
-      operationId: get-rewards
+      operationId: get-rewards-campaign-details
       parameters: []
     parameters:
       - schema:
@@ -47,9 +47,10 @@ paths:
         name: id
         in: path
         required: true
+        description: Campaign ID
   '/campaigns/{id}/rewards':
     get:
-      summary: Available rewards
+      summary: List available rewards
       tags: []
       responses:
         '200':
@@ -66,7 +67,7 @@ paths:
         name: id
         in: path
         required: true
-        description: Campaign id
+        description: Campaign ID
   '/campaigns/{id}/rewards/history':
     get:
       summary: Rewards redemption history
@@ -85,7 +86,7 @@ paths:
                       id: t0yunwico5u3b
                     items:
                       $ref: '#/components/schemas/RewardRedemption'
-      operationId: get-rewards-log
+      operationId: get-rewards-history
       parameters:
         - schema:
             type: string
@@ -103,7 +104,7 @@ paths:
         name: id
         in: path
         required: true
-        description: Campaign id
+        description: Campaign ID
   /cards:
     get:
       summary: Card List
@@ -130,6 +131,7 @@ paths:
         name: id
         in: path
         required: true
+        description: Card ID
     get:
       summary: Card details
       tags: []
@@ -167,7 +169,7 @@ paths:
     parameters: []
   /fuelcoupons:
     get:
-      summary: GET active fuel coupons
+      summary: List active fuel coupons
       tags: []
       responses:
         '200':
@@ -193,8 +195,9 @@ paths:
         name: id
         in: path
         required: true
+        description: Fuel coupon ID
     get:
-      summary: GET fuel coupon details
+      summary: Fuel coupon details
       tags: []
       responses:
         '200':
@@ -247,7 +250,7 @@ paths:
         content: {}
   /invoices:
     get:
-      summary: GET invoices
+      summary: Get invoices
       tags: []
       responses:
         '200':
@@ -282,7 +285,7 @@ paths:
         required: true
         description: Id of the requested invoice
     get:
-      summary: GET printable invoice PDF
+      summary: Get printable invoice PDF
       tags: []
       responses:
         '200':
@@ -296,7 +299,7 @@ paths:
         - Cognito: []
   /recharges:
     get:
-      summary: GET recharges
+      summary: Get all recharges
       tags: []
       responses:
         '200':
@@ -334,7 +337,7 @@ paths:
         in: path
         required: true
     get:
-      summary: GET recharge details
+      summary: Get recharge details
       tags: []
       responses:
         '200':
