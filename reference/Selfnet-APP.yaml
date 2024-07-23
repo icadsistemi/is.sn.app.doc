@@ -124,6 +124,65 @@ paths:
                     items:
                       $ref: '#/components/schemas/Card'
       operationId: get-cards
+  /cards/pin/dynamic:
+    parameters: []
+    post:
+      summary: Generate Dynamic PIN seeds
+      operationId: post-cards-pin-offline
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cards:
+                    type: array
+                    x-stoplight:
+                      id: 3iwtx9zitx4ht
+                    items:
+                      $ref: '#/components/schemas/CardOfflinePin'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardOfflinePinInput'
+  /cards/pin/online:
+    get:
+      summary: Get online PIN enabled cards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cards:
+                    type: array
+                    x-stoplight:
+                      id: 5scbtjyu526bx
+                    items:
+                      $ref: '#/components/schemas/CardOnlinePin'
+      operationId: get-cards
+    parameters: []
+    post:
+      summary: Generate an online PIN
+      operationId: post-cards-pin-online
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardOnlinePinRequestOutput'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardOnlinePinRequestInput'
   '/cards/{id}':
     parameters:
       - schema:
@@ -154,6 +213,31 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CardInput'
+  '/cards/{id}/movements':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Retrieve a list of all the movements by card
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  movements:
+                    type: array
+                    x-stoplight:
+                      id: v8a6qocs7nn2c
+                    items:
+                      $ref: '#/components/schemas/CardMovement'
+      operationId: get-cards-id-movements
   /configuration:
     get:
       summary: Info for basic settings
@@ -569,6 +653,93 @@ components:
           type: boolean
           x-stoplight:
             id: zdv6j0siho952
+    CardMovement:
+      title: CardMovement
+      x-stoplight:
+        id: lrls7j4jecoiq
+      type: object
+      properties:
+        id:
+          type: integer
+        fuel_station:
+          type: object
+          x-stoplight:
+            id: 6mj6305kqlv83
+          properties:
+            name:
+              type: string
+              x-stoplight:
+                id: tdg7ngov6g61z
+        amount:
+          type: number
+          x-stoplight:
+            id: vavlcvh2pnuoz
+        quantity:
+          type: number
+          x-stoplight:
+            id: k3v2rgcyxldrw
+    CardOnlinePin:
+      title: CardOnlinePin
+      x-stoplight:
+        id: 3gt1s1jg0uyrr
+      type: object
+      properties:
+        pan:
+          type: string
+          x-stoplight:
+            id: 1qcsiwy5ofzrw
+        number:
+          type: integer
+          x-stoplight:
+            id: lufayfzl74vqb
+    CardOnlinePinRequestInput:
+      title: CardOnlinePinRequestInput
+      x-stoplight:
+        id: 94sk4j9z6z4hu
+      type: object
+      properties:
+        card_pan:
+          type: string
+          x-stoplight:
+            id: 1qcsiwy5ofzrw
+    CardOnlinePinRequestOutput:
+      title: CardOnlinePinRequestOutput
+      x-stoplight:
+        id: xh75bq4uw0uui
+      type: object
+      properties:
+        pin:
+          type: string
+          x-stoplight:
+            id: 1qcsiwy5ofzrw
+    CardOfflinePin:
+      title: CardOfflinePin
+      x-stoplight:
+        id: 92s5t4cjz0ml6
+      type: object
+      properties:
+        pan:
+          type: string
+          x-stoplight:
+            id: 1qcsiwy5ofzrw
+        number:
+          type: integer
+          x-stoplight:
+            id: lufayfzl74vqb
+        totp_seed:
+          type: string
+          x-stoplight:
+            id: 51hqnal58tfvh
+    CardOfflinePinInput:
+      title: CardOfflinePinInput
+      x-stoplight:
+        id: jpmm45f4pn7kn
+      type: object
+      properties:
+        replace:
+          type: boolean
+          x-stoplight:
+            id: 1qcsiwy5ofzrw
     Configuration:
       title: Configuration
       x-stoplight:
@@ -858,32 +1029,6 @@ components:
           type: string
           x-stoplight:
             id: tfcduyof411dd
-    Reward:
-      title: Reward
-      x-stoplight:
-        id: 4gitxn0t0lbks
-      type: object
-      properties:
-        id:
-          type: string
-          description: |
-            id reward
-        name:
-          type: string
-          x-stoplight:
-            id: ryxcec4luvqt7
-          description: |
-            reward name
-        points:
-          type: integer
-          x-stoplight:
-            id: fntxqabzgus2o
-        is_fuelcoupon:
-          type: boolean
-          x-stoplight:
-            id: 4yrs3xua2vzxi
-          description: |
-            true if the reward is a fuelcoupon
     RechargeDetails:
       title: RechargeDetails
       x-stoplight:
@@ -936,6 +1081,32 @@ components:
               x-stoplight:
                 id: 5ockm6wtpxxrh
               description: 'Id of the payment method type, used for look up'
+    Reward:
+      title: Reward
+      x-stoplight:
+        id: 4gitxn0t0lbks
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            id reward
+        name:
+          type: string
+          x-stoplight:
+            id: ryxcec4luvqt7
+          description: |
+            reward name
+        points:
+          type: integer
+          x-stoplight:
+            id: fntxqabzgus2o
+        is_fuelcoupon:
+          type: boolean
+          x-stoplight:
+            id: 4yrs3xua2vzxi
+          description: |
+            true if the reward is a fuelcoupon
     RewardRedemption:
       title: RewardRedemption
       x-stoplight:
