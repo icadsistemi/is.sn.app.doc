@@ -167,7 +167,8 @@ paths:
                       id: 5scbtjyu526bx
                     items:
                       $ref: '#/components/schemas/CardOnlinePin'
-      operationId: get-cards
+      operationId: get-online-pin-cards
+      description: ''
     parameters: []
     post:
       summary: Generate an online PIN
