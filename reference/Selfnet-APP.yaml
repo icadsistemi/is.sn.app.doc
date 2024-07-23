@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.4
+  version: 1.0.0-alpha.5
   description: ''
 servers:
   - url: 'http://localhost:3000'
