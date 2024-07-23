@@ -7,6 +7,46 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
+  /campaigns:
+    get:
+      summary: Available rewards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    x-stoplight:
+                      id: xcldit0w9tgv1
+                    items:
+                      $ref: '#/components/schemas/Campaign'
+      operationId: get-rewards
+      parameters: []
+    parameters: []
+  '/campaigns/{id}':
+    get:
+      summary: Available rewards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignDetails'
+      operationId: get-rewards
+      parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
   '/campaigns/{id}/rewards':
     get:
       summary: Available rewards
@@ -19,12 +59,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AvailableRewards'
       operationId: get-rewards
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: card_id
-          description: 'Id of the card, used to detect the current campaign'
+      parameters: []
     parameters:
       - schema:
           type: string
@@ -395,6 +430,52 @@ components:
             Arrray of available rewards
           items:
             $ref: '#/components/schemas/Reward'
+    Campaign:
+      title: Campaign
+      x-stoplight:
+        id: 0tdi843upw9mq
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          x-stoplight:
+            id: 3fdpr99mdi647
+        is_active:
+          type: boolean
+          x-stoplight:
+            id: wpo4df4ygniwx
+    CampaignDetails:
+      title: CampaignDetails
+      x-stoplight:
+        id: vdss6rx9uo50y
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          x-stoplight:
+            id: 3fdpr99mdi647
+        is_active:
+          type: boolean
+          x-stoplight:
+            id: wpo4df4ygniwx
+        points:
+          type: integer
+          x-stoplight:
+            id: 7es7wtxn7fq6n
+        start_date:
+          type: string
+          x-stoplight:
+            id: xk1vdq2vbfr1f
+          format: date-time
+        end_date:
+          type: string
+          x-stoplight:
+            id: t5kgvbgjule2i
+          format: date-time
     Card:
       title: Card
       x-stoplight:
