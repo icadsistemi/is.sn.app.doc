@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.5
+  version: 1.0.0-alpha.6
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -253,6 +253,180 @@ paths:
                 $ref: '#/components/schemas/Configuration'
       operationId: get-configuration
     parameters: []
+  '/customers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-customers-id
+  /ecommerce/nexi/payments/notification:
+    post:
+      summary: ''
+      operationId: ecommerce-nexi-payment-notification
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  esito:
+                    type: string
+                    x-stoplight:
+                      id: x4xl14u6dn710
+                    description: 'result of payment operation (values: ANNULLO, OK)'
+                  messaggio:
+                    type: string
+                    x-stoplight:
+                      id: 6kxizo0hq1c80
+                    description: message from Nexi abuot payment
+                  divisa:
+                    type: string
+                    x-stoplight:
+                      id: vch9hu7vyy4mv
+                    description: currency used in payment
+                  importo:
+                    type: string
+                    x-stoplight:
+                      id: lql0o6u5tx4s5
+                    description: amount paid
+                  codtrans:
+                    type: string
+                    x-stoplight:
+                      id: 9gzuei1row0oc
+                    description: transaction number
+                  num_contratto:
+                    type: string
+                    x-stoplight:
+                      id: qmxe6mptfy9g7
+                    description: contract number used between ICAD and Nexi to recall a recurring payment on a saved card (on Nexi system)
+                  pan:
+                    type: string
+                    x-stoplight:
+                      id: jb636o1gmgpvn
+                    description: card pan (last 3 digits)
+                  scadenza_pan:
+                    type: string
+                    x-stoplight:
+                      id: 5mv68z5jlkmmn
+                    description: expiration date of the payment card
+                  tipoprodotto:
+                    type: string
+                    x-stoplight:
+                      id: xfxzumq1zrmtg
+                    description: product type
+                  brand:
+                    type: string
+                    x-stoplight:
+                      id: r3e4d5w38h8vj
+                    description: payment card brand
+                required:
+                  - esito
+                  - messaggio
+                  - divisa
+                  - importo
+                  - codtrans
+                  - num_contratto
+                  - pan
+                  - scadenza_pan
+                  - tipoprodotto
+                  - brand
+      description: Handle response from Nexi cash page. All queryparams coming from Nexi page callback must be put in internal call
+      requestBody:
+        content: {}
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: '*'
+          description: All Nexi query string params are passed to this internal notification api
+    parameters: []
+  /ecommerce/nexi/payments/start:
+    post:
+      summary: ''
+      operationId: ecommerce-nexi-payment-start
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    x-stoplight:
+                      id: 0dh0qv1t68wrh
+                    description: the url for calling Nexi cash page
+                required:
+                  - value
+      description: Start a new payment request redirecting to Nexi cash page
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  x-stoplight:
+                    id: 9lxmsu4pp3dm1
+                currency:
+                  type: string
+                  x-stoplight:
+                    id: haxzqwg869x1j
+                  description: the value is default EUR string
+                result_url:
+                  type: string
+                  x-stoplight:
+                    id: 3ptl0xrusuzaq
+                  description: callback url to redirect to after Nexi cash actions succesfullt completd
+                abort_url:
+                  type: string
+                  x-stoplight:
+                    id: 15lbjppkffenz
+                  description: callback url to redirect to after Nexi cash ac tion is aborted
+                customer_id:
+                  type: number
+                  x-stoplight:
+                    id: 4hmw7k6a2n2ah
+                request_type:
+                  type: string
+                  x-stoplight:
+                    id: qvsfqwfvs7s70
+                nexi_configuration:
+                  type: string
+                  x-stoplight:
+                    id: ui1vi66safsql
+                  description: ICAD nexi configuration content
+                transaction_data:
+                  type: string
+                  x-stoplight:
+                    id: csnufm50m1l1t
+                  description: base64 encoded transaction data from ICAD
+                'icad_payment_:type':
+                  type: string
+                  x-stoplight:
+                    id: m1en9vojl84ve
+                  description: 'Transaction type (RIC=rechargeable card, BUO=fuelcoupon)'
+              required:
+                - amount
+                - currency
+                - result_url
+                - abort_url
+                - customer_id
+                - request_type
+                - nexi_configuration
+                - transaction_data
+                - 'icad_payment_:type'
+    parameters: []
   /fuelcoupons:
     get:
       summary: List active fuel coupons
@@ -479,168 +653,38 @@ paths:
           name: type
       requestBody:
         content: {}
-  /ecommerce/nexi/payments/notification:
-    post:
-      summary: ''
-      operationId: ecommerce-nexi-payment-notification
+  '/users/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Email of requested user
+    get:
+      summary: Get user info
+      tags: []
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  esito:
-                    type: string
-                    x-stoplight:
-                      id: x4xl14u6dn710
-                    description: 'result of payment operation (values: ANNULLO, OK)'
-                  messaggio:
-                    type: string
-                    x-stoplight:
-                      id: 6kxizo0hq1c80
-                    description: message from Nexi abuot payment
-                  divisa:
-                    type: string
-                    x-stoplight:
-                      id: vch9hu7vyy4mv
-                    description: currency used in payment
-                  importo:
-                    type: string
-                    x-stoplight:
-                      id: lql0o6u5tx4s5
-                    description: amount paid
-                  codtrans:
-                    type: string
-                    x-stoplight:
-                      id: 9gzuei1row0oc
-                    description: transaction number
-                  num_contratto:
-                    type: string
-                    x-stoplight:
-                      id: qmxe6mptfy9g7
-                    description: contract number used between ICAD and Nexi to recall a recurring payment on a saved card (on Nexi system)
-                  pan:
-                    type: string
-                    x-stoplight:
-                      id: jb636o1gmgpvn
-                    description: card pan (last 3 digits)
-                  scadenza_pan:
-                    type: string
-                    x-stoplight:
-                      id: 5mv68z5jlkmmn
-                    description: expiration date of the payment card
-                  tipoprodotto:
-                    type: string
-                    x-stoplight:
-                      id: xfxzumq1zrmtg
-                    description: product type
-                  brand:
-                    type: string
-                    x-stoplight:
-                      id: r3e4d5w38h8vj
-                    description: payment card brand
-                required:
-                  - esito
-                  - messaggio
-                  - divisa
-                  - importo
-                  - codtrans
-                  - num_contratto
-                  - pan
-                  - scadenza_pan
-                  - tipoprodotto
-                  - brand
-      description: Handle response from Nexi cash page. All queryparams coming from Nexi page callback must be put in internal call
-      requestBody:
-        content: {}
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: '*'
-          description: All Nexi query string params are passed to this internal notification api
-    parameters: []
-  /ecommerce/nexi/payments/start:
-    post:
-      summary: ''
-      operationId: ecommerce-nexi-payment-start
+                $ref: '#/components/schemas/User'
+      operationId: get-users-id
+      description: Retrieves user info starting from his email. Called after the login.
+  /versions:
+    get:
+      summary: Get latest app version
+      tags: []
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  value:
-                    type: string
-                    x-stoplight:
-                      id: 0dh0qv1t68wrh
-                    description: the url for calling Nexi cash page
-                required:
-                  - value
-      description: Start a new payment request redirecting to Nexi cash page
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                amount:
-                  type: number
-                  x-stoplight:
-                    id: 9lxmsu4pp3dm1
-                currency:
-                  type: string
-                  x-stoplight:
-                    id: haxzqwg869x1j
-                  description: the value is default EUR string
-                result_url:
-                  type: string
-                  x-stoplight:
-                    id: 3ptl0xrusuzaq
-                  description: callback url to redirect to after Nexi cash actions succesfullt completd
-                abort_url:
-                  type: string
-                  x-stoplight:
-                    id: 15lbjppkffenz
-                  description: callback url to redirect to after Nexi cash ac tion is aborted
-                customer_id:
-                  type: number
-                  x-stoplight:
-                    id: 4hmw7k6a2n2ah
-                request_type:
-                  type: string
-                  x-stoplight:
-                    id: qvsfqwfvs7s70
-                nexi_configuration:
-                  type: string
-                  x-stoplight:
-                    id: ui1vi66safsql
-                  description: ICAD nexi configuration content
-                transaction_data:
-                  type: string
-                  x-stoplight:
-                    id: csnufm50m1l1t
-                  description: base64 encoded transaction data from ICAD
-                'icad_payment_:type':
-                  type: string
-                  x-stoplight:
-                    id: m1en9vojl84ve
-                  description: 'Transaction type (RIC=rechargeable card, BUO=fuelcoupon)'
-              required:
-                - amount
-                - currency
-                - result_url
-                - abort_url
-                - customer_id
-                - request_type
-                - nexi_configuration
-                - transaction_data
-                - 'icad_payment_:type'
-    parameters: []
+                $ref: '#/components/schemas/Version'
+      operationId: get-versions
 components:
   schemas:
     AvailableRewards:
@@ -995,6 +1039,59 @@ components:
                 type: string
                 x-stoplight:
                   id: m417ujyr2ia43
+    Customer:
+      title: Customer
+      x-stoplight:
+        id: bha7c8h3a1bkg
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          x-stoplight:
+            id: mbik7xu5ztna1
+        city:
+          type: string
+          x-stoplight:
+            id: yv4v2va6373ja
+        address:
+          type: string
+          x-stoplight:
+            id: 68tsthe3vso8i
+        vat:
+          type: string
+          x-stoplight:
+            id: i5zltojacnuxf
+        fiscal_code:
+          type: string
+          x-stoplight:
+            id: zs8w7syr22447
+        email:
+          type: string
+          x-stoplight:
+            id: i9cua94v0n1ma
+          format: email
+        phone_number:
+          type: string
+          x-stoplight:
+            id: ph9ibnjt0oq9j
+        pec:
+          type: string
+          x-stoplight:
+            id: r6ow1i3sjc82r
+        sdi_code:
+          type: string
+          x-stoplight:
+            id: mwefcrw9n5peh
+        zip_code:
+          type: string
+          x-stoplight:
+            id: 1m6vxggi98zbm
+        province:
+          type: string
+          x-stoplight:
+            id: xg249pua2raw8
     FuelCoupon:
       title: FuelCoupon
       x-stoplight:
@@ -1396,6 +1493,62 @@ components:
               type: number
               x-stoplight:
                 id: 9tvb170jbvz3d
+    User:
+      title: User
+      x-stoplight:
+        id: wbx9nt87budrs
+      type: object
+      properties:
+        suppliers:
+          type: array
+          x-stoplight:
+            id: gr87yjrgjy6b4
+          items:
+            x-stoplight:
+              id: wyvi0pmcd53lm
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: k1x32zt2ehv7d
+              name:
+                type: string
+                x-stoplight:
+                  id: 4mx498vikooxz
+              customer:
+                type: object
+                x-stoplight:
+                  id: 8hmjm9i7wwt9g
+                properties:
+                  id:
+                    type: integer
+                    x-stoplight:
+                      id: pca2sjkyia4qi
+                  name:
+                    type: string
+                    x-stoplight:
+                      id: 2mlcx8128yvpf
+                  individual:
+                    type: integer
+                    x-stoplight:
+                      id: 6kthusz3ffzji
+                    description: |
+                      Optional individual ID
+    Version:
+      title: Version
+      x-stoplight:
+        id: 0pnc1m0rnh7o0
+      type: object
+      properties:
+        type:
+          type: string
+          x-stoplight:
+            id: zunzswce56r99
+        version:
+          type: string
+          x-stoplight:
+            id: ffmppj89bsc3y
   securitySchemes:
     Cognito:
       type: oauth2
