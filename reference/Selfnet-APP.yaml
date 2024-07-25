@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.6
+  version: 1.0.0-alpha.7
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -900,6 +900,10 @@ components:
           type: integer
           x-stoplight:
             id: lufayfzl74vqb
+        vehicle_plate:
+          type: string
+          x-stoplight:
+            id: lb6gv5p3utvg2
     CardOnlinePinRequestInput:
       title: CardOnlinePinRequestInput
       x-stoplight:
@@ -938,6 +942,10 @@ components:
           type: string
           x-stoplight:
             id: 51hqnal58tfvh
+        vehicle_plate:
+          type: string
+          x-stoplight:
+            id: iexfkybpl2idt
     CardOfflinePinInput:
       title: CardOfflinePinInput
       x-stoplight:
