@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.7
+  version: 1.0.0-alpha.8
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -673,7 +673,7 @@ paths:
                 $ref: '#/components/schemas/User'
       operationId: get-users-id
       description: Retrieves user info starting from his email. Called after the login.
-  /versions:
+  '/versions/{platform}':
     get:
       summary: Get latest app version
       tags: []
@@ -685,6 +685,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Version'
       operationId: get-versions
+    parameters:
+      - schema:
+          type: string
+        name: platform
+        in: path
+        required: true
+        description: Can be ios or android
 components:
   schemas:
     AvailableRewards:
