@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.8
+  version: 1.0.0-alpha.9
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -608,6 +608,33 @@ paths:
                 $ref: '#/components/schemas/RechargeDetails'
       operationId: get-recharges-id
       description: ''
+  /suppliers:
+    parameters: []
+    get:
+      summary: Get user info
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suppliers'
+      operationId: get-users-id
+      description: Get all the suppliers available for the logged user
+  '/suppliers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-suppliers-id
+      description: Get details of a supplier using the input ID
   /transactions:
     parameters: []
     get:
@@ -653,26 +680,6 @@ paths:
           name: type
       requestBody:
         content: {}
-  '/users/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: Email of requested user
-    get:
-      summary: Get user info
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-      operationId: get-users-id
-      description: Retrieves user info starting from his email. Called after the login.
   '/versions/{platform}':
     get:
       summary: Get latest app version
@@ -1416,6 +1423,63 @@ components:
               type: string
               x-stoplight:
                 id: jyl34vm6kezx9
+    Supplier:
+      title: Supplier
+      x-stoplight:
+        id: 8mgsino8wiokn
+      type: object
+      properties:
+        id:
+          type: integer
+        customer:
+          type: object
+          x-stoplight:
+            id: 99k839kqu4muz
+          properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: tszl9ajcnybwl
+            name:
+              type: string
+              x-stoplight:
+                id: vnng2vb4hhzr0
+            individual:
+              type: integer
+              x-stoplight:
+                id: 5zweh1cu3oevh
+        card_types:
+          type: array
+          x-stoplight:
+            id: lwedhms3u01ab
+          description: 'Id of the card types available for the logged user '
+          items:
+            x-stoplight:
+              id: ac3juv4fah7w9
+            type: integer
+    Suppliers:
+      title: Suppliers
+      x-stoplight:
+        id: wbx9nt87budrs
+      type: object
+      properties:
+        suppliers:
+          type: array
+          x-stoplight:
+            id: gr87yjrgjy6b4
+          items:
+            x-stoplight:
+              id: wyvi0pmcd53lm
+            type: object
+            properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: k1x32zt2ehv7d
+              name:
+                type: string
+                x-stoplight:
+                  id: 4mx498vikooxz
     TransactionOutput:
       title: TransactionOutput
       x-stoplight:
@@ -1508,48 +1572,6 @@ components:
               type: number
               x-stoplight:
                 id: 9tvb170jbvz3d
-    User:
-      title: User
-      x-stoplight:
-        id: wbx9nt87budrs
-      type: object
-      properties:
-        suppliers:
-          type: array
-          x-stoplight:
-            id: gr87yjrgjy6b4
-          items:
-            x-stoplight:
-              id: wyvi0pmcd53lm
-            type: object
-            properties:
-              id:
-                type: integer
-                x-stoplight:
-                  id: k1x32zt2ehv7d
-              name:
-                type: string
-                x-stoplight:
-                  id: 4mx498vikooxz
-              customer:
-                type: object
-                x-stoplight:
-                  id: 8hmjm9i7wwt9g
-                properties:
-                  id:
-                    type: integer
-                    x-stoplight:
-                      id: pca2sjkyia4qi
-                  name:
-                    type: string
-                    x-stoplight:
-                      id: 2mlcx8128yvpf
-                  individual:
-                    type: integer
-                    x-stoplight:
-                      id: 6kthusz3ffzji
-                    description: |
-                      Optional individual ID
     Version:
       title: Version
       x-stoplight:
