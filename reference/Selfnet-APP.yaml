@@ -602,6 +602,18 @@ paths:
           required: true
       security:
         - Cognito: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                invoices:
+                  type: array
+                  x-stoplight:
+                    id: komg0hmif99ru
+                  items:
+                    $ref: '#/components/schemas/Invoice'
   '/invoices/{id}/print':
     parameters:
       - schema:
@@ -1308,51 +1320,81 @@ components:
         id: mwp240vykhj95
       type: object
       properties:
-        id:
-          type: integer
+        amount:
+          type: number
           x-stoplight:
-            id: 86ai4wd9he9k2
-        supplier:
-          type: object
+            id: mnn2j4xvpjvpx
+        document_type_code:
+          type: string
           x-stoplight:
-            id: xkbev68yk6pg9
-          properties:
-            name:
-              type: string
-              x-stoplight:
-                id: tr1x62l374f0q
+            id: 6l3hvd416s4q9
+          description: 'Id of the invoice document type, used for look up'
+        error_info:
+          type: string
+          x-stoplight:
+            id: 1q6h50zo0nvkt
         fuel_station:
           type: object
           x-stoplight:
             id: h0zjb86pggzj6
           properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: ir6qfe8lb9k0x
+            full_address:
+              type: string
+              x-stoplight:
+                id: ctuqyjonejx52
+            address:
+              type: string
+              x-stoplight:
+                id: zb7oz6x166566
+            city:
+              type: string
+              x-stoplight:
+                id: paelsfc3lixer
+            flag:
+              type: string
+              x-stoplight:
+                id: sk4h82u8n70ea
             name:
               type: string
               x-stoplight:
-                id: ir6qfe8lb9k0x
-        amount:
-          type: number
+                id: 53slzxql9g3rg
+            phone_number:
+              type: string
+              x-stoplight:
+                id: aetqwuq02gwqj
+            cellphone_number:
+              type: string
+              x-stoplight:
+                id: 6b3tb48ta7wel
+        id:
+          type: integer
           x-stoplight:
-            id: mnn2j4xvpjvpx
-        status:
+            id: 86ai4wd9he9k2
+        is_immediate:
           type: string
           x-stoplight:
-            id: 0gilxih0xgf0x
-          description: 'Id of the invoice status, used for look up'
-        document_type:
-          type: string
-          x-stoplight:
-            id: 6l3hvd416s4q9
-          description: 'Id of the invoice document type, used for look up'
-        date:
+            id: wf9swegx1nj8k
+        issuing_date:
           type: string
           x-stoplight:
             id: 8l8ek87r71z09
           format: date
+        status:
+          type: string
+          x-stoplight:
+            id: ana3d68obuf3n
         number:
           type: string
           x-stoplight:
             id: mgpuxsbo40ho7
+        year:
+          type: integer
+          x-stoplight:
+            id: k97j7tqkoihp6
     Price:
       title: Prices
       x-stoplight:
