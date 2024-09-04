@@ -27,7 +27,12 @@ paths:
                     items:
                       $ref: '#/components/schemas/Campaign'
       operationId: get-rewards-campaigns
-      parameters: []
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
     parameters: []
   '/campaigns/{id}':
     get:
@@ -41,7 +46,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CampaignDetails'
       operationId: get-rewards-campaign-details
-      parameters: []
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
     parameters:
       - schema:
           type: string
@@ -61,7 +71,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AvailableRewards'
       operationId: get-rewards
-      parameters: []
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
     parameters:
       - schema:
           type: string
@@ -99,6 +114,11 @@ paths:
           in: query
           name: end_range
           description: UNIX datetime
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
     parameters:
       - schema:
           type: string
@@ -125,6 +145,12 @@ paths:
                     items:
                       $ref: '#/components/schemas/Card'
       operationId: get-cards
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   /cards/pin/dynamic:
     parameters: []
     post:
@@ -204,6 +230,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CardDetails'
       operationId: get-cards-id
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
     patch:
       summary: ''
       operationId: patch-cards-id
@@ -240,6 +272,12 @@ paths:
                     items:
                       $ref: '#/components/schemas/CardMovement'
       operationId: get-cards-id-movements
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   /configuration:
     get:
       summary: Info for basic settings
@@ -265,6 +303,12 @@ paths:
       tags: []
       responses: {}
       operationId: get-customers-id
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   /ecommerce/nexi/payments/notification:
     post:
       summary: ''
@@ -448,6 +492,12 @@ paths:
       operationId: get-fuelcoupons
       requestBody:
         content: {}
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   '/fuelcoupons/{id}':
     parameters:
       - schema:
@@ -467,6 +517,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/FuelCouponDetails'
       operationId: get-fuelcoupons-id
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   /fuelstations:
     get:
       summary: GET fuelstations
@@ -506,6 +562,11 @@ paths:
           in: query
           name: articles
           description: 'Optional, used to filter fuel stations'
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
       requestBody:
         content: {}
   /invoices:
@@ -534,6 +595,11 @@ paths:
           in: query
           name: end_range
           description: UNIX datetme. Used only if type == "processing".
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
       security:
         - Cognito: []
   '/invoices/{id}/print':
@@ -557,6 +623,12 @@ paths:
       operationId: get-invoices-id-print
       security:
         - Cognito: []
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   /recharges:
     get:
       summary: Get all recharges
@@ -587,6 +659,11 @@ paths:
           in: query
           name: end_range
           description: UNIX datetime
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
       requestBody:
         content: {}
   '/recharges/{id}':
@@ -608,6 +685,12 @@ paths:
                 $ref: '#/components/schemas/RechargeDetails'
       operationId: get-recharges-id
       description: ''
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
   /suppliers:
     parameters: []
     get:
@@ -678,6 +761,11 @@ paths:
               - nonoil
           in: query
           name: type
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
       requestBody:
         content: {}
   '/versions/{platform}':
