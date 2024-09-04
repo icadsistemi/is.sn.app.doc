@@ -299,9 +299,15 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get customer details by id
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
       operationId: get-customers-id
       parameters:
         - schema:
@@ -309,6 +315,8 @@ paths:
           in: header
           name: supplier-id
           required: true
+      requestBody:
+        content: {}
   /ecommerce/nexi/payments/notification:
     post:
       summary: ''
@@ -725,9 +733,15 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get supplier details by id
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
       operationId: get-suppliers-id
       description: Get details of a supplier using the input ID
   /transactions:
