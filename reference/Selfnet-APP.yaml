@@ -622,6 +622,35 @@ paths:
                     id: komg0hmif99ru
                   items:
                     $ref: '#/components/schemas/Invoice'
+  '/invoices/{id}/details':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get invoice details
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  details:
+                    $ref: '#/components/schemas/InvoiceDetail'
+                required:
+                  - details
+      operationId: get-invoice-id-details
+      description: Used to get a list of all details included within the input invoice
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
   '/invoices/{id}/print':
     parameters:
       - schema:
@@ -1409,6 +1438,134 @@ components:
           type: integer
           x-stoplight:
             id: k97j7tqkoihp6
+    InvoiceDetail:
+      title: InvoiceDetail
+      x-stoplight:
+        id: 9qylnkcq8udo0
+      type: object
+      properties:
+        article:
+          type: object
+          x-stoplight:
+            id: k0x1qjovk36ft
+          properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: mqmen5b4sjnuz
+            code:
+              type: string
+              x-stoplight:
+                id: rseb25lkc61hj
+            description:
+              type: string
+              x-stoplight:
+                id: xg4ehcrtp1haq
+        card_id:
+          type: integer
+          x-stoplight:
+            id: iqcmzhc0o39nm
+        ddt_number:
+          type: string
+          x-stoplight:
+            id: rdelgx83x5l2v
+        fuel_station:
+          type: object
+          x-stoplight:
+            id: leedhdhixycdc
+          properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: l1dsax2x77ade
+            address:
+              type: string
+              x-stoplight:
+                id: g8wsgbqxghhm3
+        id:
+          type: integer
+          x-stoplight:
+            id: 7noltrs6n05dq
+        invoice_id:
+          type: integer
+          x-stoplight:
+            id: lginfqcmgxxdx
+        km:
+          type: integer
+          x-stoplight:
+            id: ay3sr3qhh53dz
+        payments:
+          type: object
+          x-stoplight:
+            id: kxew6m1p1hc7f
+          properties:
+            payment_method_code:
+              type: string
+              x-stoplight:
+                id: lnrqjkuxp9qjf
+            amount:
+              type: number
+              x-stoplight:
+                id: 5yvnqz4lfoanq
+            cab:
+              type: string
+              x-stoplight:
+                id: 7nw812ff6z6jg
+            iban:
+              type: string
+              x-stoplight:
+                id: oz5pmkmi76r5p
+            abi:
+              type: string
+              x-stoplight:
+                id: pjv8920ygsj7c
+            id:
+              type: integer
+              x-stoplight:
+                id: cbwza7u65id6i
+            bic:
+              type: string
+              x-stoplight:
+                id: dea6xf8anxeuq
+        quantity:
+          type: number
+          x-stoplight:
+            id: 41rr0e4vqb5xi
+        receipt_number:
+          type: string
+          x-stoplight:
+            id: m8o7xdnmvvqie
+        total_amount:
+          type: number
+          x-stoplight:
+            id: ck9ogoasbm81c
+        transaction_timestamp:
+          type: string
+          x-stoplight:
+            id: 9klz1z0wak4h5
+          format: time
+        unit_of_measure:
+          type: string
+          x-stoplight:
+            id: 99atx8w6ggvaf
+        unit_price:
+          type: number
+          x-stoplight:
+            id: ba8dpcpxjg6eq
+        vehicle:
+          type: object
+          x-stoplight:
+            id: zszy3ojlljpni
+          properties:
+            plate:
+              type: string
+              x-stoplight:
+                id: uj1b87lopjbmy
+            model:
+              type: string
+              x-stoplight:
+                id: 3je1dhjf3qe78
+      description: A single detail referring to an invoiced transaction
     Price:
       title: Prices
       x-stoplight:
