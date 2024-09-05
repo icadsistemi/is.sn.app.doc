@@ -622,7 +622,7 @@ paths:
                     id: komg0hmif99ru
                   items:
                     $ref: '#/components/schemas/Invoice'
-  '/invoices/{id}/details':
+  '/invoices/{id}':
     parameters:
       - schema:
           type: string
