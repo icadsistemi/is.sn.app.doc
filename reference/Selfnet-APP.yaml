@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.12
+  version: 1.0.0-alpha.13
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -1325,6 +1325,30 @@ components:
           type: string
           x-stoplight:
             id: xg249pua2raw8
+        is_fee_active:
+          type: boolean
+          x-stoplight:
+            id: 2e7vxsevhd6rj
+        contract_number:
+          type: string
+          x-stoplight:
+            id: iykd73itkv6gf
+        rebate_level:
+          type: integer
+          x-stoplight:
+            id: ahvyudds94w5q
+        rebate:
+          type: number
+          x-stoplight:
+            id: w94r22gtiv3w4
+        is_customer_recharge:
+          type: boolean
+          x-stoplight:
+            id: xzf3av4vkax0a
+        residue:
+          type: number
+          x-stoplight:
+            id: ajjg3alwbn8pr
     FuelCoupon:
       title: FuelCoupon
       x-stoplight:
