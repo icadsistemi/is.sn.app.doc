@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.11
+  version: 1.0.0-alpha.12
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -842,6 +842,74 @@ paths:
         in: path
         required: true
         description: Can be ios or android
+  /ecommerce/cards/bills:
+    get:
+      summary: Get ecommerce active rechargeable card bills
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechargeableBills'
+      operationId: get-ecommerce-cards-bills
+      description: Get ecommerce active rechargeable card bills for the current supplier
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier_id
+          required: true
+  /ecommerce/fuelcoupons/bills:
+    get:
+      summary: Get ecommerce active fuelcoupon bills
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelcouponBills'
+      operationId: get-ecommerce-fuelcoupon-bills
+      description: Get ecommerce active fuelcoupon bills for the current supplier
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier_id
+          required: true
+    parameters: []
+  /ecommerce/nexi/customers/contract:
+    patch:
+      summary: Save Nexi customer contract number
+      operationId: patch-ecommerce-nexi-customers-contract
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    x-stoplight:
+                      id: x896l7rybo5be
+                    description: customer id
+                  contract_number:
+                    type: string
+                    x-stoplight:
+                      id: tda8dkedtmr22
+                    description: 0000000017_20190729153936|001 (contract number | last three numbers of the card pan saved)
+      description: Save the Nexi customer contract provided when during payment it was saved a card
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier_id
+          required: true
 components:
   schemas:
     AvailableRewards:
@@ -1758,6 +1826,46 @@ components:
             x-stoplight:
               id: ac3juv4fah7w9
             type: integer
+        ecommerce:
+          type: object
+          x-stoplight:
+            id: ey7umckgvys0v
+          properties:
+            rechargeable_fee_type:
+              type: boolean
+              x-stoplight:
+                id: d56arbldwxuu5
+              description: 'true: fee in €, otherwise %'
+            rechargeable_fee:
+              type: number
+              x-stoplight:
+                id: f9bxqrefvnray
+            fuelcoupon_fee_type:
+              type: boolean
+              x-stoplight:
+                id: dt9fxumnbn8dg
+              description: 'true: fee in €, otherwise %'
+            fuelcoupon_fee:
+              type: number
+              x-stoplight:
+                id: 5rb54uic28vi8
+            is_active_fuelcoupon_onetime:
+              type: boolean
+              x-stoplight:
+                id: je1qd48vqrcdx
+            is_active_fuelcoupon_deductible:
+              type: boolean
+              x-stoplight:
+                id: f039p30kiogfr
+            fuelcoupon_expiration_in_years:
+              type: integer
+              x-stoplight:
+                id: cu9v7e3f9cb23
+            nexi_configuration:
+              type: string
+              x-stoplight:
+                id: vhq1esjz1jfdz
+              description: '"[{\"id\":0,\"tipo\":\"Easy\",\"alias\":\"ALIAS_WEB_00014162\",\"secretKey\":\"WJ8PHHAKUWDKXOKL2TVU5JONUACFMT4M\",\"gruppo\":\"GRP_24264\"},{\"id\":1,\"tipo\":\"Pro\",\"alias\":\"ALIAS_RICO_00014163\",\"secretKey\":\"BPF4Z5UT59LU5NNL49K4KV1HS0SBA2MI\",\"gruppo\":\"GRP_24264\"}]"'
     Suppliers:
       title: Suppliers
       x-stoplight:
@@ -1887,6 +1995,97 @@ components:
           type: string
           x-stoplight:
             id: ffmppj89bsc3y
+    RechargeableBills:
+      title: RechargeableBills
+      x-stoplight:
+        id: kbjcadsz7t7rg
+      type: object
+      properties:
+        id:
+          type: integer
+        supplier_id:
+          type: integer
+          x-stoplight:
+            id: 5amep6szrv1su
+        amount:
+          type: number
+          x-stoplight:
+            id: 11ppke17srrvq
+        rebate_levels:
+          type: object
+          x-stoplight:
+            id: 1lekkqj5caf7a
+          properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: p8pz6uzf1b8aj
+            rebate:
+              type: number
+              x-stoplight:
+                id: xlu5evikl5xex
+        is_ecommerce_active:
+          type: boolean
+          x-stoplight:
+            id: dzpc0x3kswonc
+        insert_datetime:
+          type: string
+          x-stoplight:
+            id: mylu8biflxfnw
+        edit_datetime:
+          type: string
+          x-stoplight:
+            id: 1v9d6y72fbjmw
+        insert_username:
+          type: string
+          x-stoplight:
+            id: it3vt8b9wwrar
+        edit_username:
+          type: string
+          x-stoplight:
+            id: 62s5hc1eq8pm1
+        discount_group_id:
+          type: integer
+          x-stoplight:
+            id: 12tm7wzlr0b5o
+      description: Bills for rechargeable cards
+    FuelcouponBills:
+      title: FuelcouponBills
+      x-stoplight:
+        id: 5s9nex2le90th
+      type: object
+      properties:
+        id:
+          type: integer
+        supplier_id:
+          type: integer
+          x-stoplight:
+            id: agj44i0c0nql2
+        amount:
+          type: number
+          x-stoplight:
+            id: 827bsdjfr03xe
+        is_ecommerce_active:
+          type: boolean
+          x-stoplight:
+            id: t0a52jfvfwge5
+        insert_datetime:
+          type: string
+          x-stoplight:
+            id: 0wigmefa61num
+        edit_datetime:
+          type: string
+          x-stoplight:
+            id: ghix7lfnw53lj
+        insert_username:
+          type: string
+          x-stoplight:
+            id: 2un5n4zzrp1iq
+        edit_username:
+          type: string
+          x-stoplight:
+            id: 6200nso26s2vk
+      description: Bills for fuelcoupons
   securitySchemes:
     Cognito:
       type: oauth2
