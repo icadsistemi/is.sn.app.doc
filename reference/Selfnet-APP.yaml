@@ -1380,6 +1380,10 @@ components:
           x-stoplight:
             id: 3h5txjkrzj3yz
           format: date
+        amount:
+          type: number
+          x-stoplight:
+            id: bltgm93oj68iy
     FuelStation:
       title: FuelStation
       x-stoplight:
@@ -2001,6 +2005,7 @@ components:
       x-stoplight:
         id: kbjcadsz7t7rg
       type: object
+      description: Bills for rechargeable cards
       properties:
         id:
           type: integer
@@ -2029,32 +2034,12 @@ components:
           type: boolean
           x-stoplight:
             id: dzpc0x3kswonc
-        insert_datetime:
-          type: string
-          x-stoplight:
-            id: mylu8biflxfnw
-        edit_datetime:
-          type: string
-          x-stoplight:
-            id: 1v9d6y72fbjmw
-        insert_username:
-          type: string
-          x-stoplight:
-            id: it3vt8b9wwrar
-        edit_username:
-          type: string
-          x-stoplight:
-            id: 62s5hc1eq8pm1
-        discount_group_id:
-          type: integer
-          x-stoplight:
-            id: 12tm7wzlr0b5o
-      description: Bills for rechargeable cards
     FuelcouponBills:
       title: FuelcouponBills
       x-stoplight:
         id: 5s9nex2le90th
       type: object
+      description: Bills for fuelcoupons
       properties:
         id:
           type: integer
@@ -2070,23 +2055,6 @@ components:
           type: boolean
           x-stoplight:
             id: t0a52jfvfwge5
-        insert_datetime:
-          type: string
-          x-stoplight:
-            id: 0wigmefa61num
-        edit_datetime:
-          type: string
-          x-stoplight:
-            id: ghix7lfnw53lj
-        insert_username:
-          type: string
-          x-stoplight:
-            id: 2un5n4zzrp1iq
-        edit_username:
-          type: string
-          x-stoplight:
-            id: 6200nso26s2vk
-      description: Bills for fuelcoupons
   securitySchemes:
     Cognito:
       type: oauth2
