@@ -317,6 +317,153 @@ paths:
           required: true
       requestBody:
         content: {}
+  /ecommerce/cards/bills:
+    get:
+      summary: Get ecommerce active rechargeable card bills
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechargeableBills'
+      operationId: get-ecommerce-cards-bills
+      description: Get ecommerce active rechargeable card bills for the current supplier
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier_id
+          required: true
+  /ecommerce/fuelcoupons/bills:
+    get:
+      summary: Get ecommerce active fuelcoupon bills
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelcouponBills'
+      operationId: get-ecommerce-fuelcoupon-bills
+      description: Get ecommerce active fuelcoupon bills for the current supplier
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier_id
+          required: true
+    parameters: []
+  /ecommerce/nexi/customers/contract:
+    patch:
+      summary: Save Nexi customer contract number
+      operationId: patch-ecommerce-nexi-customers-contract
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    x-stoplight:
+                      id: x896l7rybo5be
+                    description: customer id
+                  contract_number:
+                    type: string
+                    x-stoplight:
+                      id: tda8dkedtmr22
+                    description: 0000000017_20190729153936|001 (contract number | last three numbers of the card pan saved)
+      description: Save the Nexi customer contract provided when during payment it was saved a card
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier_id
+          required: true
+  /ecommerce/nexi/payments/start:
+    post:
+      summary: ''
+      operationId: ecommerce-nexi-payment-start
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    x-stoplight:
+                      id: 0dh0qv1t68wrh
+                    description: the url for calling Nexi cash page
+                required:
+                  - value
+      description: Start a new payment request redirecting to Nexi cash page
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  x-stoplight:
+                    id: 9lxmsu4pp3dm1
+                currency:
+                  type: string
+                  x-stoplight:
+                    id: haxzqwg869x1j
+                  description: the value is default EUR string
+                result_url:
+                  type: string
+                  x-stoplight:
+                    id: 3ptl0xrusuzaq
+                  description: callback url to redirect to after Nexi cash actions succesfullt completd
+                abort_url:
+                  type: string
+                  x-stoplight:
+                    id: 15lbjppkffenz
+                  description: callback url to redirect to after Nexi cash ac tion is aborted
+                customer_id:
+                  type: number
+                  x-stoplight:
+                    id: 4hmw7k6a2n2ah
+                request_type:
+                  type: string
+                  x-stoplight:
+                    id: qvsfqwfvs7s70
+                nexi_configuration:
+                  type: string
+                  x-stoplight:
+                    id: ui1vi66safsql
+                  description: ICAD nexi configuration content
+                transaction_data:
+                  type: string
+                  x-stoplight:
+                    id: csnufm50m1l1t
+                  description: base64 encoded transaction data from ICAD
+                'icad_payment_:type':
+                  type: string
+                  x-stoplight:
+                    id: m1en9vojl84ve
+                  description: 'Transaction type (RIC=rechargeable card, BUO=fuelcoupon)'
+              required:
+                - amount
+                - currency
+                - result_url
+                - abort_url
+                - customer_id
+                - request_type
+                - nexi_configuration
+                - transaction_data
+                - 'icad_payment_:type'
+    parameters: []
   /ecommerce/nexi/payments/notification:
     post:
       summary: ''
@@ -399,85 +546,6 @@ paths:
           in: query
           name: '*'
           description: All Nexi query string params are passed to this internal notification api
-    parameters: []
-  /ecommerce/nexi/payments/start:
-    post:
-      summary: ''
-      operationId: ecommerce-nexi-payment-start
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  value:
-                    type: string
-                    x-stoplight:
-                      id: 0dh0qv1t68wrh
-                    description: the url for calling Nexi cash page
-                required:
-                  - value
-      description: Start a new payment request redirecting to Nexi cash page
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                amount:
-                  type: number
-                  x-stoplight:
-                    id: 9lxmsu4pp3dm1
-                currency:
-                  type: string
-                  x-stoplight:
-                    id: haxzqwg869x1j
-                  description: the value is default EUR string
-                result_url:
-                  type: string
-                  x-stoplight:
-                    id: 3ptl0xrusuzaq
-                  description: callback url to redirect to after Nexi cash actions succesfullt completd
-                abort_url:
-                  type: string
-                  x-stoplight:
-                    id: 15lbjppkffenz
-                  description: callback url to redirect to after Nexi cash ac tion is aborted
-                customer_id:
-                  type: number
-                  x-stoplight:
-                    id: 4hmw7k6a2n2ah
-                request_type:
-                  type: string
-                  x-stoplight:
-                    id: qvsfqwfvs7s70
-                nexi_configuration:
-                  type: string
-                  x-stoplight:
-                    id: ui1vi66safsql
-                  description: ICAD nexi configuration content
-                transaction_data:
-                  type: string
-                  x-stoplight:
-                    id: csnufm50m1l1t
-                  description: base64 encoded transaction data from ICAD
-                'icad_payment_:type':
-                  type: string
-                  x-stoplight:
-                    id: m1en9vojl84ve
-                  description: 'Transaction type (RIC=rechargeable card, BUO=fuelcoupon)'
-              required:
-                - amount
-                - currency
-                - result_url
-                - abort_url
-                - customer_id
-                - request_type
-                - nexi_configuration
-                - transaction_data
-                - 'icad_payment_:type'
     parameters: []
   /fuelcoupons:
     get:
@@ -842,74 +910,6 @@ paths:
         in: path
         required: true
         description: Can be ios or android
-  /ecommerce/cards/bills:
-    get:
-      summary: Get ecommerce active rechargeable card bills
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RechargeableBills'
-      operationId: get-ecommerce-cards-bills
-      description: Get ecommerce active rechargeable card bills for the current supplier
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: supplier_id
-          required: true
-  /ecommerce/fuelcoupons/bills:
-    get:
-      summary: Get ecommerce active fuelcoupon bills
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FuelcouponBills'
-      operationId: get-ecommerce-fuelcoupon-bills
-      description: Get ecommerce active fuelcoupon bills for the current supplier
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: supplier_id
-          required: true
-    parameters: []
-  /ecommerce/nexi/customers/contract:
-    patch:
-      summary: Save Nexi customer contract number
-      operationId: patch-ecommerce-nexi-customers-contract
-      responses:
-        '204':
-          description: No Content
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    x-stoplight:
-                      id: x896l7rybo5be
-                    description: customer id
-                  contract_number:
-                    type: string
-                    x-stoplight:
-                      id: tda8dkedtmr22
-                    description: 0000000017_20190729153936|001 (contract number | last three numbers of the card pan saved)
-      description: Save the Nexi customer contract provided when during payment it was saved a card
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: supplier_id
-          required: true
 components:
   schemas:
     AvailableRewards:
