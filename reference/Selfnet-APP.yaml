@@ -919,29 +919,6 @@ components:
       type: object
       description: A campaign with all its rewards
       properties:
-        campaign:
-          type: object
-          x-stoplight:
-            id: oebjyjx33hh0z
-          properties:
-            id:
-              type: integer
-              x-stoplight:
-                id: 4t0w46y4rbzfi
-            name:
-              type: string
-              x-stoplight:
-                id: f7sj80ani49ra
-            type:
-              type: integer
-              x-stoplight:
-                id: q9mbsmfcc7e0u
-              description: |-
-                Allowed values are:
-
-                1: this is a OIL campaign
-                2: this is a NON OIL campaign
-                3: this is a mixed campaign
         rewards:
           type: array
           x-stoplight:
@@ -1777,7 +1754,7 @@ components:
           type: integer
           x-stoplight:
             id: fntxqabzgus2o
-        is_fuelcoupon:
+        is_fuel_coupon:
           type: boolean
           x-stoplight:
             id: 4yrs3xua2vzxi
