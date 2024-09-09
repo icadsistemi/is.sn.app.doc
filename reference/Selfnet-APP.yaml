@@ -893,23 +893,25 @@ paths:
             type: integer
           in: query
           name: card_type
+          description: 'card type''s ID (rechargeable, end of month, etc.)'
         - schema:
             type: integer
           in: query
-          name: start_range
+          name: start_datetime
           description: UNIX datetime
         - schema:
             type: integer
           in: query
-          name: end_range
+          name: end_datetime
           description: UNIX datetime
         - schema:
-            type: string
+            type: boolean
             enum:
               - oil
               - nonoil
           in: query
-          name: type
+          name: oil
+          description: 'true to get only oil transactions, false to get only nonoil transactions'
         - schema:
             type: integer
           in: header
@@ -2026,6 +2028,7 @@ components:
           type: object
           x-stoplight:
             id: og89xoevq96dz
+          description: Only for OIL transactions
           properties:
             plate:
               type: string
@@ -2094,6 +2097,7 @@ components:
               type: number
               x-stoplight:
                 id: 9tvb170jbvz3d
+      description: ''
     Version:
       title: Version
       x-stoplight:
