@@ -599,7 +599,7 @@ paths:
           in: header
           name: supplier-id
           required: true
-  /fuelstations:
+  /fuelstations/search:
     get:
       summary: GET fuelstations
       tags: []
@@ -619,10 +619,6 @@ paths:
                       $ref: '#/components/schemas/FuelStation'
       operationId: get-fuelstations
       parameters:
-        - schema:
-            type: integer
-          in: query
-          name: supplier_id
         - schema:
             type: number
           in: query
@@ -645,6 +641,7 @@ paths:
           required: true
       requestBody:
         content: {}
+    parameters: []
   /fuelcoupons/transactions:
     get:
       summary: GET fuelstation transactions
@@ -1499,6 +1496,10 @@ components:
         id: hnosbaortwcvo
       type: object
       properties:
+        id:
+          type: integer
+          x-stoplight:
+            id: 04xdrczugq69k
         latitude:
           type: number
           x-stoplight:
@@ -1507,16 +1508,6 @@ components:
           type: number
           x-stoplight:
             id: s50rw9vka97j8
-        distance:
-          type: number
-          x-stoplight:
-            id: 6zhnvrmk0tx2t
-          description: |
-            The value is set when the gps coordinates are sent as input in search fuel stations method. The value is the cartesian distance in km from input gps to the current fuel station
-        name:
-          type: string
-          x-stoplight:
-            id: oygiilx0oai67
         address:
           type: string
           x-stoplight:
@@ -1525,6 +1516,20 @@ components:
           type: string
           x-stoplight:
             id: w1zwdh3sosnut
+        name:
+          type: string
+          x-stoplight:
+            id: oygiilx0oai67
+        flag:
+          type: string
+          x-stoplight:
+            id: u9hm2kd8gcn2o
+        distance:
+          type: number
+          x-stoplight:
+            id: 6zhnvrmk0tx2t
+          description: |
+            The value is set when the gps coordinates are sent as input in search fuel stations method. The value is the cartesian distance in km from input gps to the current fuel station
         zip_code:
           type: string
           x-stoplight:
@@ -1533,12 +1538,6 @@ components:
           type: string
           x-stoplight:
             id: bufc9wm1kv858
-        prices:
-          type: array
-          x-stoplight:
-            id: gqhsjw0ji95yj
-          items:
-            $ref: '#/components/schemas/Price'
     Invoice:
       title: Invoice
       x-stoplight:
