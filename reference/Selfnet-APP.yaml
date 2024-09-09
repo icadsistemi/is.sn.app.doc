@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.13
+  version: 1.0.0-alpha.14
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -645,6 +645,35 @@ paths:
           required: true
       requestBody:
         content: {}
+  /fuelcoupons/transactions:
+    get:
+      summary: GET fuelstation transactions
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelCouponTransactions'
+      operationId: get-fuelcoupons-transactions
+      description: Get fuelcoupon transactions
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier_id
+          required: true
+        - schema:
+            type: integer
+          in: query
+          name: start_range
+          description: Unit datetime
+        - schema:
+            type: integer
+          in: query
+          name: end_range
+          description: Unit datetime
   /invoices:
     get:
       summary: Get invoices
@@ -1384,6 +1413,86 @@ components:
           type: number
           x-stoplight:
             id: bltgm93oj68iy
+    FuelCouponTransactions:
+      title: FuelCouponTransactions
+      x-stoplight:
+        id: wuj0e1jr0gh3k
+      type: object
+      properties:
+        datetime:
+          type: string
+          x-stoplight:
+            id: 8h2bg248as5h8
+          format: date-time
+        fuelstation:
+          type: object
+          x-stoplight:
+            id: iz4uh2xkrlxh7
+          properties:
+            name:
+              type: string
+              x-stoplight:
+                id: cgbf462u7j0sj
+        article:
+          type: object
+          x-stoplight:
+            id: owkiiqwcvovst
+          properties:
+            name:
+              type: string
+              x-stoplight:
+                id: hoy5as0hv9j1r
+            measure_unit:
+              type: string
+              x-stoplight:
+                id: rkkkzx0wfayhz
+            quantity:
+              type: number
+              x-stoplight:
+                id: 0warktb30m55q
+            precision:
+              type: integer
+              x-stoplight:
+                id: 7qjn35tm4cm9n
+            unit_price:
+              type: integer
+              x-stoplight:
+                id: bgjxpud2a1ft3
+        supply:
+          type: object
+          x-stoplight:
+            id: j7zvc47321b1v
+          description: Value to be rendered in the QRcode / barcode
+          properties:
+            amount:
+              type: number
+              x-stoplight:
+                id: 7pygplojku3ao
+              description: amount ot the current transaction
+            total_amount:
+              type: number
+              x-stoplight:
+                id: 18bnwlqntmifc
+              description: total amount if the transaction involves more than one fuelcoupon
+            is_oil:
+              type: boolean
+              x-stoplight:
+                id: ffxn3ptril8yx
+              description: 'true the transaction is on oil products, nonoil otherwise'
+        fuelcoupon:
+          type: object
+          x-stoplight:
+            id: 74yd65r80v4ib
+          properties:
+            amount:
+              type: number
+              x-stoplight:
+                id: 3w27j1ft91dv2
+            code:
+              type: integer
+              x-stoplight:
+                id: fj3vpxs94669q
+      description: ''
     FuelStation:
       title: FuelStation
       x-stoplight:
