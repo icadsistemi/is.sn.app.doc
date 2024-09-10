@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.14
+  version: 1.0.0-alpha.15
   description: ''
 servers:
   - url: 'http://localhost:3000'
@@ -651,6 +651,42 @@ paths:
           in: header
           name: supplier-id
           required: true
+  /fuelcoupons/transactions:
+    get:
+      summary: GET fuelcoupon transactions
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    x-stoplight:
+                      id: t8bw0fu5pkiu9
+                    items:
+                      $ref: '#/components/schemas/FuelCouponTransactions'
+      operationId: get-fuelcoupons-transactions
+      description: Get fuelcoupon transactions
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier_id
+          required: true
+        - schema:
+            type: integer
+          in: query
+          name: date_start
+          description: Unit datetime
+        - schema:
+            type: integer
+          in: query
+          name: date_end
+          description: Unit datetime
   /fuelstations/search:
     get:
       summary: GET fuelstations
@@ -694,35 +730,6 @@ paths:
       requestBody:
         content: {}
     parameters: []
-  /fuelcoupons/transactions:
-    get:
-      summary: GET fuelstation transactions
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FuelCouponTransactions'
-      operationId: get-fuelcoupons-transactions
-      description: Get fuelcoupon transactions
-      parameters:
-        - schema:
-            type: integer
-          in: header
-          name: supplier_id
-          required: true
-        - schema:
-            type: integer
-          in: query
-          name: date_start
-          description: Unit datetime
-        - schema:
-            type: integer
-          in: query
-          name: date_end
-          description: Unit datetime
   /invoices:
     get:
       summary: Get invoices
@@ -886,6 +893,23 @@ paths:
           in: header
           name: supplier-id
           required: true
+  /services:
+    get:
+      summary: Get active services for logged user
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Services'
+      operationId: get-services
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
   /suppliers:
     parameters: []
     get:
@@ -1377,6 +1401,27 @@ components:
           x-stoplight:
             id: 6bmsu3klayd1k
           description: 'Id of the fuel coupon type, used for look up'
+    FuelcouponBills:
+      title: FuelcouponBills
+      x-stoplight:
+        id: 5s9nex2le90th
+      type: object
+      description: Bills for fuelcoupons
+      properties:
+        id:
+          type: integer
+        supplier_id:
+          type: integer
+          x-stoplight:
+            id: agj44i0c0nql2
+        amount:
+          type: number
+          x-stoplight:
+            id: 827bsdjfr03xe
+        is_ecommerce_active:
+          type: boolean
+          x-stoplight:
+            id: t0a52jfvfwge5
     FuelCouponDetails:
       title: FuelCouponDetails
       x-stoplight:
@@ -1831,6 +1876,40 @@ components:
               x-stoplight:
                 id: 5ockm6wtpxxrh
               description: 'Id of the payment method type, used for look up'
+    RechargeableBills:
+      title: RechargeableBills
+      x-stoplight:
+        id: kbjcadsz7t7rg
+      type: object
+      description: Bills for rechargeable cards
+      properties:
+        id:
+          type: integer
+        supplier_id:
+          type: integer
+          x-stoplight:
+            id: 5amep6szrv1su
+        amount:
+          type: number
+          x-stoplight:
+            id: 11ppke17srrvq
+        rebate_levels:
+          type: object
+          x-stoplight:
+            id: 1lekkqj5caf7a
+          properties:
+            id:
+              type: integer
+              x-stoplight:
+                id: p8pz6uzf1b8aj
+            rebate:
+              type: number
+              x-stoplight:
+                id: xlu5evikl5xex
+        is_ecommerce_active:
+          type: boolean
+          x-stoplight:
+            id: dzpc0x3kswonc
     Reward:
       title: Reward
       x-stoplight:
@@ -1890,6 +1969,35 @@ components:
               type: string
               x-stoplight:
                 id: jyl34vm6kezx9
+    Services:
+      title: Services
+      x-stoplight:
+        id: r4ye5gvzstjqq
+      type: object
+      properties:
+        services:
+          type: object
+          x-stoplight:
+            id: 2kav47cw2c3ph
+          properties:
+            dynamic_pin:
+              type: object
+              x-stoplight:
+                id: ximn5rd700c1g
+              properties:
+                is_active:
+                  type: boolean
+                  x-stoplight:
+                    id: kj9ukonuxku55
+            online_pin:
+              type: object
+              x-stoplight:
+                id: org83zovlnxpa
+              properties:
+                is_active:
+                  type: boolean
+                  x-stoplight:
+                    id: z9nume41drsns
     Supplier:
       title: Supplier
       x-stoplight:
@@ -2095,61 +2203,6 @@ components:
           type: string
           x-stoplight:
             id: ffmppj89bsc3y
-    RechargeableBills:
-      title: RechargeableBills
-      x-stoplight:
-        id: kbjcadsz7t7rg
-      type: object
-      description: Bills for rechargeable cards
-      properties:
-        id:
-          type: integer
-        supplier_id:
-          type: integer
-          x-stoplight:
-            id: 5amep6szrv1su
-        amount:
-          type: number
-          x-stoplight:
-            id: 11ppke17srrvq
-        rebate_levels:
-          type: object
-          x-stoplight:
-            id: 1lekkqj5caf7a
-          properties:
-            id:
-              type: integer
-              x-stoplight:
-                id: p8pz6uzf1b8aj
-            rebate:
-              type: number
-              x-stoplight:
-                id: xlu5evikl5xex
-        is_ecommerce_active:
-          type: boolean
-          x-stoplight:
-            id: dzpc0x3kswonc
-    FuelcouponBills:
-      title: FuelcouponBills
-      x-stoplight:
-        id: 5s9nex2le90th
-      type: object
-      description: Bills for fuelcoupons
-      properties:
-        id:
-          type: integer
-        supplier_id:
-          type: integer
-          x-stoplight:
-            id: agj44i0c0nql2
-        amount:
-          type: number
-          x-stoplight:
-            id: 827bsdjfr03xe
-        is_ecommerce_active:
-          type: boolean
-          x-stoplight:
-            id: t0a52jfvfwge5
   securitySchemes:
     Cognito:
       type: oauth2
