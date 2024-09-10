@@ -211,6 +211,58 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CardOnlinePinRequestInput'
+  /cards/transactions:
+    parameters: []
+    get:
+      summary: Get transactions
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    x-stoplight:
+                      id: mu86ei9s8eig3
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TransactionOutput'
+      operationId: get-transactions
+      description: Gets a list of the matching transactions
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: card_type
+          description: 'card type''s ID (rechargeable, end of month, etc.)'
+        - schema:
+            type: integer
+          in: query
+          name: date_start
+          description: UNIX datetime
+        - schema:
+            type: integer
+          in: query
+          name: date_end
+          description: UNIX datetime
+        - schema:
+            type: boolean
+            enum:
+              - oil
+              - nonoil
+          in: query
+          name: oil
+          description: 'true to get only oil transactions, false to get only nonoil transactions'
+        - schema:
+            type: integer
+          in: header
+          name: supplier-id
+          required: true
+      requestBody:
+        content: {}
   '/cards/{id}':
     parameters:
       - schema:
@@ -664,12 +716,12 @@ paths:
         - schema:
             type: integer
           in: query
-          name: start_range
+          name: date_start
           description: Unit datetime
         - schema:
             type: integer
           in: query
-          name: end_range
+          name: date_end
           description: Unit datetime
   /invoices:
     get:
@@ -690,12 +742,12 @@ paths:
         - schema:
             type: string
           in: query
-          name: start_range
+          name: date_start
           description: UNIX datetime. Used only if type == "processing".
         - schema:
             type: string
           in: query
-          name: end_range
+          name: date_end
           description: UNIX datetme. Used only if type == "processing".
         - schema:
             type: integer
@@ -795,12 +847,12 @@ paths:
         - schema:
             type: string
           in: query
-          name: start_range
+          name: date_start
           description: UNIX datetime
         - schema:
             type: string
           in: query
-          name: end_range
+          name: date_end
           description: UNIX datetime
         - schema:
             type: integer
@@ -867,58 +919,6 @@ paths:
                 $ref: '#/components/schemas/Supplier'
       operationId: get-suppliers-id
       description: Get details of a supplier using the input ID
-  /transactions:
-    parameters: []
-    get:
-      summary: Get transactions
-      tags: []
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  transactions:
-                    x-stoplight:
-                      id: mu86ei9s8eig3
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/TransactionOutput'
-      operationId: get-transactions
-      description: Gets a list of the matching transactions
-      parameters:
-        - schema:
-            type: integer
-          in: query
-          name: card_type
-          description: 'card type''s ID (rechargeable, end of month, etc.)'
-        - schema:
-            type: integer
-          in: query
-          name: start_datetime
-          description: UNIX datetime
-        - schema:
-            type: integer
-          in: query
-          name: end_datetime
-          description: UNIX datetime
-        - schema:
-            type: boolean
-            enum:
-              - oil
-              - nonoil
-          in: query
-          name: oil
-          description: 'true to get only oil transactions, false to get only nonoil transactions'
-        - schema:
-            type: integer
-          in: header
-          name: supplier-id
-          required: true
-      requestBody:
-        content: {}
   '/versions/{platform}':
     get:
       summary: Get latest app version
@@ -1559,43 +1559,6 @@ components:
           type: string
           x-stoplight:
             id: 1q6h50zo0nvkt
-        fuel_station:
-          type: object
-          x-stoplight:
-            id: h0zjb86pggzj6
-          properties:
-            id:
-              type: integer
-              x-stoplight:
-                id: ir6qfe8lb9k0x
-            full_address:
-              type: string
-              x-stoplight:
-                id: ctuqyjonejx52
-            address:
-              type: string
-              x-stoplight:
-                id: zb7oz6x166566
-            city:
-              type: string
-              x-stoplight:
-                id: paelsfc3lixer
-            flag:
-              type: string
-              x-stoplight:
-                id: sk4h82u8n70ea
-            name:
-              type: string
-              x-stoplight:
-                id: 53slzxql9g3rg
-            phone_number:
-              type: string
-              x-stoplight:
-                id: aetqwuq02gwqj
-            cellphone_number:
-              type: string
-              x-stoplight:
-                id: 6b3tb48ta7wel
         id:
           type: integer
           x-stoplight:
@@ -1626,6 +1589,7 @@ components:
       x-stoplight:
         id: 9qylnkcq8udo0
       type: object
+      description: A single detail referring to an invoiced transaction
       properties:
         article:
           type: object
@@ -1657,14 +1621,34 @@ components:
           x-stoplight:
             id: leedhdhixycdc
           properties:
-            id:
-              type: integer
-              x-stoplight:
-                id: l1dsax2x77ade
-            address:
+            full_address:
               type: string
               x-stoplight:
                 id: g8wsgbqxghhm3
+            address:
+              type: string
+              x-stoplight:
+                id: 0dupxg2tww2xv
+            city:
+              type: string
+              x-stoplight:
+                id: blc9jzhd43s3v
+            flag:
+              type: string
+              x-stoplight:
+                id: sw3v472gqah49
+            name:
+              type: string
+              x-stoplight:
+                id: 8nw774an5293x
+            phone_number:
+              type: string
+              x-stoplight:
+                id: 1l6bq3alf4yo5
+            cellphone_number:
+              type: string
+              x-stoplight:
+                id: irz2s6e2gpy2j
         id:
           type: integer
           x-stoplight:
@@ -1748,7 +1732,6 @@ components:
               type: string
               x-stoplight:
                 id: 3je1dhjf3qe78
-      description: A single detail referring to an invoiced transaction
     Price:
       title: Prices
       x-stoplight:
