@@ -1143,6 +1143,23 @@ components:
           type: number
           x-stoplight:
             id: k3v2rgcyxldrw
+        datetime:
+          type: string
+          x-stoplight:
+            id: a89g55u73k2lo
+          format: date-time
+        is_oil:
+          type: boolean
+          x-stoplight:
+            id: rny66ls94jz63
+        recharge:
+          type: boolean
+          x-stoplight:
+            id: lzi78e5ymgit1
+        reward_claim:
+          type: boolean
+          x-stoplight:
+            id: l8n41fq9y4qfg
     CardOnlinePin:
       title: CardOnlinePin
       x-stoplight:
