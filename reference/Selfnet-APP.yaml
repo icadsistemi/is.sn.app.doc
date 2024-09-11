@@ -3,10 +3,13 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-alpha.15
+  version: 1.0.0-beta.1
   description: ''
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
+    description: Development
+  - url: 'https://mxp-public-sn-app-api.prod.icadsistemi.com/v1'
+    description: Production
 paths:
   /campaigns:
     get:
