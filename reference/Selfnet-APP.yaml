@@ -372,25 +372,6 @@ paths:
           required: true
       requestBody:
         content: {}
-  /ecommerce/cards/bills:
-    get:
-      summary: Get ecommerce active rechargeable card bills
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RechargeableBills'
-      operationId: get-ecommerce-cards-bills
-      description: Get ecommerce active rechargeable card bills for the current supplier
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: supplier_id
-          required: true
   /ecommerce/fuelcoupons/bills:
     get:
       summary: Get ecommerce active fuelcoupon bills
@@ -408,9 +389,28 @@ paths:
         - schema:
             type: string
           in: header
-          name: supplier_id
+          name: supplier-id
           required: true
     parameters: []
+  /ecommerce/cards/bills:
+    get:
+      summary: Get ecommerce active rechargeable card bills
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RechargeableBills'
+      operationId: get-ecommerce-cards-bills
+      description: Get ecommerce active rechargeable card bills for the current supplier
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: supplier-id
+          required: true
   /ecommerce/nexi/customers/contract:
     patch:
       summary: Save Nexi customer contract number
