@@ -13,7 +13,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v3
         - name: Generate new documentation
-          uses: openapi-generators/openapitools-generator-action@v1
+          uses: icadsistemi/openapitools-generator-action@v1.5.2
           with:
             generator: html2
             openapi-file: reference/Selfnet-APP.yaml
