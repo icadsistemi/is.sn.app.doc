@@ -1599,7 +1599,7 @@ ul.nav-tabs {
   }
 };
     defs["ecommerce_nexi_payment_start_request"] = {
-  "required" : [ "abort_url", "amount", "currency", "customer_id", "icad_payment_:type", "nexi_configuration", "request_type", "result_url", "transaction_data" ],
+  "required" : [ "abort_url", "amount", "currency", "customer_id", "icad_payment_type", "nexi_configuration", "request_type", "result_url", "transaction_data" ],
   "type" : "object",
   "properties" : {
     "amount" : {
@@ -1624,7 +1624,7 @@ ul.nav-tabs {
     },
     "abort_url" : {
       "type" : "string",
-      "description" : "callback url to redirect to after Nexi cash ac tion is aborted",
+      "description" : "callback url to redirect to after Nexi cash action is aborted",
       "x-stoplight" : {
         "id" : "15lbjppkffenz"
       }
@@ -1643,7 +1643,7 @@ ul.nav-tabs {
     },
     "nexi_configuration" : {
       "type" : "string",
-      "description" : "ICAD nexi configuration content",
+      "description" : "base64 encoded ICAD nexi configuration content",
       "x-stoplight" : {
         "id" : "ui1vi66safsql"
       }
@@ -1655,11 +1655,18 @@ ul.nav-tabs {
         "id" : "csnufm50m1l1t"
       }
     },
-    "icad_payment_:type" : {
+    "icad_payment_type" : {
       "type" : "string",
       "description" : "Transaction type (RIC=rechargeable card, BUO=fuelcoupon)",
       "x-stoplight" : {
         "id" : "m1en9vojl84ve"
+      }
+    },
+    "contract_number" : {
+      "type" : "string",
+      "description" : "omit for first payment (request_type=\"PP\"), customer saved cotract_number for next payments",
+      "x-stoplight" : {
+        "id" : "72tt2rlrqkm9c"
       }
     }
   }
@@ -2443,21 +2450,19 @@ ul.nav-tabs {
     "id" : "zszy3ojlljpni"
   }
 };
-    defs["patch_ecommerce_nexi_customers_contract_204_response"] = {
+    defs["patch_ecommerce_nexi_customers_contract_request"] = {
   "type" : "object",
   "properties" : {
     "id" : {
       "type" : "integer",
-      "description" : "customer id",
       "x-stoplight" : {
-        "id" : "x896l7rybo5be"
+        "id" : "t4mfyolt53qoc"
       }
     },
     "contract_number" : {
       "type" : "string",
-      "description" : "0000000017_20190729153936|001 (contract number | last three numbers of the card pan saved)",
       "x-stoplight" : {
-        "id" : "tda8dkedtmr22"
+        "id" : "fg8egjzeqeom7"
       }
     }
   }
@@ -3304,7 +3309,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0-beta.2</div>
+              <div class="app-desc">Version: 1.0.0-beta.3</div>
             <hr>
             <div id="app-description" class="app-desc">
                 Selfnet APP public API documentation.
@@ -10912,8 +10917,9 @@ pub fn main() {
                           <div class="tab-pane active" id="examples-Ecommerce-patchEcommerceNexiCustomersContract-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PATCH \
  \
- -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/ecommerce/nexi/customers/contract"
+ -H "Content-Type: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/ecommerce/nexi/customers/contract" \
+ -d ''
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Ecommerce-patchEcommerceNexiCustomersContract-0-java">
@@ -10936,10 +10942,10 @@ public class EcommerceApiExample {
         // Create an instance of the API class
         EcommerceApi apiInstance = new EcommerceApi();
         String supplierId = supplierId_example; // String | 
+        PatchEcommerceNexiCustomersContractRequest patchEcommerceNexiCustomersContractRequest = ; // PatchEcommerceNexiCustomersContractRequest | 
 
         try {
-            patch_ecommerce_nexi_customers_contract_204_response result = apiInstance.patchEcommerceNexiCustomersContract(supplierId);
-            System.out.println(result);
+            apiInstance.patchEcommerceNexiCustomersContract(supplierId, patchEcommerceNexiCustomersContractRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling EcommerceApi#patchEcommerceNexiCustomersContract");
             e.printStackTrace();
@@ -10955,9 +10961,10 @@ public class EcommerceApiExample {
 final api_instance = DefaultApi();
 
 final String supplierId = new String(); // String | 
+final PatchEcommerceNexiCustomersContractRequest patchEcommerceNexiCustomersContractRequest = new PatchEcommerceNexiCustomersContractRequest(); // PatchEcommerceNexiCustomersContractRequest | 
 
 try {
-    final result = await api_instance.patchEcommerceNexiCustomersContract(supplierId);
+    final result = await api_instance.patchEcommerceNexiCustomersContract(supplierId, patchEcommerceNexiCustomersContractRequest);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->patchEcommerceNexiCustomersContract: $e\n');
@@ -10973,10 +10980,10 @@ public class EcommerceApiExample {
     public static void main(String[] args) {
         EcommerceApi apiInstance = new EcommerceApi();
         String supplierId = supplierId_example; // String | 
+        PatchEcommerceNexiCustomersContractRequest patchEcommerceNexiCustomersContractRequest = ; // PatchEcommerceNexiCustomersContractRequest | 
 
         try {
-            patch_ecommerce_nexi_customers_contract_204_response result = apiInstance.patchEcommerceNexiCustomersContract(supplierId);
-            System.out.println(result);
+            apiInstance.patchEcommerceNexiCustomersContract(supplierId, patchEcommerceNexiCustomersContractRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling EcommerceApi#patchEcommerceNexiCustomersContract");
             e.printStackTrace();
@@ -10998,13 +11005,12 @@ public class EcommerceApiExample {
 // Create an instance of the API class
 EcommerceApi *apiInstance = [[EcommerceApi alloc] init];
 String *supplierId = supplierId_example; //  (default to null)
+PatchEcommerceNexiCustomersContractRequest *patchEcommerceNexiCustomersContractRequest = ; //  (optional)
 
 // Save Nexi customer contract number
 [apiInstance patchEcommerceNexiCustomersContractWith:supplierId
-              completionHandler: ^(patch_ecommerce_nexi_customers_contract_204_response output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
+    patchEcommerceNexiCustomersContractRequest:patchEcommerceNexiCustomersContractRequest
+              completionHandler: ^(NSError* error) {
     if (error) {
         NSLog(@"Error: %@", error);
     }
@@ -11023,15 +11029,18 @@ Cognito.accessToken = "YOUR ACCESS TOKEN";
 // Create an instance of the API class
 var api = new SelfnetApp.EcommerceApi()
 var supplierId = supplierId_example; // {String} 
+var opts = {
+  'patchEcommerceNexiCustomersContractRequest':  // {PatchEcommerceNexiCustomersContractRequest} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-api.patchEcommerceNexiCustomersContract(supplierId, callback);
+api.patchEcommerceNexiCustomersContract(supplierId, opts, callback);
 </code></pre>
                             </div>
 
@@ -11057,11 +11066,11 @@ namespace Example
             // Create an instance of the API class
             var apiInstance = new EcommerceApi();
             var supplierId = supplierId_example;  // String |  (default to null)
+            var patchEcommerceNexiCustomersContractRequest = new PatchEcommerceNexiCustomersContractRequest(); // PatchEcommerceNexiCustomersContractRequest |  (optional) 
 
             try {
                 // Save Nexi customer contract number
-                patch_ecommerce_nexi_customers_contract_204_response result = apiInstance.patchEcommerceNexiCustomersContract(supplierId);
-                Debug.WriteLine(result);
+                apiInstance.patchEcommerceNexiCustomersContract(supplierId, patchEcommerceNexiCustomersContractRequest);
             } catch (Exception e) {
                 Debug.Print("Exception when calling EcommerceApi.patchEcommerceNexiCustomersContract: " + e.Message );
             }
@@ -11081,10 +11090,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\EcommerceApi();
 $supplierId = supplierId_example; // String | 
+$patchEcommerceNexiCustomersContractRequest = ; // PatchEcommerceNexiCustomersContractRequest | 
 
 try {
-    $result = $api_instance->patchEcommerceNexiCustomersContract($supplierId);
-    print_r($result);
+    $api_instance->patchEcommerceNexiCustomersContract($supplierId, $patchEcommerceNexiCustomersContractRequest);
 } catch (Exception $e) {
     echo 'Exception when calling EcommerceApi->patchEcommerceNexiCustomersContract: ', $e->getMessage(), PHP_EOL;
 }
@@ -11102,10 +11111,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::EcommerceApi->new();
 my $supplierId = supplierId_example; # String | 
+my $patchEcommerceNexiCustomersContractRequest = WWW::OPenAPIClient::Object::PatchEcommerceNexiCustomersContractRequest->new(); # PatchEcommerceNexiCustomersContractRequest | 
 
 eval {
-    my $result = $api_instance->patchEcommerceNexiCustomersContract(supplierId => $supplierId);
-    print Dumper($result);
+    $api_instance->patchEcommerceNexiCustomersContract(supplierId => $supplierId, patchEcommerceNexiCustomersContractRequest => $patchEcommerceNexiCustomersContractRequest);
 };
 if ($@) {
     warn "Exception when calling EcommerceApi->patchEcommerceNexiCustomersContract: $@\n";
@@ -11125,11 +11134,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Create an instance of the API class
 api_instance = openapi_client.EcommerceApi()
 supplierId = supplierId_example # String |  (default to null)
+patchEcommerceNexiCustomersContractRequest =  # PatchEcommerceNexiCustomersContractRequest |  (optional)
 
 try:
     # Save Nexi customer contract number
-    api_response = api_instance.patch_ecommerce_nexi_customers_contract(supplierId)
-    pprint(api_response)
+    api_instance.patch_ecommerce_nexi_customers_contract(supplierId, patchEcommerceNexiCustomersContractRequest=patchEcommerceNexiCustomersContractRequest)
 except ApiException as e:
     print("Exception when calling EcommerceApi->patchEcommerceNexiCustomersContract: %s\n" % e)</code></pre>
                             </div>
@@ -11139,9 +11148,10 @@ except ApiException as e:
 
 pub fn main() {
     let supplierId = supplierId_example; // String
+    let patchEcommerceNexiCustomersContractRequest = ; // PatchEcommerceNexiCustomersContractRequest
 
     let mut context = EcommerceApi::Context::default();
-    let result = client.patchEcommerceNexiCustomersContract(supplierId, &context).wait();
+    let result = client.patchEcommerceNexiCustomersContract(supplierId, patchEcommerceNexiCustomersContractRequest, &context).wait();
 
     println!("{:?}", result);
 }
@@ -11185,6 +11195,53 @@ pub fn main() {
 
                             </table>
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">patchEcommerceNexiCustomersContractRequest </td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/patch_ecommerce_nexi_customers_contract_request"
+      }
+    }
+  }
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else if (schema.items != null && schema.items.$ref != null) {
+    schema.items = defsParser.$refs.get(schema.items.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_patchEcommerceNexiCustomersContract_patchEcommerceNexiCustomersContractRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_patchEcommerceNexiCustomersContract_patchEcommerceNexiCustomersContractRequest"></div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -11204,11 +11261,6 @@ pub fn main() {
 
 
                             <ul id="responses-detail-Ecommerce-patchEcommerceNexiCustomersContract-204" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Ecommerce-patchEcommerceNexiCustomersContract-204-schema">Schema</a>
-                                </li>
-
-
 
 
                             </ul>
@@ -11221,13 +11273,7 @@ pub fn main() {
                                     $(document).ready(function() {
                                       var schemaWrapper = {
   "description" : "No Content",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/patch_ecommerce_nexi_customers_contract_204_response"
-      }
-    }
-  }
+  "content" : { }
 };
                                       var schema = findNode('schema',schemaWrapper).schema;
                                       if (!schema) {
