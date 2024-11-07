@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.2
+  version: 1.0.0-beta.3
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -432,21 +432,7 @@ paths:
       responses:
         '204':
           description: No Content
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    x-stoplight:
-                      id: x896l7rybo5be
-                    description: customer id
-                  contract_number:
-                    type: string
-                    x-stoplight:
-                      id: tda8dkedtmr22
-                    description: 0000000017_20190729153936|001 (contract number | last three numbers of the card pan saved)
+          content: {}
       description: Save the Nexi customer contract provided when during payment it was saved a card
       parameters:
         - schema:
@@ -456,6 +442,20 @@ paths:
           required: true
       tags:
         - ecommerce
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  x-stoplight:
+                    id: t4mfyolt53qoc
+                contract_number:
+                  type: string
+                  x-stoplight:
+                    id: fg8egjzeqeom7
   /ecommerce/nexi/payments/start:
     post:
       summary: ''
@@ -500,7 +500,7 @@ paths:
                   type: string
                   x-stoplight:
                     id: 15lbjppkffenz
-                  description: callback url to redirect to after Nexi cash ac tion is aborted
+                  description: callback url to redirect to after Nexi cash action is aborted
                 customer_id:
                   type: number
                   x-stoplight:
@@ -513,17 +513,22 @@ paths:
                   type: string
                   x-stoplight:
                     id: ui1vi66safsql
-                  description: ICAD nexi configuration content
+                  description: base64 encoded ICAD nexi configuration content
                 transaction_data:
                   type: string
                   x-stoplight:
                     id: csnufm50m1l1t
                   description: base64 encoded transaction data from ICAD
-                'icad_payment_:type':
+                icad_payment_type:
                   type: string
                   x-stoplight:
                     id: m1en9vojl84ve
                   description: 'Transaction type (RIC=rechargeable card, BUO=fuelcoupon)'
+                contract_number:
+                  type: string
+                  x-stoplight:
+                    id: 72tt2rlrqkm9c
+                  description: 'omit for first payment (request_type="PP"), customer saved cotract_number for next payments'
               required:
                 - amount
                 - currency
@@ -533,7 +538,7 @@ paths:
                 - request_type
                 - nexi_configuration
                 - transaction_data
-                - 'icad_payment_:type'
+                - icad_payment_type
       tags:
         - ecommerce
     parameters: []
