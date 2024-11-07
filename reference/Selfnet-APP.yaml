@@ -713,7 +713,7 @@ paths:
           name: longitude
           description: "Optional, used for nearby fuel stations"
         - schema:
-            type: array
+            type: string
           in: query
           name: articles
           description: "Optional, used to filter fuel stations"
