@@ -4,11 +4,11 @@ x-stoplight:
 info:
   title: Selfnet APP
   version: 1.0.0-beta.2
-  description: ''
+  description: ""
 servers:
-  - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
+  - url: "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1"
     description: Development
-  - url: 'https://mxp-public-sn-app-api.prod.icadsistemi.com/v1'
+  - url: "https://mxp-public-sn-app-api.prod.icadsistemi.com/v1"
     description: Production
 paths:
   /campaigns:
@@ -16,7 +16,7 @@ paths:
       summary: Get all reward campaigns
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -28,7 +28,7 @@ paths:
                     x-stoplight:
                       id: xcldit0w9tgv1
                     items:
-                      $ref: '#/components/schemas/Campaign'
+                      $ref: "#/components/schemas/Campaign"
       operationId: get-rewards-campaigns
       parameters:
         - schema:
@@ -37,17 +37,17 @@ paths:
           name: supplier-id
           required: true
     parameters: []
-  '/campaigns/{id}':
+  "/campaigns/{id}":
     get:
       summary: Retrieve rewards campaign details
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CampaignDetails'
+                $ref: "#/components/schemas/CampaignDetails"
       operationId: get-rewards-campaign-details
       parameters:
         - schema:
@@ -62,17 +62,17 @@ paths:
         in: path
         required: true
         description: Campaign ID
-  '/campaigns/{id}/rewards':
+  "/campaigns/{id}/rewards":
     get:
       summary: List available rewards
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AvailableRewards'
+                $ref: "#/components/schemas/AvailableRewards"
       operationId: get-rewards
       parameters:
         - schema:
@@ -87,12 +87,12 @@ paths:
         in: path
         required: true
         description: Campaign ID
-  '/campaigns/{id}/rewards/history':
+  "/campaigns/{id}/rewards/history":
     get:
       summary: Rewards redemption history
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -104,7 +104,7 @@ paths:
                     x-stoplight:
                       id: t0yunwico5u3b
                     items:
-                      $ref: '#/components/schemas/RewardRedemption'
+                      $ref: "#/components/schemas/RewardRedemption"
       operationId: get-rewards-history
       parameters:
         - schema:
@@ -134,7 +134,7 @@ paths:
       summary: Card List
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -146,7 +146,7 @@ paths:
                     x-stoplight:
                       id: c6spbq91dos9p
                     items:
-                      $ref: '#/components/schemas/Card'
+                      $ref: "#/components/schemas/Card"
       operationId: get-cards
       parameters:
         - schema:
@@ -160,7 +160,7 @@ paths:
       summary: Generate Dynamic PIN seeds
       operationId: post-cards-pin-offline
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -172,18 +172,18 @@ paths:
                     x-stoplight:
                       id: 3iwtx9zitx4ht
                     items:
-                      $ref: '#/components/schemas/CardOfflinePin'
+                      $ref: "#/components/schemas/CardOfflinePin"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CardOfflinePinInput'
+              $ref: "#/components/schemas/CardOfflinePinInput"
   /cards/pin/online:
     get:
       summary: Get online PIN enabled cards
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -195,33 +195,33 @@ paths:
                     x-stoplight:
                       id: 5scbtjyu526bx
                     items:
-                      $ref: '#/components/schemas/CardOnlinePin'
+                      $ref: "#/components/schemas/CardOnlinePin"
       operationId: get-online-pin-cards
-      description: ''
+      description: ""
     parameters: []
     post:
       summary: Generate an online PIN
       operationId: post-cards-pin-online
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CardOnlinePinRequestOutput'
+                $ref: "#/components/schemas/CardOnlinePinRequestOutput"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CardOnlinePinRequestInput'
+              $ref: "#/components/schemas/CardOnlinePinRequestInput"
   /cards/transactions:
     parameters: []
     get:
       summary: Get transactions
       tags: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
@@ -232,7 +232,7 @@ paths:
                       id: mu86ei9s8eig3
                     type: array
                     items:
-                      $ref: '#/components/schemas/TransactionOutput'
+                      $ref: "#/components/schemas/TransactionOutput"
       operationId: get-transactions
       description: Gets a list of the matching transactions
       parameters:
@@ -240,7 +240,7 @@ paths:
             type: integer
           in: query
           name: card_type
-          description: 'card type''s ID (rechargeable, end of month, etc.)'
+          description: "card type's ID (rechargeable, end of month, etc.)"
         - schema:
             type: integer
           in: query
@@ -258,15 +258,13 @@ paths:
               - nonoil
           in: query
           name: oil
-          description: 'true to get only oil transactions, false to get only nonoil transactions'
+          description: "true to get only oil transactions, false to get only nonoil transactions"
         - schema:
             type: integer
           in: header
           name: supplier-id
           required: true
-      requestBody:
-        content: {}
-  '/cards/{id}':
+  "/cards/{id}":
     parameters:
       - schema:
           type: string
@@ -278,12 +276,12 @@ paths:
       summary: Card details
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CardDetails'
+                $ref: "#/components/schemas/CardDetails"
       operationId: get-cards-id
       parameters:
         - schema:
@@ -292,17 +290,17 @@ paths:
           name: supplier-id
           required: true
     patch:
-      summary: ''
+      summary: ""
       operationId: patch-cards-id
       responses:
-        '204':
+        "204":
           description: No Content
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CardInput'
-  '/cards/{id}/movements':
+              $ref: "#/components/schemas/CardInput"
+  "/cards/{id}/movements":
     parameters:
       - schema:
           type: string
@@ -313,7 +311,7 @@ paths:
       summary: Retrieve a list of all the movements by card
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -325,7 +323,7 @@ paths:
                     x-stoplight:
                       id: v8a6qocs7nn2c
                     items:
-                      $ref: '#/components/schemas/CardMovement'
+                      $ref: "#/components/schemas/CardMovement"
       operationId: get-cards-id-movements
       parameters:
         - schema:
@@ -338,15 +336,15 @@ paths:
       summary: Info for basic settings
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Configuration'
+                $ref: "#/components/schemas/Configuration"
       operationId: get-configuration
     parameters: []
-  '/customers/{id}':
+  "/customers/{id}":
     parameters:
       - schema:
           type: string
@@ -357,12 +355,12 @@ paths:
       summary: Get customer details by id
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: "#/components/schemas/Customer"
       operationId: get-customers-id
       parameters:
         - schema:
@@ -370,19 +368,17 @@ paths:
           in: header
           name: supplier-id
           required: true
-      requestBody:
-        content: {}
   /ecommerce/fuelcoupons/bills:
     get:
       summary: Get ecommerce active fuelcoupon bills
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FuelcouponBills'
+                $ref: "#/components/schemas/FuelcouponBills"
       operationId: get-ecommerce-fuelcoupon-bills
       description: Get ecommerce active fuelcoupon bills for the current supplier
       parameters:
@@ -397,12 +393,12 @@ paths:
       summary: Get ecommerce active rechargeable card bills
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RechargeableBills'
+                $ref: "#/components/schemas/RechargeableBills"
       operationId: get-ecommerce-cards-bills
       description: Get ecommerce active rechargeable card bills for the current supplier
       parameters:
@@ -416,7 +412,7 @@ paths:
       summary: Save Nexi customer contract number
       operationId: patch-ecommerce-nexi-customers-contract
       responses:
-        '204':
+        "204":
           description: No Content
           content:
             application/json:
@@ -442,10 +438,10 @@ paths:
           required: true
   /ecommerce/nexi/payments/start:
     post:
-      summary: ''
+      summary: ""
       operationId: ecommerce-nexi-payment-start
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -503,11 +499,11 @@ paths:
                   x-stoplight:
                     id: csnufm50m1l1t
                   description: base64 encoded transaction data from ICAD
-                'icad_payment_:type':
+                "icad_payment_:type":
                   type: string
                   x-stoplight:
                     id: m1en9vojl84ve
-                  description: 'Transaction type (RIC=rechargeable card, BUO=fuelcoupon)'
+                  description: "Transaction type (RIC=rechargeable card, BUO=fuelcoupon)"
               required:
                 - amount
                 - currency
@@ -517,14 +513,14 @@ paths:
                 - request_type
                 - nexi_configuration
                 - transaction_data
-                - 'icad_payment_:type'
+                - "icad_payment_:type"
     parameters: []
   /ecommerce/nexi/payments/notification:
     post:
-      summary: ''
+      summary: ""
       operationId: ecommerce-nexi-payment-notification
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -535,7 +531,7 @@ paths:
                     type: string
                     x-stoplight:
                       id: x4xl14u6dn710
-                    description: 'result of payment operation (values: ANNULLO, OK)'
+                    description: "result of payment operation (values: ANNULLO, OK)"
                   messaggio:
                     type: string
                     x-stoplight:
@@ -593,13 +589,11 @@ paths:
                   - tipoprodotto
                   - brand
       description: Handle response from Nexi cash page. All queryparams coming from Nexi page callback must be put in internal call
-      requestBody:
-        content: {}
       parameters:
         - schema:
             type: string
           in: query
-          name: '*'
+          name: "*"
           description: All Nexi query string params are passed to this internal notification api
     parameters: []
   /fuelcoupons:
@@ -607,7 +601,7 @@ paths:
       summary: List active fuel coupons
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -619,17 +613,15 @@ paths:
                     x-stoplight:
                       id: ssgcthg8hayg0
                     items:
-                      $ref: '#/components/schemas/FuelCoupon'
+                      $ref: "#/components/schemas/FuelCoupon"
       operationId: get-fuelcoupons
-      requestBody:
-        content: {}
       parameters:
         - schema:
             type: integer
           in: header
           name: supplier-id
           required: true
-  '/fuelcoupons/{id}':
+  "/fuelcoupons/{id}":
     parameters:
       - schema:
           type: string
@@ -641,12 +633,12 @@ paths:
       summary: Fuel coupon details
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FuelCouponDetails'
+                $ref: "#/components/schemas/FuelCouponDetails"
       operationId: get-fuelcoupons-id
       parameters:
         - schema:
@@ -659,7 +651,7 @@ paths:
       summary: GET fuelcoupon transactions
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -671,7 +663,7 @@ paths:
                     x-stoplight:
                       id: t8bw0fu5pkiu9
                     items:
-                      $ref: '#/components/schemas/FuelCouponTransactions'
+                      $ref: "#/components/schemas/FuelCouponTransactions"
       operationId: get-fuelcoupons-transactions
       description: Get fuelcoupon transactions
       parameters:
@@ -695,7 +687,7 @@ paths:
       summary: GET fuelstations
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -707,38 +699,36 @@ paths:
                     x-stoplight:
                       id: 1bb41owrix5ly
                     items:
-                      $ref: '#/components/schemas/FuelStation'
+                      $ref: "#/components/schemas/FuelStation"
       operationId: get-fuelstations
       parameters:
         - schema:
             type: number
           in: query
           name: latitude
-          description: 'Optional, used for nearby fuel stations'
+          description: "Optional, used for nearby fuel stations"
         - schema:
             type: number
           in: query
           name: longitude
-          description: 'Optional, used for nearby fuel stations'
+          description: "Optional, used for nearby fuel stations"
         - schema:
-            type: array
+            type: string
           in: query
           name: articles
-          description: 'Optional, used to filter fuel stations'
+          description: "Optional, used to filter fuel stations"
         - schema:
             type: integer
           in: header
           name: supplier-id
           required: true
-      requestBody:
-        content: {}
     parameters: []
   /invoices:
     get:
       summary: Get invoices
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
       operationId: get-invoices
       parameters:
@@ -777,8 +767,8 @@ paths:
                   x-stoplight:
                     id: komg0hmif99ru
                   items:
-                    $ref: '#/components/schemas/Invoice'
-  '/invoices/{id}':
+                    $ref: "#/components/schemas/Invoice"
+  "/invoices/{id}":
     parameters:
       - schema:
           type: string
@@ -789,7 +779,7 @@ paths:
       summary: Get invoice details
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -797,7 +787,7 @@ paths:
                 type: object
                 properties:
                   details:
-                    $ref: '#/components/schemas/InvoiceDetail'
+                    $ref: "#/components/schemas/InvoiceDetail"
                 required:
                   - details
       operationId: get-invoice-id-details
@@ -807,7 +797,7 @@ paths:
             type: integer
           in: header
           name: supplier-id
-  '/invoices/{id}/print':
+  "/invoices/{id}/print":
     parameters:
       - schema:
           type: string
@@ -819,12 +809,12 @@ paths:
       summary: Get printable invoice PDF
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PrintableInvoice'
+                $ref: "#/components/schemas/PrintableInvoice"
       operationId: get-invoices-id-print
       security:
         - Cognito: []
@@ -839,7 +829,7 @@ paths:
       summary: Get all recharges
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -851,7 +841,7 @@ paths:
                     x-stoplight:
                       id: y86wq9njqcdnd
                     items:
-                      $ref: '#/components/schemas/Recharge'
+                      $ref: "#/components/schemas/Recharge"
       operationId: get-recharges
       parameters:
         - schema:
@@ -869,9 +859,7 @@ paths:
           in: header
           name: supplier-id
           required: true
-      requestBody:
-        content: {}
-  '/recharges/{id}':
+  "/recharges/{id}":
     parameters:
       - schema:
           type: string
@@ -882,14 +870,14 @@ paths:
       summary: Get recharge details
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RechargeDetails'
+                $ref: "#/components/schemas/RechargeDetails"
       operationId: get-recharges-id
-      description: ''
+      description: ""
       parameters:
         - schema:
             type: integer
@@ -901,12 +889,12 @@ paths:
       summary: Get active services for logged user
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Services'
+                $ref: "#/components/schemas/Services"
       operationId: get-services
       parameters:
         - schema:
@@ -919,15 +907,15 @@ paths:
       summary: Get user info
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Suppliers'
+                $ref: "#/components/schemas/Suppliers"
       operationId: get-users-id
       description: Get all the suppliers available for the logged user
-  '/suppliers/{id}':
+  "/suppliers/{id}":
     parameters:
       - schema:
           type: string
@@ -938,25 +926,25 @@ paths:
       summary: Get supplier details by id
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Supplier'
+                $ref: "#/components/schemas/Supplier"
       operationId: get-suppliers-id
       description: Get details of a supplier using the input ID
-  '/versions/{platform}':
+  "/versions/{platform}":
     get:
       summary: Get latest app version
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Version'
+                $ref: "#/components/schemas/Version"
       operationId: get-versions
     parameters:
       - schema:
@@ -981,7 +969,7 @@ components:
           description: |
             Arrray of available rewards
           items:
-            $ref: '#/components/schemas/Reward'
+            $ref: "#/components/schemas/Reward"
     Campaign:
       title: Campaign
       x-stoplight:
@@ -1044,7 +1032,7 @@ components:
           type: integer
           x-stoplight:
             id: 8vrxk1lghlpmq
-          description: 'Id of the card type, used for look up'
+          description: "Id of the card type, used for look up"
         is_enabled:
           type: boolean
           x-stoplight:
@@ -1069,7 +1057,7 @@ components:
           type: integer
           x-stoplight:
             id: i2fojlseu17lx
-          description: 'Id of the card type, used for look up'
+          description: "Id of the card type, used for look up"
         is_enabled:
           type: boolean
           x-stoplight:
@@ -1420,7 +1408,7 @@ components:
           type: integer
           x-stoplight:
             id: 6bmsu3klayd1k
-          description: 'Id of the fuel coupon type, used for look up'
+          description: "Id of the fuel coupon type, used for look up"
     FuelcouponBills:
       title: FuelcouponBills
       x-stoplight:
@@ -1542,7 +1530,7 @@ components:
               type: boolean
               x-stoplight:
                 id: ffxn3ptril8yx
-              description: 'true the transaction is on oil products, nonoil otherwise'
+              description: "true the transaction is on oil products, nonoil otherwise"
         fuelcoupon:
           type: object
           x-stoplight:
@@ -1556,7 +1544,7 @@ components:
               type: integer
               x-stoplight:
                 id: fj3vpxs94669q
-      description: ''
+      description: ""
     FuelStation:
       title: FuelStation
       x-stoplight:
@@ -1619,7 +1607,7 @@ components:
           type: string
           x-stoplight:
             id: 6l3hvd416s4q9
-          description: 'Id of the invoice document type, used for look up'
+          description: "Id of the invoice document type, used for look up"
         error_info:
           type: string
           x-stoplight:
@@ -1895,7 +1883,7 @@ components:
               type: integer
               x-stoplight:
                 id: 5ockm6wtpxxrh
-              description: 'Id of the payment method type, used for look up'
+              description: "Id of the payment method type, used for look up"
     RechargeableBills:
       title: RechargeableBills
       x-stoplight:
@@ -2047,7 +2035,7 @@ components:
           type: array
           x-stoplight:
             id: lwedhms3u01ab
-          description: 'Id of the card types available for the logged user '
+          description: "Id of the card types available for the logged user "
           items:
             x-stoplight:
               id: ac3juv4fah7w9
@@ -2061,7 +2049,7 @@ components:
               type: boolean
               x-stoplight:
                 id: d56arbldwxuu5
-              description: 'true: fee in €, otherwise %'
+              description: "true: fee in €, otherwise %"
             rechargeable_fee:
               type: number
               x-stoplight:
@@ -2070,7 +2058,7 @@ components:
               type: boolean
               x-stoplight:
                 id: dt9fxumnbn8dg
-              description: 'true: fee in €, otherwise %'
+              description: "true: fee in €, otherwise %"
             fuelcoupon_fee:
               type: number
               x-stoplight:
@@ -2208,7 +2196,7 @@ components:
               type: number
               x-stoplight:
                 id: 9tvb170jbvz3d
-      description: ''
+      description: ""
     Version:
       title: Version
       x-stoplight:
@@ -2228,8 +2216,8 @@ components:
       type: oauth2
       flows:
         password:
-          tokenUrl: ''
-          refreshUrl: ''
+          tokenUrl: ""
+          refreshUrl: ""
           scopes: {}
 security:
   - Cognito: []
