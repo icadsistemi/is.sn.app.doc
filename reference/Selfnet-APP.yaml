@@ -4,7 +4,7 @@ x-stoplight:
 info:
   title: Selfnet APP
   version: 1.0.0-beta.2
-  description: ''
+  description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
     description: Development
