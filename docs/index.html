@@ -3182,6 +3182,19 @@ ul.nav-tabs {
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
+                  <li class="nav-header" data-group="Campaigns"><a href="#api-Campaigns">API Methods - Campaigns</a></li>
+                    <li data-group="Campaigns" data-name="getRewards" class="">
+                      <a href="#api-Campaigns-getRewards">getRewards</a>
+                    </li>
+                    <li data-group="Campaigns" data-name="getRewardsCampaignDetails" class="">
+                      <a href="#api-Campaigns-getRewardsCampaignDetails">getRewardsCampaignDetails</a>
+                    </li>
+                    <li data-group="Campaigns" data-name="getRewardsCampaigns" class="">
+                      <a href="#api-Campaigns-getRewardsCampaigns">getRewardsCampaigns</a>
+                    </li>
+                    <li data-group="Campaigns" data-name="getRewardsHistory" class="">
+                      <a href="#api-Campaigns-getRewardsHistory">getRewardsHistory</a>
+                    </li>
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
                     <li data-group="Default" data-name="ecommerceNexiPaymentNotification" class="">
                       <a href="#api-Default-ecommerceNexiPaymentNotification">ecommerceNexiPaymentNotification</a>
@@ -3240,18 +3253,6 @@ ul.nav-tabs {
                     <li data-group="Default" data-name="getRechargesId" class="">
                       <a href="#api-Default-getRechargesId">getRechargesId</a>
                     </li>
-                    <li data-group="Default" data-name="getRewards" class="">
-                      <a href="#api-Default-getRewards">getRewards</a>
-                    </li>
-                    <li data-group="Default" data-name="getRewardsCampaignDetails" class="">
-                      <a href="#api-Default-getRewardsCampaignDetails">getRewardsCampaignDetails</a>
-                    </li>
-                    <li data-group="Default" data-name="getRewardsCampaigns" class="">
-                      <a href="#api-Default-getRewardsCampaigns">getRewardsCampaigns</a>
-                    </li>
-                    <li data-group="Default" data-name="getRewardsHistory" class="">
-                      <a href="#api-Default-getRewardsHistory">getRewardsHistory</a>
-                    </li>
                     <li data-group="Default" data-name="getServices" class="">
                       <a href="#api-Default-getServices">getServices</a>
                     </li>
@@ -3300,6 +3301,1771 @@ ul.nav-tabs {
           </div>
         </div>
         <div id="sections">
+                <section id="api-Campaigns">
+                  <h1>Campaigns</h1>
+                    <div id="api-Campaigns-getRewards">
+                      <article id="api-Campaigns-getRewards-0" data-group="User" data-name="getRewards" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRewards</h1>
+                          <p>List available rewards</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns/{id}/rewards</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Campaigns-getRewards-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewards-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewards-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewards-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Campaigns-getRewards-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ \
+ -H "Accept: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns/{id}/rewards"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Campaigns-getRewards-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.CampaignsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: Cognito
+        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
+        Cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        CampaignsApi apiInstance = new CampaignsApi();
+        String id = id_example; // String | Campaign ID
+        Integer supplierId = 56; // Integer | 
+
+        try {
+            AvailableRewards result = apiInstance.getRewards(id, supplierId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewards");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewards-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final String id = new String(); // String | Campaign ID
+final Integer supplierId = new Integer(); // Integer | 
+
+try {
+    final result = await api_instance.getRewards(id, supplierId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getRewards: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewards-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.CampaignsApi;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        CampaignsApi apiInstance = new CampaignsApi();
+        String id = id_example; // String | Campaign ID
+        Integer supplierId = 56; // Integer | 
+
+        try {
+            AvailableRewards result = apiInstance.getRewards(id, supplierId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewards");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Campaigns-getRewards-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+CampaignsApi *apiInstance = [[CampaignsApi alloc] init];
+String *id = id_example; // Campaign ID (default to null)
+Integer *supplierId = 56; //  (default to null)
+
+// List available rewards
+[apiInstance getRewardsWith:id
+    supplierId:supplierId
+              completionHandler: ^(AvailableRewards output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
+var defaultClient = SelfnetApp.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: Cognito
+var Cognito = defaultClient.authentications['Cognito'];
+Cognito.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new SelfnetApp.CampaignsApi()
+var id = id_example; // {String} Campaign ID
+var supplierId = 56; // {Integer} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getRewards(id, supplierId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Campaigns-getRewards-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class getRewardsExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: Cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new CampaignsApi();
+            var id = id_example;  // String | Campaign ID (default to null)
+            var supplierId = 56;  // Integer |  (default to null)
+
+            try {
+                // List available rewards
+                AvailableRewards result = apiInstance.getRewards(id, supplierId);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling CampaignsApi.getRewards: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: Cognito
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\CampaignsApi();
+$id = id_example; // String | Campaign ID
+$supplierId = 56; // Integer | 
+
+try {
+    $result = $api_instance->getRewards($id, $supplierId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignsApi->getRewards: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::CampaignsApi;
+
+# Configure OAuth2 access token for authorization: Cognito
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::CampaignsApi->new();
+my $id = id_example; # String | Campaign ID
+my $supplierId = 56; # Integer | 
+
+eval {
+    my $result = $api_instance->getRewards(id => $id, supplierId => $supplierId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling CampaignsApi->getRewards: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: Cognito
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.CampaignsApi()
+id = id_example # String | Campaign ID (default to null)
+supplierId = 56 # Integer |  (default to null)
+
+try:
+    # List available rewards
+    api_response = api_instance.get_rewards(id, supplierId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CampaignsApi->getRewards: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewards-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate CampaignsApi;
+
+pub fn main() {
+    let id = id_example; // String
+    let supplierId = 56; // Integer
+
+    let mut context = CampaignsApi::Context::default();
+    let result = client.getRewards(id, supplierId, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+<td>
+
+
+    <div id="d2e199_getRewards_id">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Campaign ID
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">supplier-id*</td>
+<td>
+
+
+    <div id="d2e199_getRewards_supplierId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Campaigns-getRewards-title-200"></h3>
+                            <p id="examples-Campaigns-getRewards-description-200" class="marked"></p>
+                            <script>
+                              var responseCampaigns200_description = `OK`;
+                              var responseCampaigns200_description_break = responseCampaigns200_description.indexOf('\n');
+                              if (responseCampaigns200_description_break == -1) {
+                                $("#examples-Campaigns-getRewards-title-200").text("Status: 200 - " + responseCampaigns200_description);
+                              } else {
+                                $("#examples-Campaigns-getRewards-title-200").text("Status: 200 - " + responseCampaigns200_description.substring(0, responseCampaigns200_description_break));
+                                $("#examples-Campaigns-getRewards-description-200").html(responseCampaigns200_description.substring(responseCampaigns200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Campaigns-getRewards-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Campaigns-getRewards-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Campaigns-getRewards-200-wrapper" style='margin-bottom: 10px;'>
+                              <div class="tab-pane active" id="responses-Campaigns-getRewards-200-schema">
+                                <div id="responses-Campaigns-getRewards-schema-200" class="exampleStyle">
+                                  <script>
+                                    $(document).ready(function() {
+                                      var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/AvailableRewards"
+      }
+    }
+  }
+};
+                                      var schema = findNode('schema',schemaWrapper).schema;
+                                      if (!schema) {
+                                        schema = schemaWrapper.schema;
+                                      }
+                                      if (schema == null) {
+                                        return;
+                                      }
+                                      if (schema.$ref != null) {
+                                        schema = defsParser.$refs.get(schema.$ref);
+                                        if (schema.properties != null) {
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        }
+                                      } else if (schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+                                      } else {
+                                        schemaWrapper.definitions = Object.assign({}, defs);
+                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                          console.log(err);
+                                        });
+                                      }
+
+                                      var view = new JSONSchemaView(schema, 3);
+                                      $('#responses-Campaigns-getRewards-200-schema-data').val(JSON.stringify(schema));
+                                      var result = $('#responses-Campaigns-getRewards-schema-200');
+                                      result.empty();
+                                      result.append(view.render());
+                                    });
+                                  </script>
+                                </div>
+                                <input id='responses-Campaigns-getRewards-200-schema-data' type='hidden' value=''></input>
+                              </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Campaigns-getRewardsCampaignDetails">
+                      <article id="api-Campaigns-getRewardsCampaignDetails-0" data-group="User" data-name="getRewardsCampaignDetails" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRewardsCampaignDetails</h1>
+                          <p>Retrieve rewards campaign details</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns/{id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Campaigns-getRewardsCampaignDetails-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaignDetails-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Campaigns-getRewardsCampaignDetails-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ \
+ -H "Accept: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns/{id}"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.CampaignsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: Cognito
+        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
+        Cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        CampaignsApi apiInstance = new CampaignsApi();
+        String id = id_example; // String | Campaign ID
+        Integer supplierId = 56; // Integer | 
+
+        try {
+            CampaignDetails result = apiInstance.getRewardsCampaignDetails(id, supplierId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewardsCampaignDetails");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final String id = new String(); // String | Campaign ID
+final Integer supplierId = new Integer(); // Integer | 
+
+try {
+    final result = await api_instance.getRewardsCampaignDetails(id, supplierId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getRewardsCampaignDetails: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.CampaignsApi;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        CampaignsApi apiInstance = new CampaignsApi();
+        String id = id_example; // String | Campaign ID
+        Integer supplierId = 56; // Integer | 
+
+        try {
+            CampaignDetails result = apiInstance.getRewardsCampaignDetails(id, supplierId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewardsCampaignDetails");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+CampaignsApi *apiInstance = [[CampaignsApi alloc] init];
+String *id = id_example; // Campaign ID (default to null)
+Integer *supplierId = 56; //  (default to null)
+
+// Retrieve rewards campaign details
+[apiInstance getRewardsCampaignDetailsWith:id
+    supplierId:supplierId
+              completionHandler: ^(CampaignDetails output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
+var defaultClient = SelfnetApp.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: Cognito
+var Cognito = defaultClient.authentications['Cognito'];
+Cognito.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new SelfnetApp.CampaignsApi()
+var id = id_example; // {String} Campaign ID
+var supplierId = 56; // {Integer} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getRewardsCampaignDetails(id, supplierId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class getRewardsCampaignDetailsExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: Cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new CampaignsApi();
+            var id = id_example;  // String | Campaign ID (default to null)
+            var supplierId = 56;  // Integer |  (default to null)
+
+            try {
+                // Retrieve rewards campaign details
+                CampaignDetails result = apiInstance.getRewardsCampaignDetails(id, supplierId);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling CampaignsApi.getRewardsCampaignDetails: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: Cognito
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\CampaignsApi();
+$id = id_example; // String | Campaign ID
+$supplierId = 56; // Integer | 
+
+try {
+    $result = $api_instance->getRewardsCampaignDetails($id, $supplierId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignsApi->getRewardsCampaignDetails: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::CampaignsApi;
+
+# Configure OAuth2 access token for authorization: Cognito
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::CampaignsApi->new();
+my $id = id_example; # String | Campaign ID
+my $supplierId = 56; # Integer | 
+
+eval {
+    my $result = $api_instance->getRewardsCampaignDetails(id => $id, supplierId => $supplierId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling CampaignsApi->getRewardsCampaignDetails: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: Cognito
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.CampaignsApi()
+id = id_example # String | Campaign ID (default to null)
+supplierId = 56 # Integer |  (default to null)
+
+try:
+    # Retrieve rewards campaign details
+    api_response = api_instance.get_rewards_campaign_details(id, supplierId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CampaignsApi->getRewardsCampaignDetails: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaignDetails-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate CampaignsApi;
+
+pub fn main() {
+    let id = id_example; // String
+    let supplierId = 56; // Integer
+
+    let mut context = CampaignsApi::Context::default();
+    let result = client.getRewardsCampaignDetails(id, supplierId, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+<td>
+
+
+    <div id="d2e199_getRewardsCampaignDetails_id">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Campaign ID
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">supplier-id*</td>
+<td>
+
+
+    <div id="d2e199_getRewardsCampaignDetails_supplierId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Campaigns-getRewardsCampaignDetails-title-200"></h3>
+                            <p id="examples-Campaigns-getRewardsCampaignDetails-description-200" class="marked"></p>
+                            <script>
+                              var responseCampaigns200_description = `OK`;
+                              var responseCampaigns200_description_break = responseCampaigns200_description.indexOf('\n');
+                              if (responseCampaigns200_description_break == -1) {
+                                $("#examples-Campaigns-getRewardsCampaignDetails-title-200").text("Status: 200 - " + responseCampaigns200_description);
+                              } else {
+                                $("#examples-Campaigns-getRewardsCampaignDetails-title-200").text("Status: 200 - " + responseCampaigns200_description.substring(0, responseCampaigns200_description_break));
+                                $("#examples-Campaigns-getRewardsCampaignDetails-description-200").html(responseCampaigns200_description.substring(responseCampaigns200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Campaigns-getRewardsCampaignDetails-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Campaigns-getRewardsCampaignDetails-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Campaigns-getRewardsCampaignDetails-200-wrapper" style='margin-bottom: 10px;'>
+                              <div class="tab-pane active" id="responses-Campaigns-getRewardsCampaignDetails-200-schema">
+                                <div id="responses-Campaigns-getRewardsCampaignDetails-schema-200" class="exampleStyle">
+                                  <script>
+                                    $(document).ready(function() {
+                                      var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/CampaignDetails"
+      }
+    }
+  }
+};
+                                      var schema = findNode('schema',schemaWrapper).schema;
+                                      if (!schema) {
+                                        schema = schemaWrapper.schema;
+                                      }
+                                      if (schema == null) {
+                                        return;
+                                      }
+                                      if (schema.$ref != null) {
+                                        schema = defsParser.$refs.get(schema.$ref);
+                                        if (schema.properties != null) {
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        }
+                                      } else if (schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+                                      } else {
+                                        schemaWrapper.definitions = Object.assign({}, defs);
+                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                          console.log(err);
+                                        });
+                                      }
+
+                                      var view = new JSONSchemaView(schema, 3);
+                                      $('#responses-Campaigns-getRewardsCampaignDetails-200-schema-data').val(JSON.stringify(schema));
+                                      var result = $('#responses-Campaigns-getRewardsCampaignDetails-schema-200');
+                                      result.empty();
+                                      result.append(view.render());
+                                    });
+                                  </script>
+                                </div>
+                                <input id='responses-Campaigns-getRewardsCampaignDetails-200-schema-data' type='hidden' value=''></input>
+                              </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Campaigns-getRewardsCampaigns">
+                      <article id="api-Campaigns-getRewardsCampaigns-0" data-group="User" data-name="getRewardsCampaigns" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRewardsCampaigns</h1>
+                          <p>Get all reward campaigns</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Campaigns-getRewardsCampaigns-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsCampaigns-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Campaigns-getRewardsCampaigns-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ \
+ -H "Accept: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.CampaignsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: Cognito
+        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
+        Cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        CampaignsApi apiInstance = new CampaignsApi();
+        Integer supplierId = 56; // Integer | 
+
+        try {
+            get_rewards_campaigns_200_response result = apiInstance.getRewardsCampaigns(supplierId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewardsCampaigns");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final Integer supplierId = new Integer(); // Integer | 
+
+try {
+    final result = await api_instance.getRewardsCampaigns(supplierId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getRewardsCampaigns: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.CampaignsApi;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        CampaignsApi apiInstance = new CampaignsApi();
+        Integer supplierId = 56; // Integer | 
+
+        try {
+            get_rewards_campaigns_200_response result = apiInstance.getRewardsCampaigns(supplierId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewardsCampaigns");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+CampaignsApi *apiInstance = [[CampaignsApi alloc] init];
+Integer *supplierId = 56; //  (default to null)
+
+// Get all reward campaigns
+[apiInstance getRewardsCampaignsWith:supplierId
+              completionHandler: ^(get_rewards_campaigns_200_response output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
+var defaultClient = SelfnetApp.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: Cognito
+var Cognito = defaultClient.authentications['Cognito'];
+Cognito.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new SelfnetApp.CampaignsApi()
+var supplierId = 56; // {Integer} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getRewardsCampaigns(supplierId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class getRewardsCampaignsExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: Cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new CampaignsApi();
+            var supplierId = 56;  // Integer |  (default to null)
+
+            try {
+                // Get all reward campaigns
+                get_rewards_campaigns_200_response result = apiInstance.getRewardsCampaigns(supplierId);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling CampaignsApi.getRewardsCampaigns: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: Cognito
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\CampaignsApi();
+$supplierId = 56; // Integer | 
+
+try {
+    $result = $api_instance->getRewardsCampaigns($supplierId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignsApi->getRewardsCampaigns: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::CampaignsApi;
+
+# Configure OAuth2 access token for authorization: Cognito
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::CampaignsApi->new();
+my $supplierId = 56; # Integer | 
+
+eval {
+    my $result = $api_instance->getRewardsCampaigns(supplierId => $supplierId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling CampaignsApi->getRewardsCampaigns: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: Cognito
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.CampaignsApi()
+supplierId = 56 # Integer |  (default to null)
+
+try:
+    # Get all reward campaigns
+    api_response = api_instance.get_rewards_campaigns(supplierId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CampaignsApi->getRewardsCampaigns: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsCampaigns-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate CampaignsApi;
+
+pub fn main() {
+    let supplierId = 56; // Integer
+
+    let mut context = CampaignsApi::Context::default();
+    let result = client.getRewardsCampaigns(supplierId, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">supplier-id*</td>
+<td>
+
+
+    <div id="d2e199_getRewardsCampaigns_supplierId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Campaigns-getRewardsCampaigns-title-200"></h3>
+                            <p id="examples-Campaigns-getRewardsCampaigns-description-200" class="marked"></p>
+                            <script>
+                              var responseCampaigns200_description = `OK`;
+                              var responseCampaigns200_description_break = responseCampaigns200_description.indexOf('\n');
+                              if (responseCampaigns200_description_break == -1) {
+                                $("#examples-Campaigns-getRewardsCampaigns-title-200").text("Status: 200 - " + responseCampaigns200_description);
+                              } else {
+                                $("#examples-Campaigns-getRewardsCampaigns-title-200").text("Status: 200 - " + responseCampaigns200_description.substring(0, responseCampaigns200_description_break));
+                                $("#examples-Campaigns-getRewardsCampaigns-description-200").html(responseCampaigns200_description.substring(responseCampaigns200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Campaigns-getRewardsCampaigns-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Campaigns-getRewardsCampaigns-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Campaigns-getRewardsCampaigns-200-wrapper" style='margin-bottom: 10px;'>
+                              <div class="tab-pane active" id="responses-Campaigns-getRewardsCampaigns-200-schema">
+                                <div id="responses-Campaigns-getRewardsCampaigns-schema-200" class="exampleStyle">
+                                  <script>
+                                    $(document).ready(function() {
+                                      var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/get_rewards_campaigns_200_response"
+      }
+    }
+  }
+};
+                                      var schema = findNode('schema',schemaWrapper).schema;
+                                      if (!schema) {
+                                        schema = schemaWrapper.schema;
+                                      }
+                                      if (schema == null) {
+                                        return;
+                                      }
+                                      if (schema.$ref != null) {
+                                        schema = defsParser.$refs.get(schema.$ref);
+                                        if (schema.properties != null) {
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        }
+                                      } else if (schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+                                      } else {
+                                        schemaWrapper.definitions = Object.assign({}, defs);
+                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                          console.log(err);
+                                        });
+                                      }
+
+                                      var view = new JSONSchemaView(schema, 3);
+                                      $('#responses-Campaigns-getRewardsCampaigns-200-schema-data').val(JSON.stringify(schema));
+                                      var result = $('#responses-Campaigns-getRewardsCampaigns-schema-200');
+                                      result.empty();
+                                      result.append(view.render());
+                                    });
+                                  </script>
+                                </div>
+                                <input id='responses-Campaigns-getRewardsCampaigns-200-schema-data' type='hidden' value=''></input>
+                              </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Campaigns-getRewardsHistory">
+                      <article id="api-Campaigns-getRewardsHistory-0" data-group="User" data-name="getRewardsHistory" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRewardsHistory</h1>
+                          <p>Rewards redemption history</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns/{id}/rewards/history</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Campaigns-getRewardsHistory-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewardsHistory-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Campaigns-getRewardsHistory-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Campaigns-getRewardsHistory-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Campaigns-getRewardsHistory-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ \
+ -H "Accept: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns/{id}/rewards/history?start_range=startRange_example&end_range=endRange_example"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.CampaignsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: Cognito
+        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
+        Cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        CampaignsApi apiInstance = new CampaignsApi();
+        String id = id_example; // String | Campaign ID
+        Integer supplierId = 56; // Integer | 
+        String startRange = startRange_example; // String | UNIX datetime
+        String endRange = endRange_example; // String | UNIX datetime
+
+        try {
+            get_rewards_history_200_response result = apiInstance.getRewardsHistory(id, supplierId, startRange, endRange);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewardsHistory");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final String id = new String(); // String | Campaign ID
+final Integer supplierId = new Integer(); // Integer | 
+final String startRange = new String(); // String | UNIX datetime
+final String endRange = new String(); // String | UNIX datetime
+
+try {
+    final result = await api_instance.getRewardsHistory(id, supplierId, startRange, endRange);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getRewardsHistory: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.CampaignsApi;
+
+public class CampaignsApiExample {
+    public static void main(String[] args) {
+        CampaignsApi apiInstance = new CampaignsApi();
+        String id = id_example; // String | Campaign ID
+        Integer supplierId = 56; // Integer | 
+        String startRange = startRange_example; // String | UNIX datetime
+        String endRange = endRange_example; // String | UNIX datetime
+
+        try {
+            get_rewards_history_200_response result = apiInstance.getRewardsHistory(id, supplierId, startRange, endRange);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignsApi#getRewardsHistory");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+CampaignsApi *apiInstance = [[CampaignsApi alloc] init];
+String *id = id_example; // Campaign ID (default to null)
+Integer *supplierId = 56; //  (default to null)
+String *startRange = startRange_example; // UNIX datetime (optional) (default to null)
+String *endRange = endRange_example; // UNIX datetime (optional) (default to null)
+
+// Rewards redemption history
+[apiInstance getRewardsHistoryWith:id
+    supplierId:supplierId
+    startRange:startRange
+    endRange:endRange
+              completionHandler: ^(get_rewards_history_200_response output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
+var defaultClient = SelfnetApp.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: Cognito
+var Cognito = defaultClient.authentications['Cognito'];
+Cognito.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new SelfnetApp.CampaignsApi()
+var id = id_example; // {String} Campaign ID
+var supplierId = 56; // {Integer} 
+var opts = {
+  'startRange': startRange_example, // {String} UNIX datetime
+  'endRange': endRange_example // {String} UNIX datetime
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getRewardsHistory(id, supplierId, opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class getRewardsHistoryExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: Cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new CampaignsApi();
+            var id = id_example;  // String | Campaign ID (default to null)
+            var supplierId = 56;  // Integer |  (default to null)
+            var startRange = startRange_example;  // String | UNIX datetime (optional)  (default to null)
+            var endRange = endRange_example;  // String | UNIX datetime (optional)  (default to null)
+
+            try {
+                // Rewards redemption history
+                get_rewards_history_200_response result = apiInstance.getRewardsHistory(id, supplierId, startRange, endRange);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling CampaignsApi.getRewardsHistory: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: Cognito
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\CampaignsApi();
+$id = id_example; // String | Campaign ID
+$supplierId = 56; // Integer | 
+$startRange = startRange_example; // String | UNIX datetime
+$endRange = endRange_example; // String | UNIX datetime
+
+try {
+    $result = $api_instance->getRewardsHistory($id, $supplierId, $startRange, $endRange);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignsApi->getRewardsHistory: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::CampaignsApi;
+
+# Configure OAuth2 access token for authorization: Cognito
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::CampaignsApi->new();
+my $id = id_example; # String | Campaign ID
+my $supplierId = 56; # Integer | 
+my $startRange = startRange_example; # String | UNIX datetime
+my $endRange = endRange_example; # String | UNIX datetime
+
+eval {
+    my $result = $api_instance->getRewardsHistory(id => $id, supplierId => $supplierId, startRange => $startRange, endRange => $endRange);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling CampaignsApi->getRewardsHistory: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: Cognito
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.CampaignsApi()
+id = id_example # String | Campaign ID (default to null)
+supplierId = 56 # Integer |  (default to null)
+startRange = startRange_example # String | UNIX datetime (optional) (default to null)
+endRange = endRange_example # String | UNIX datetime (optional) (default to null)
+
+try:
+    # Rewards redemption history
+    api_response = api_instance.get_rewards_history(id, supplierId, startRange=startRange, endRange=endRange)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CampaignsApi->getRewardsHistory: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Campaigns-getRewardsHistory-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate CampaignsApi;
+
+pub fn main() {
+    let id = id_example; // String
+    let supplierId = 56; // Integer
+    let startRange = startRange_example; // String
+    let endRange = endRange_example; // String
+
+    let mut context = CampaignsApi::Context::default();
+    let result = client.getRewardsHistory(id, supplierId, startRange, endRange, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+<td>
+
+
+    <div id="d2e199_getRewardsHistory_id">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Campaign ID
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">supplier-id*</td>
+<td>
+
+
+    <div id="d2e199_getRewardsHistory_supplierId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">start_range</td>
+<td>
+
+
+    <div id="d2e199_getRewardsHistory_startRange">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+UNIX datetime
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">end_range</td>
+<td>
+
+
+    <div id="d2e199_getRewardsHistory_endRange">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+UNIX datetime
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Campaigns-getRewardsHistory-title-200"></h3>
+                            <p id="examples-Campaigns-getRewardsHistory-description-200" class="marked"></p>
+                            <script>
+                              var responseCampaigns200_description = `OK`;
+                              var responseCampaigns200_description_break = responseCampaigns200_description.indexOf('\n');
+                              if (responseCampaigns200_description_break == -1) {
+                                $("#examples-Campaigns-getRewardsHistory-title-200").text("Status: 200 - " + responseCampaigns200_description);
+                              } else {
+                                $("#examples-Campaigns-getRewardsHistory-title-200").text("Status: 200 - " + responseCampaigns200_description.substring(0, responseCampaigns200_description_break));
+                                $("#examples-Campaigns-getRewardsHistory-description-200").html(responseCampaigns200_description.substring(responseCampaigns200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Campaigns-getRewardsHistory-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Campaigns-getRewardsHistory-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Campaigns-getRewardsHistory-200-wrapper" style='margin-bottom: 10px;'>
+                              <div class="tab-pane active" id="responses-Campaigns-getRewardsHistory-200-schema">
+                                <div id="responses-Campaigns-getRewardsHistory-schema-200" class="exampleStyle">
+                                  <script>
+                                    $(document).ready(function() {
+                                      var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/get_rewards_history_200_response"
+      }
+    }
+  }
+};
+                                      var schema = findNode('schema',schemaWrapper).schema;
+                                      if (!schema) {
+                                        schema = schemaWrapper.schema;
+                                      }
+                                      if (schema == null) {
+                                        return;
+                                      }
+                                      if (schema.$ref != null) {
+                                        schema = defsParser.$refs.get(schema.$ref);
+                                        if (schema.properties != null) {
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        }
+                                      } else if (schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+                                      } else {
+                                        schemaWrapper.definitions = Object.assign({}, defs);
+                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                          console.log(err);
+                                        });
+                                      }
+
+                                      var view = new JSONSchemaView(schema, 3);
+                                      $('#responses-Campaigns-getRewardsHistory-200-schema-data').val(JSON.stringify(schema));
+                                      var result = $('#responses-Campaigns-getRewardsHistory-schema-200');
+                                      result.empty();
+                                      result.append(view.render());
+                                    });
+                                  </script>
+                                </div>
+                                <input id='responses-Campaigns-getRewardsHistory-200-schema-data' type='hidden' value=''></input>
+                              </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
                 <section id="api-Default">
                   <h1>Default</h1>
                     <div id="api-Default-ecommerceNexiPaymentNotification">
@@ -11350,1768 +13116,6 @@ pub fn main() {
                                   </script>
                                 </div>
                                 <input id='responses-Default-getRechargesId-200-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-getRewards">
-                      <article id="api-Default-getRewards-0" data-group="User" data-name="getRewards" data-version="0">
-                        <div class="pull-left">
-                          <h1>getRewards</h1>
-                          <p>List available rewards</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns/{id}/rewards</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-getRewards-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewards-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewards-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewards-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewards-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-getRewards-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-getRewards-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- \
- -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns/{id}/rewards"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-getRewards-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure OAuth2 access token for authorization: Cognito
-        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
-        Cognito.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Create an instance of the API class
-        DefaultApi apiInstance = new DefaultApi();
-        String id = id_example; // String | Campaign ID
-        Integer supplierId = 56; // Integer | 
-
-        try {
-            AvailableRewards result = apiInstance.getRewards(id, supplierId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewards");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewards-0-dart">
-                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-
-final String id = new String(); // String | Campaign ID
-final Integer supplierId = new Integer(); // Integer | 
-
-try {
-    final result = await api_instance.getRewards(id, supplierId);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getRewards: $e\n');
-}
-
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewards-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String id = id_example; // String | Campaign ID
-        Integer supplierId = 56; // Integer | 
-
-        try {
-            AvailableRewards result = apiInstance.getRewards(id, supplierId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewards");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-getRewards-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-getRewards-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-// Create an instance of the API class
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-String *id = id_example; // Campaign ID (default to null)
-Integer *supplierId = 56; //  (default to null)
-
-// List available rewards
-[apiInstance getRewardsWith:id
-    supplierId:supplierId
-              completionHandler: ^(AvailableRewards output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewards-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
-var defaultClient = SelfnetApp.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: Cognito
-var Cognito = defaultClient.authentications['Cognito'];
-Cognito.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new SelfnetApp.DefaultApi()
-var id = id_example; // {String} Campaign ID
-var supplierId = 56; // {Integer} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getRewards(id, supplierId, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-getRewards-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-getRewards-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class getRewardsExample
-    {
-        public void main()
-        {
-            // Configure OAuth2 access token for authorization: Cognito
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new DefaultApi();
-            var id = id_example;  // String | Campaign ID (default to null)
-            var supplierId = 56;  // Integer |  (default to null)
-
-            try {
-                // List available rewards
-                AvailableRewards result = apiInstance.getRewards(id, supplierId);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling DefaultApi.getRewards: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewards-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: Cognito
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\DefaultApi();
-$id = id_example; // String | Campaign ID
-$supplierId = 56; // Integer | 
-
-try {
-    $result = $api_instance->getRewards($id, $supplierId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getRewards: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewards-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::DefaultApi;
-
-# Configure OAuth2 access token for authorization: Cognito
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
-my $id = id_example; # String | Campaign ID
-my $supplierId = 56; # Integer | 
-
-eval {
-    my $result = $api_instance->getRewards(id => $id, supplierId => $supplierId);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->getRewards: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewards-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: Cognito
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.DefaultApi()
-id = id_example # String | Campaign ID (default to null)
-supplierId = 56 # Integer |  (default to null)
-
-try:
-    # List available rewards
-    api_response = api_instance.get_rewards(id, supplierId)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->getRewards: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewards-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
-
-pub fn main() {
-    let id = id_example; // String
-    let supplierId = 56; // Integer
-
-    let mut context = DefaultApi::Context::default();
-    let result = client.getRewards(id, supplierId, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">id*</td>
-<td>
-
-
-    <div id="d2e199_getRewards_id">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Campaign ID
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                            <div class="methodsubtabletitle">Header parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                  <tr><td style="width:150px;">supplier-id*</td>
-<td>
-
-
-    <div id="d2e199_getRewards_supplierId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Default-getRewards-title-200"></h3>
-                            <p id="examples-Default-getRewards-description-200" class="marked"></p>
-                            <script>
-                              var responseDefault200_description = `OK`;
-                              var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
-                              if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-getRewards-title-200").text("Status: 200 - " + responseDefault200_description);
-                              } else {
-                                $("#examples-Default-getRewards-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-getRewards-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Default-getRewards-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-getRewards-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Default-getRewards-200-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Default-getRewards-200-schema">
-                                <div id="responses-Default-getRewards-schema-200" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/AvailableRewards"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Default-getRewards-200-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Default-getRewards-schema-200');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Default-getRewards-200-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-getRewardsCampaignDetails">
-                      <article id="api-Default-getRewardsCampaignDetails-0" data-group="User" data-name="getRewardsCampaignDetails" data-version="0">
-                        <div class="pull-left">
-                          <h1>getRewardsCampaignDetails</h1>
-                          <p>Retrieve rewards campaign details</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns/{id}</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-getRewardsCampaignDetails-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaignDetails-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-getRewardsCampaignDetails-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- \
- -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns/{id}"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure OAuth2 access token for authorization: Cognito
-        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
-        Cognito.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Create an instance of the API class
-        DefaultApi apiInstance = new DefaultApi();
-        String id = id_example; // String | Campaign ID
-        Integer supplierId = 56; // Integer | 
-
-        try {
-            CampaignDetails result = apiInstance.getRewardsCampaignDetails(id, supplierId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewardsCampaignDetails");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-dart">
-                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-
-final String id = new String(); // String | Campaign ID
-final Integer supplierId = new Integer(); // Integer | 
-
-try {
-    final result = await api_instance.getRewardsCampaignDetails(id, supplierId);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getRewardsCampaignDetails: $e\n');
-}
-
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String id = id_example; // String | Campaign ID
-        Integer supplierId = 56; // Integer | 
-
-        try {
-            CampaignDetails result = apiInstance.getRewardsCampaignDetails(id, supplierId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewardsCampaignDetails");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-// Create an instance of the API class
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-String *id = id_example; // Campaign ID (default to null)
-Integer *supplierId = 56; //  (default to null)
-
-// Retrieve rewards campaign details
-[apiInstance getRewardsCampaignDetailsWith:id
-    supplierId:supplierId
-              completionHandler: ^(CampaignDetails output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
-var defaultClient = SelfnetApp.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: Cognito
-var Cognito = defaultClient.authentications['Cognito'];
-Cognito.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new SelfnetApp.DefaultApi()
-var id = id_example; // {String} Campaign ID
-var supplierId = 56; // {Integer} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getRewardsCampaignDetails(id, supplierId, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class getRewardsCampaignDetailsExample
-    {
-        public void main()
-        {
-            // Configure OAuth2 access token for authorization: Cognito
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new DefaultApi();
-            var id = id_example;  // String | Campaign ID (default to null)
-            var supplierId = 56;  // Integer |  (default to null)
-
-            try {
-                // Retrieve rewards campaign details
-                CampaignDetails result = apiInstance.getRewardsCampaignDetails(id, supplierId);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling DefaultApi.getRewardsCampaignDetails: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: Cognito
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\DefaultApi();
-$id = id_example; // String | Campaign ID
-$supplierId = 56; // Integer | 
-
-try {
-    $result = $api_instance->getRewardsCampaignDetails($id, $supplierId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getRewardsCampaignDetails: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::DefaultApi;
-
-# Configure OAuth2 access token for authorization: Cognito
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
-my $id = id_example; # String | Campaign ID
-my $supplierId = 56; # Integer | 
-
-eval {
-    my $result = $api_instance->getRewardsCampaignDetails(id => $id, supplierId => $supplierId);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->getRewardsCampaignDetails: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: Cognito
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.DefaultApi()
-id = id_example # String | Campaign ID (default to null)
-supplierId = 56 # Integer |  (default to null)
-
-try:
-    # Retrieve rewards campaign details
-    api_response = api_instance.get_rewards_campaign_details(id, supplierId)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->getRewardsCampaignDetails: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaignDetails-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
-
-pub fn main() {
-    let id = id_example; // String
-    let supplierId = 56; // Integer
-
-    let mut context = DefaultApi::Context::default();
-    let result = client.getRewardsCampaignDetails(id, supplierId, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">id*</td>
-<td>
-
-
-    <div id="d2e199_getRewardsCampaignDetails_id">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Campaign ID
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                            <div class="methodsubtabletitle">Header parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                  <tr><td style="width:150px;">supplier-id*</td>
-<td>
-
-
-    <div id="d2e199_getRewardsCampaignDetails_supplierId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Default-getRewardsCampaignDetails-title-200"></h3>
-                            <p id="examples-Default-getRewardsCampaignDetails-description-200" class="marked"></p>
-                            <script>
-                              var responseDefault200_description = `OK`;
-                              var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
-                              if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-getRewardsCampaignDetails-title-200").text("Status: 200 - " + responseDefault200_description);
-                              } else {
-                                $("#examples-Default-getRewardsCampaignDetails-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-getRewardsCampaignDetails-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Default-getRewardsCampaignDetails-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-getRewardsCampaignDetails-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Default-getRewardsCampaignDetails-200-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Default-getRewardsCampaignDetails-200-schema">
-                                <div id="responses-Default-getRewardsCampaignDetails-schema-200" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/CampaignDetails"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Default-getRewardsCampaignDetails-200-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Default-getRewardsCampaignDetails-schema-200');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Default-getRewardsCampaignDetails-200-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-getRewardsCampaigns">
-                      <article id="api-Default-getRewardsCampaigns-0" data-group="User" data-name="getRewardsCampaigns" data-version="0">
-                        <div class="pull-left">
-                          <h1>getRewardsCampaigns</h1>
-                          <p>Get all reward campaigns</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-getRewardsCampaigns-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewardsCampaigns-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewardsCampaigns-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsCampaigns-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-getRewardsCampaigns-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- \
- -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure OAuth2 access token for authorization: Cognito
-        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
-        Cognito.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Create an instance of the API class
-        DefaultApi apiInstance = new DefaultApi();
-        Integer supplierId = 56; // Integer | 
-
-        try {
-            get_rewards_campaigns_200_response result = apiInstance.getRewardsCampaigns(supplierId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewardsCampaigns");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-dart">
-                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-
-final Integer supplierId = new Integer(); // Integer | 
-
-try {
-    final result = await api_instance.getRewardsCampaigns(supplierId);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getRewardsCampaigns: $e\n');
-}
-
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        Integer supplierId = 56; // Integer | 
-
-        try {
-            get_rewards_campaigns_200_response result = apiInstance.getRewardsCampaigns(supplierId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewardsCampaigns");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-// Create an instance of the API class
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-Integer *supplierId = 56; //  (default to null)
-
-// Get all reward campaigns
-[apiInstance getRewardsCampaignsWith:supplierId
-              completionHandler: ^(get_rewards_campaigns_200_response output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
-var defaultClient = SelfnetApp.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: Cognito
-var Cognito = defaultClient.authentications['Cognito'];
-Cognito.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new SelfnetApp.DefaultApi()
-var supplierId = 56; // {Integer} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getRewardsCampaigns(supplierId, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class getRewardsCampaignsExample
-    {
-        public void main()
-        {
-            // Configure OAuth2 access token for authorization: Cognito
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new DefaultApi();
-            var supplierId = 56;  // Integer |  (default to null)
-
-            try {
-                // Get all reward campaigns
-                get_rewards_campaigns_200_response result = apiInstance.getRewardsCampaigns(supplierId);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling DefaultApi.getRewardsCampaigns: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: Cognito
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\DefaultApi();
-$supplierId = 56; // Integer | 
-
-try {
-    $result = $api_instance->getRewardsCampaigns($supplierId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getRewardsCampaigns: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::DefaultApi;
-
-# Configure OAuth2 access token for authorization: Cognito
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
-my $supplierId = 56; # Integer | 
-
-eval {
-    my $result = $api_instance->getRewardsCampaigns(supplierId => $supplierId);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->getRewardsCampaigns: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: Cognito
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.DefaultApi()
-supplierId = 56 # Integer |  (default to null)
-
-try:
-    # Get all reward campaigns
-    api_response = api_instance.get_rewards_campaigns(supplierId)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->getRewardsCampaigns: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsCampaigns-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
-
-pub fn main() {
-    let supplierId = 56; // Integer
-
-    let mut context = DefaultApi::Context::default();
-    let result = client.getRewardsCampaigns(supplierId, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-                            <div class="methodsubtabletitle">Header parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                  <tr><td style="width:150px;">supplier-id*</td>
-<td>
-
-
-    <div id="d2e199_getRewardsCampaigns_supplierId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Default-getRewardsCampaigns-title-200"></h3>
-                            <p id="examples-Default-getRewardsCampaigns-description-200" class="marked"></p>
-                            <script>
-                              var responseDefault200_description = `OK`;
-                              var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
-                              if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-getRewardsCampaigns-title-200").text("Status: 200 - " + responseDefault200_description);
-                              } else {
-                                $("#examples-Default-getRewardsCampaigns-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-getRewardsCampaigns-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Default-getRewardsCampaigns-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-getRewardsCampaigns-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Default-getRewardsCampaigns-200-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Default-getRewardsCampaigns-200-schema">
-                                <div id="responses-Default-getRewardsCampaigns-schema-200" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/get_rewards_campaigns_200_response"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Default-getRewardsCampaigns-200-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Default-getRewardsCampaigns-schema-200');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Default-getRewardsCampaigns-200-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-getRewardsHistory">
-                      <article id="api-Default-getRewardsHistory-0" data-group="User" data-name="getRewardsHistory" data-version="0">
-                        <div class="pull-left">
-                          <h1>getRewardsHistory</h1>
-                          <p>Rewards redemption history</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/campaigns/{id}/rewards/history</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-getRewardsHistory-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewardsHistory-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-getRewardsHistory-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-getRewardsHistory-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-getRewardsHistory-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- \
- -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/campaigns/{id}/rewards/history?start_range=startRange_example&end_range=endRange_example"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-getRewardsHistory-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure OAuth2 access token for authorization: Cognito
-        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
-        Cognito.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Create an instance of the API class
-        DefaultApi apiInstance = new DefaultApi();
-        String id = id_example; // String | Campaign ID
-        Integer supplierId = 56; // Integer | 
-        String startRange = startRange_example; // String | UNIX datetime
-        String endRange = endRange_example; // String | UNIX datetime
-
-        try {
-            get_rewards_history_200_response result = apiInstance.getRewardsHistory(id, supplierId, startRange, endRange);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewardsHistory");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewardsHistory-0-dart">
-                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-
-final String id = new String(); // String | Campaign ID
-final Integer supplierId = new Integer(); // Integer | 
-final String startRange = new String(); // String | UNIX datetime
-final String endRange = new String(); // String | UNIX datetime
-
-try {
-    final result = await api_instance.getRewardsHistory(id, supplierId, startRange, endRange);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getRewardsHistory: $e\n');
-}
-
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-getRewardsHistory-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String id = id_example; // String | Campaign ID
-        Integer supplierId = 56; // Integer | 
-        String startRange = startRange_example; // String | UNIX datetime
-        String endRange = endRange_example; // String | UNIX datetime
-
-        try {
-            get_rewards_history_200_response result = apiInstance.getRewardsHistory(id, supplierId, startRange, endRange);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getRewardsHistory");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-getRewardsHistory-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-// Create an instance of the API class
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-String *id = id_example; // Campaign ID (default to null)
-Integer *supplierId = 56; //  (default to null)
-String *startRange = startRange_example; // UNIX datetime (optional) (default to null)
-String *endRange = endRange_example; // UNIX datetime (optional) (default to null)
-
-// Rewards redemption history
-[apiInstance getRewardsHistoryWith:id
-    supplierId:supplierId
-    startRange:startRange
-    endRange:endRange
-              completionHandler: ^(get_rewards_history_200_response output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
-var defaultClient = SelfnetApp.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: Cognito
-var Cognito = defaultClient.authentications['Cognito'];
-Cognito.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new SelfnetApp.DefaultApi()
-var id = id_example; // {String} Campaign ID
-var supplierId = 56; // {Integer} 
-var opts = {
-  'startRange': startRange_example, // {String} UNIX datetime
-  'endRange': endRange_example // {String} UNIX datetime
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getRewardsHistory(id, supplierId, opts, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-getRewardsHistory-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class getRewardsHistoryExample
-    {
-        public void main()
-        {
-            // Configure OAuth2 access token for authorization: Cognito
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new DefaultApi();
-            var id = id_example;  // String | Campaign ID (default to null)
-            var supplierId = 56;  // Integer |  (default to null)
-            var startRange = startRange_example;  // String | UNIX datetime (optional)  (default to null)
-            var endRange = endRange_example;  // String | UNIX datetime (optional)  (default to null)
-
-            try {
-                // Rewards redemption history
-                get_rewards_history_200_response result = apiInstance.getRewardsHistory(id, supplierId, startRange, endRange);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling DefaultApi.getRewardsHistory: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: Cognito
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\DefaultApi();
-$id = id_example; // String | Campaign ID
-$supplierId = 56; // Integer | 
-$startRange = startRange_example; // String | UNIX datetime
-$endRange = endRange_example; // String | UNIX datetime
-
-try {
-    $result = $api_instance->getRewardsHistory($id, $supplierId, $startRange, $endRange);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getRewardsHistory: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::DefaultApi;
-
-# Configure OAuth2 access token for authorization: Cognito
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
-my $id = id_example; # String | Campaign ID
-my $supplierId = 56; # Integer | 
-my $startRange = startRange_example; # String | UNIX datetime
-my $endRange = endRange_example; # String | UNIX datetime
-
-eval {
-    my $result = $api_instance->getRewardsHistory(id => $id, supplierId => $supplierId, startRange => $startRange, endRange => $endRange);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->getRewardsHistory: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: Cognito
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.DefaultApi()
-id = id_example # String | Campaign ID (default to null)
-supplierId = 56 # Integer |  (default to null)
-startRange = startRange_example # String | UNIX datetime (optional) (default to null)
-endRange = endRange_example # String | UNIX datetime (optional) (default to null)
-
-try:
-    # Rewards redemption history
-    api_response = api_instance.get_rewards_history(id, supplierId, startRange=startRange, endRange=endRange)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->getRewardsHistory: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-getRewardsHistory-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
-
-pub fn main() {
-    let id = id_example; // String
-    let supplierId = 56; // Integer
-    let startRange = startRange_example; // String
-    let endRange = endRange_example; // String
-
-    let mut context = DefaultApi::Context::default();
-    let result = client.getRewardsHistory(id, supplierId, startRange, endRange, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">id*</td>
-<td>
-
-
-    <div id="d2e199_getRewardsHistory_id">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Campaign ID
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                            <div class="methodsubtabletitle">Header parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                  <tr><td style="width:150px;">supplier-id*</td>
-<td>
-
-
-    <div id="d2e199_getRewardsHistory_supplierId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                            <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">start_range</td>
-<td>
-
-
-    <div id="d2e199_getRewardsHistory_startRange">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-UNIX datetime
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">end_range</td>
-<td>
-
-
-    <div id="d2e199_getRewardsHistory_endRange">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-UNIX datetime
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Default-getRewardsHistory-title-200"></h3>
-                            <p id="examples-Default-getRewardsHistory-description-200" class="marked"></p>
-                            <script>
-                              var responseDefault200_description = `OK`;
-                              var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
-                              if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-getRewardsHistory-title-200").text("Status: 200 - " + responseDefault200_description);
-                              } else {
-                                $("#examples-Default-getRewardsHistory-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-getRewardsHistory-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Default-getRewardsHistory-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-getRewardsHistory-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Default-getRewardsHistory-200-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Default-getRewardsHistory-200-schema">
-                                <div id="responses-Default-getRewardsHistory-schema-200" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/get_rewards_history_200_response"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Default-getRewardsHistory-200-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Default-getRewardsHistory-schema-200');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Default-getRewardsHistory-200-schema-data' type='hidden' value=''></input>
                               </div>
                             </div>
                         </article>
