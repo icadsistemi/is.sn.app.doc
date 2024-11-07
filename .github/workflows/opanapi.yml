@@ -3,7 +3,7 @@ name: API build and deploy
 on:
   push:
     branches:
-      - openapi-build
+      - master
 
 jobs:
   api-doc-deploy:
