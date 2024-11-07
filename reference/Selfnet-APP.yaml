@@ -136,7 +136,8 @@ paths:
   /cards:
     get:
       summary: Card List
-      tags: []
+      tags:
+        - cards
       responses:
         '200':
           description: OK
@@ -182,10 +183,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CardOfflinePinInput'
+      tags:
+        - cards
   /cards/pin/online:
     get:
       summary: Get online PIN enabled cards
-      tags: []
+      tags:
+        - cards
       responses:
         '200':
           description: OK
@@ -218,11 +222,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CardOnlinePinRequestInput'
+      tags:
+        - cards
   /cards/transactions:
     parameters: []
     get:
       summary: Get transactions
-      tags: []
+      tags:
+        - cards
       responses:
         '200':
           description: ''
@@ -278,7 +285,8 @@ paths:
         description: Card ID
     get:
       summary: Card details
-      tags: []
+      tags:
+        - cards
       responses:
         '200':
           description: OK
@@ -304,6 +312,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CardInput'
+      tags:
+        - cards
   '/cards/{id}/movements':
     parameters:
       - schema:
@@ -338,7 +348,8 @@ paths:
   /configuration:
     get:
       summary: Info for basic settings
-      tags: []
+      tags:
+        - configuration
       responses:
         '200':
           description: OK
@@ -357,7 +368,8 @@ paths:
         required: true
     get:
       summary: Get customer details by id
-      tags: []
+      tags:
+        - customers
       responses:
         '200':
           description: OK
@@ -375,7 +387,8 @@ paths:
   /ecommerce/fuelcoupons/bills:
     get:
       summary: Get ecommerce active fuelcoupon bills
-      tags: []
+      tags:
+        - ecommerce
       responses:
         '200':
           description: OK
@@ -395,7 +408,8 @@ paths:
   /ecommerce/cards/bills:
     get:
       summary: Get ecommerce active rechargeable card bills
-      tags: []
+      tags:
+        - ecommerce
       responses:
         '200':
           description: OK
@@ -440,6 +454,8 @@ paths:
           in: header
           name: supplier_id
           required: true
+      tags:
+        - ecommerce
   /ecommerce/nexi/payments/start:
     post:
       summary: ''
@@ -518,6 +534,8 @@ paths:
                 - nexi_configuration
                 - transaction_data
                 - 'icad_payment_:type'
+      tags:
+        - ecommerce
     parameters: []
   /ecommerce/nexi/payments/notification:
     post:
@@ -599,11 +617,14 @@ paths:
           in: query
           name: '*'
           description: All Nexi query string params are passed to this internal notification api
+      tags:
+        - ecommerce
     parameters: []
   /fuelcoupons:
     get:
       summary: List active fuel coupons
-      tags: []
+      tags:
+        - fuelcoupons
       responses:
         '200':
           description: OK
@@ -635,7 +656,8 @@ paths:
         description: Fuel coupon ID
     get:
       summary: Fuel coupon details
-      tags: []
+      tags:
+        - fuelcoupons
       responses:
         '200':
           description: OK
@@ -653,7 +675,8 @@ paths:
   /fuelcoupons/transactions:
     get:
       summary: GET fuelcoupon transactions
-      tags: []
+      tags:
+        - fuelcoupons
       responses:
         '200':
           description: OK
@@ -689,7 +712,8 @@ paths:
   /fuelstations/search:
     get:
       summary: GET fuelstations
-      tags: []
+      tags:
+        - fuelstations
       responses:
         '200':
           description: OK
@@ -730,7 +754,8 @@ paths:
   /invoices:
     get:
       summary: Get invoices
-      tags: []
+      tags:
+        - invoices
       responses:
         '200':
           description: OK
@@ -781,7 +806,8 @@ paths:
         required: true
     get:
       summary: Get invoice details
-      tags: []
+      tags:
+        - invoices
       responses:
         '200':
           description: OK
@@ -811,7 +837,8 @@ paths:
         description: Id of the requested invoice
     get:
       summary: Get printable invoice PDF
-      tags: []
+      tags:
+        - invoices
       responses:
         '200':
           description: OK
@@ -831,7 +858,8 @@ paths:
   /recharges:
     get:
       summary: Get all recharges
-      tags: []
+      tags:
+        - recharges
       responses:
         '200':
           description: OK
@@ -872,7 +900,8 @@ paths:
         required: true
     get:
       summary: Get recharge details
-      tags: []
+      tags:
+        - recharges
       responses:
         '200':
           description: OK
@@ -891,7 +920,8 @@ paths:
   /services:
     get:
       summary: Get active services for logged user
-      tags: []
+      tags:
+        - services
       responses:
         '200':
           description: OK
@@ -909,7 +939,8 @@ paths:
     parameters: []
     get:
       summary: Get user info
-      tags: []
+      tags:
+        - suppliers
       responses:
         '200':
           description: OK
@@ -928,7 +959,8 @@ paths:
         required: true
     get:
       summary: Get supplier details by id
-      tags: []
+      tags:
+        - suppliers
       responses:
         '200':
           description: OK
@@ -941,7 +973,8 @@ paths:
   '/versions/{platform}':
     get:
       summary: Get latest app version
-      tags: []
+      tags:
+        - versions
       responses:
         '200':
           description: OK
