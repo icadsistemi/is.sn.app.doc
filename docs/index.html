@@ -9360,7 +9360,9 @@ pub fn main() {
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
  \
  -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/ecommerce/nexi/payments/notification?*=Star_example"
+ -H "Content-Type: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/ecommerce/nexi/payments/notification" \
+ -d ''
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Ecommerce-ecommerceNexiPaymentNotification-0-java">
@@ -9382,10 +9384,10 @@ public class EcommerceApiExample {
 
         // Create an instance of the API class
         EcommerceApi apiInstance = new EcommerceApi();
-        String Star = Star_example; // String | All Nexi query string params are passed to this internal notification api
+        Object body = Object; // Object | 
 
         try {
-            ecommerce_nexi_payment_notification_200_response result = apiInstance.ecommerceNexiPaymentNotification(Star);
+            ecommerce_nexi_payment_notification_200_response result = apiInstance.ecommerceNexiPaymentNotification(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EcommerceApi#ecommerceNexiPaymentNotification");
@@ -9401,10 +9403,10 @@ public class EcommerceApiExample {
 
 final api_instance = DefaultApi();
 
-final String Star = new String(); // String | All Nexi query string params are passed to this internal notification api
+final Object body = new Object(); // Object | 
 
 try {
-    final result = await api_instance.ecommerceNexiPaymentNotification(Star);
+    final result = await api_instance.ecommerceNexiPaymentNotification(body);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->ecommerceNexiPaymentNotification: $e\n');
@@ -9419,10 +9421,10 @@ try {
 public class EcommerceApiExample {
     public static void main(String[] args) {
         EcommerceApi apiInstance = new EcommerceApi();
-        String Star = Star_example; // String | All Nexi query string params are passed to this internal notification api
+        Object body = Object; // Object | 
 
         try {
-            ecommerce_nexi_payment_notification_200_response result = apiInstance.ecommerceNexiPaymentNotification(Star);
+            ecommerce_nexi_payment_notification_200_response result = apiInstance.ecommerceNexiPaymentNotification(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EcommerceApi#ecommerceNexiPaymentNotification");
@@ -9444,10 +9446,10 @@ public class EcommerceApiExample {
 
 // Create an instance of the API class
 EcommerceApi *apiInstance = [[EcommerceApi alloc] init];
-String *Star = Star_example; // All Nexi query string params are passed to this internal notification api (optional) (default to null)
+Object *body = Object; //  (optional)
 
 // 
-[apiInstance ecommerceNexiPaymentNotificationWith:Star
+[apiInstance ecommerceNexiPaymentNotificationWith:body
               completionHandler: ^(ecommerce_nexi_payment_notification_200_response output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -9470,7 +9472,7 @@ Cognito.accessToken = "YOUR ACCESS TOKEN";
 // Create an instance of the API class
 var api = new SelfnetApp.EcommerceApi()
 var opts = {
-  'Star': Star_example // {String} All Nexi query string params are passed to this internal notification api
+  'body': Object // {Object} 
 };
 
 var callback = function(error, data, response) {
@@ -9505,11 +9507,11 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new EcommerceApi();
-            var Star = Star_example;  // String | All Nexi query string params are passed to this internal notification api (optional)  (default to null)
+            var body = Object;  // Object |  (optional) 
 
             try {
                 // 
-                ecommerce_nexi_payment_notification_200_response result = apiInstance.ecommerceNexiPaymentNotification(Star);
+                ecommerce_nexi_payment_notification_200_response result = apiInstance.ecommerceNexiPaymentNotification(body);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling EcommerceApi.ecommerceNexiPaymentNotification: " + e.Message );
@@ -9529,10 +9531,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\EcommerceApi();
-$Star = Star_example; // String | All Nexi query string params are passed to this internal notification api
+$body = Object; // Object | 
 
 try {
-    $result = $api_instance->ecommerceNexiPaymentNotification($Star);
+    $result = $api_instance->ecommerceNexiPaymentNotification($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EcommerceApi->ecommerceNexiPaymentNotification: ', $e->getMessage(), PHP_EOL;
@@ -9550,10 +9552,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::EcommerceApi->new();
-my $Star = Star_example; # String | All Nexi query string params are passed to this internal notification api
+my $body = WWW::OPenAPIClient::Object::Object->new(); # Object | 
 
 eval {
-    my $result = $api_instance->ecommerceNexiPaymentNotification(Star => $Star);
+    my $result = $api_instance->ecommerceNexiPaymentNotification(body => $body);
     print Dumper($result);
 };
 if ($@) {
@@ -9573,11 +9575,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.EcommerceApi()
-Star = Star_example # String | All Nexi query string params are passed to this internal notification api (optional) (default to null)
+body = Object # Object |  (optional)
 
 try:
     # 
-    api_response = api_instance.ecommerce_nexi_payment_notification(Star=Star)
+    api_response = api_instance.ecommerce_nexi_payment_notification(body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EcommerceApi->ecommerceNexiPaymentNotification: %s\n" % e)</code></pre>
@@ -9587,10 +9589,10 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate EcommerceApi;
 
 pub fn main() {
-    let Star = Star_example; // String
+    let body = Object; // Object
 
     let mut context = EcommerceApi::Context::default();
-    let result = client.ecommerceNexiPaymentNotification(Star, &context).wait();
+    let result = client.ecommerceNexiPaymentNotification(body, &context).wait();
 
     println!("{:?}", result);
 }
@@ -9607,35 +9609,57 @@ pub fn main() {
 
 
 
-
-
-                            <div class="methodsubtabletitle">Query parameters</div>
+                            <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
                               <tr>
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">*</td>
+                                <tr><td style="width:150px;">body </td>
 <td>
+<p class="marked">All Nexi query string params are passed to this internal notification api</p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "description" : "All Nexi query string params are passed to this internal notification api",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "properties" : { }
+      }
+    }
+  }
+};
 
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else if (schema.items != null && schema.items.$ref != null) {
+    schema.items = defsParser.$refs.get(schema.items.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
 
-    <div id="d2e199_ecommerceNexiPaymentNotification_Star">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-All Nexi query string params are passed to this internal notification api
-                    </div>
-            </div>
-        </div>
-    </div>
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_ecommerceNexiPaymentNotification_body');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_ecommerceNexiPaymentNotification_body"></div>
 </td>
 </tr>
 
                             </table>
+
+
 
                           <h2>Responses</h2>
                             <h3 id="examples-Ecommerce-ecommerceNexiPaymentNotification-title-200"></h3>
