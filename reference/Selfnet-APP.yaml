@@ -975,6 +975,33 @@ paths:
                 $ref: '#/components/schemas/Supplier'
       operationId: get-suppliers-id
       description: Get details of a supplier using the input ID
+  /users/privacy/terms:
+    get:
+      summary: Get user terms and conditions approvals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Terms'
+      operationId: get-versions
+      tags:
+        - users
+    parameters: []
+    put:
+      summary: Write user terms and conditions approvals
+      operationId: put-users-privacy-terms
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Terms'
+      tags:
+        - users
   '/versions/{platform}':
     get:
       summary: Get latest app version
@@ -2145,6 +2172,26 @@ components:
                 type: string
                 x-stoplight:
                   id: 4mx498vikooxz
+    Terms:
+      type: object
+      x-stoplight:
+        id: c8akmja0z39ef
+      properties:
+        app_privacy:
+          type: boolean
+        terms_and_conditions:
+          type: boolean
+        third_parties:
+          type: boolean
+        marketing:
+          type: boolean
+      x-examples:
+        Example 1:
+          app_privacy: true
+          terms_and_conditions: true
+          third_parties: true
+          marketing: true
+      title: ''
     TransactionOutput:
       title: TransactionOutput
       x-stoplight:
