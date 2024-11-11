@@ -985,7 +985,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Terms'
-      operationId: get-versions
+      operationId: get-user-terms-and-conditions
       tags:
         - users
     parameters: []
