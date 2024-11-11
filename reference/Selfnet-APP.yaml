@@ -616,14 +616,16 @@ paths:
                   - tipoprodotto
                   - brand
       description: Handle response from Nexi cash page. All queryparams coming from Nexi page callback must be put in internal call
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: '*'
-          description: All Nexi query string params are passed to this internal notification api
+      parameters: []
       tags:
         - ecommerce
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: All Nexi query string params are passed to this internal notification api
     parameters: []
   /fuelcoupons:
     get:
