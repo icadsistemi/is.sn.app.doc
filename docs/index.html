@@ -2990,6 +2990,35 @@ ul.nav-tabs {
     "id" : "wyvi0pmcd53lm"
   }
 };
+    defs["Terms"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "app_privacy" : {
+      "type" : "boolean"
+    },
+    "terms_and_conditions" : {
+      "type" : "boolean"
+    },
+    "third_parties" : {
+      "type" : "boolean"
+    },
+    "marketing" : {
+      "type" : "boolean"
+    }
+  },
+  "x-stoplight" : {
+    "id" : "c8akmja0z39ef"
+  },
+  "x-examples" : {
+    "Example 1" : {
+      "app_privacy" : true,
+      "terms_and_conditions" : true,
+      "third_parties" : true,
+      "marketing" : true
+    }
+  }
+};
     defs["TransactionOutput"] = {
   "title" : "TransactionOutput",
   "type" : "object",
@@ -3291,6 +3320,13 @@ ul.nav-tabs {
                     </li>
                     <li data-group="Suppliers" data-name="getUsersId" class="">
                       <a href="#api-Suppliers-getUsersId">getUsersId</a>
+                    </li>
+                  <li class="nav-header" data-group="Users"><a href="#api-Users">API Methods - Users</a></li>
+                    <li data-group="Users" data-name="getUserTermsAndConditions" class="">
+                      <a href="#api-Users-getUserTermsAndConditions">getUserTermsAndConditions</a>
+                    </li>
+                    <li data-group="Users" data-name="putUsersPrivacyTerms" class="">
+                      <a href="#api-Users-putUsersPrivacyTerms">putUsersPrivacyTerms</a>
                     </li>
                   <li class="nav-header" data-group="Versions"><a href="#api-Versions">API Methods - Versions</a></li>
                     <li data-group="Versions" data-name="getVersions" class="">
@@ -16530,6 +16566,762 @@ pub fn main() {
                                   </script>
                                 </div>
                                 <input id='responses-Suppliers-getUsersId-200-schema-data' type='hidden' value=''></input>
+                              </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-Users">
+                  <h1>Users</h1>
+                    <div id="api-Users-getUserTermsAndConditions">
+                      <article id="api-Users-getUserTermsAndConditions-0" data-group="User" data-name="getUserTermsAndConditions" data-version="0">
+                        <div class="pull-left">
+                          <h1>getUserTermsAndConditions</h1>
+                          <p>Get user terms and conditions approvals</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/users/privacy/terms</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Users-getUserTermsAndConditions-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Users-getUserTermsAndConditions-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Users-getUserTermsAndConditions-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Users-getUserTermsAndConditions-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Users-getUserTermsAndConditions-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ \
+ -H "Accept: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/users/privacy/terms"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.UsersApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UsersApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: Cognito
+        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
+        Cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        UsersApi apiInstance = new UsersApi();
+
+        try {
+            Terms result = apiInstance.getUserTermsAndConditions();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#getUserTermsAndConditions");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+
+try {
+    final result = await api_instance.getUserTermsAndConditions();
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getUserTermsAndConditions: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UsersApi;
+
+public class UsersApiExample {
+    public static void main(String[] args) {
+        UsersApi apiInstance = new UsersApi();
+
+        try {
+            Terms result = apiInstance.getUserTermsAndConditions();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#getUserTermsAndConditions");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+UsersApi *apiInstance = [[UsersApi alloc] init];
+
+// Get user terms and conditions approvals
+[apiInstance getUserTermsAndConditionsWithCompletionHandler: 
+              ^(Terms output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
+var defaultClient = SelfnetApp.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: Cognito
+var Cognito = defaultClient.authentications['Cognito'];
+Cognito.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new SelfnetApp.UsersApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getUserTermsAndConditions(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class getUserTermsAndConditionsExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: Cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new UsersApi();
+
+            try {
+                // Get user terms and conditions approvals
+                Terms result = apiInstance.getUserTermsAndConditions();
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling UsersApi.getUserTermsAndConditions: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: Cognito
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\UsersApi();
+
+try {
+    $result = $api_instance->getUserTermsAndConditions();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UsersApi->getUserTermsAndConditions: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::UsersApi;
+
+# Configure OAuth2 access token for authorization: Cognito
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::UsersApi->new();
+
+eval {
+    my $result = $api_instance->getUserTermsAndConditions();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UsersApi->getUserTermsAndConditions: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: Cognito
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.UsersApi()
+
+try:
+    # Get user terms and conditions approvals
+    api_response = api_instance.get_user_terms_and_conditions()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->getUserTermsAndConditions: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-getUserTermsAndConditions-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate UsersApi;
+
+pub fn main() {
+
+    let mut context = UsersApi::Context::default();
+    let result = client.getUserTermsAndConditions(&context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Users-getUserTermsAndConditions-title-200"></h3>
+                            <p id="examples-Users-getUserTermsAndConditions-description-200" class="marked"></p>
+                            <script>
+                              var responseUsers200_description = `OK`;
+                              var responseUsers200_description_break = responseUsers200_description.indexOf('\n');
+                              if (responseUsers200_description_break == -1) {
+                                $("#examples-Users-getUserTermsAndConditions-title-200").text("Status: 200 - " + responseUsers200_description);
+                              } else {
+                                $("#examples-Users-getUserTermsAndConditions-title-200").text("Status: 200 - " + responseUsers200_description.substring(0, responseUsers200_description_break));
+                                $("#examples-Users-getUserTermsAndConditions-description-200").html(responseUsers200_description.substring(responseUsers200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Users-getUserTermsAndConditions-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Users-getUserTermsAndConditions-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Users-getUserTermsAndConditions-200-wrapper" style='margin-bottom: 10px;'>
+                              <div class="tab-pane active" id="responses-Users-getUserTermsAndConditions-200-schema">
+                                <div id="responses-Users-getUserTermsAndConditions-schema-200" class="exampleStyle">
+                                  <script>
+                                    $(document).ready(function() {
+                                      var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Terms"
+      }
+    }
+  }
+};
+                                      var schema = findNode('schema',schemaWrapper).schema;
+                                      if (!schema) {
+                                        schema = schemaWrapper.schema;
+                                      }
+                                      if (schema == null) {
+                                        return;
+                                      }
+                                      if (schema.$ref != null) {
+                                        schema = defsParser.$refs.get(schema.$ref);
+                                        if (schema.properties != null) {
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        }
+                                      } else if (schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+                                      } else {
+                                        schemaWrapper.definitions = Object.assign({}, defs);
+                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                          console.log(err);
+                                        });
+                                      }
+
+                                      var view = new JSONSchemaView(schema, 3);
+                                      $('#responses-Users-getUserTermsAndConditions-200-schema-data').val(JSON.stringify(schema));
+                                      var result = $('#responses-Users-getUserTermsAndConditions-schema-200');
+                                      result.empty();
+                                      result.append(view.render());
+                                    });
+                                  </script>
+                                </div>
+                                <input id='responses-Users-getUserTermsAndConditions-200-schema-data' type='hidden' value=''></input>
+                              </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Users-putUsersPrivacyTerms">
+                      <article id="api-Users-putUsersPrivacyTerms-0" data-group="User" data-name="putUsersPrivacyTerms" data-version="0">
+                        <div class="pull-left">
+                          <h1>putUsersPrivacyTerms</h1>
+                          <p>Write user terms and conditions approvals</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/users/privacy/terms</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Users-putUsersPrivacyTerms-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Users-putUsersPrivacyTerms-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Users-putUsersPrivacyTerms-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ \
+ -H "Content-Type: application/json" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/users/privacy/terms" \
+ -d '{
+  &quot;app_privacy&quot; : true,
+  &quot;terms_and_conditions&quot; : true,
+  &quot;marketing&quot; : true,
+  &quot;third_parties&quot; : true
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.UsersApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UsersApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: Cognito
+        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
+        Cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        UsersApi apiInstance = new UsersApi();
+        Terms terms = ; // Terms | 
+
+        try {
+            apiInstance.putUsersPrivacyTerms(terms);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#putUsersPrivacyTerms");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final Terms terms = new Terms(); // Terms | 
+
+try {
+    final result = await api_instance.putUsersPrivacyTerms(terms);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->putUsersPrivacyTerms: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UsersApi;
+
+public class UsersApiExample {
+    public static void main(String[] args) {
+        UsersApi apiInstance = new UsersApi();
+        Terms terms = ; // Terms | 
+
+        try {
+            apiInstance.putUsersPrivacyTerms(terms);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#putUsersPrivacyTerms");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+UsersApi *apiInstance = [[UsersApi alloc] init];
+Terms *terms = ; //  (optional)
+
+// Write user terms and conditions approvals
+[apiInstance putUsersPrivacyTermsWith:terms
+              completionHandler: ^(NSError* error) {
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
+var defaultClient = SelfnetApp.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: Cognito
+var Cognito = defaultClient.authentications['Cognito'];
+Cognito.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new SelfnetApp.UsersApi()
+var opts = {
+  'terms':  // {Terms} 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.putUsersPrivacyTerms(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class putUsersPrivacyTermsExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: Cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new UsersApi();
+            var terms = new Terms(); // Terms |  (optional) 
+
+            try {
+                // Write user terms and conditions approvals
+                apiInstance.putUsersPrivacyTerms(terms);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling UsersApi.putUsersPrivacyTerms: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: Cognito
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\UsersApi();
+$terms = ; // Terms | 
+
+try {
+    $api_instance->putUsersPrivacyTerms($terms);
+} catch (Exception $e) {
+    echo 'Exception when calling UsersApi->putUsersPrivacyTerms: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::UsersApi;
+
+# Configure OAuth2 access token for authorization: Cognito
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::UsersApi->new();
+my $terms = WWW::OPenAPIClient::Object::Terms->new(); # Terms | 
+
+eval {
+    $api_instance->putUsersPrivacyTerms(terms => $terms);
+};
+if ($@) {
+    warn "Exception when calling UsersApi->putUsersPrivacyTerms: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: Cognito
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.UsersApi()
+terms =  # Terms |  (optional)
+
+try:
+    # Write user terms and conditions approvals
+    api_instance.put_users_privacy_terms(terms=terms)
+except ApiException as e:
+    print("Exception when calling UsersApi->putUsersPrivacyTerms: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Users-putUsersPrivacyTerms-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate UsersApi;
+
+pub fn main() {
+    let terms = ; // Terms
+
+    let mut context = UsersApi::Context::default();
+    let result = client.putUsersPrivacyTerms(terms, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">terms </td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Terms"
+      }
+    }
+  }
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else if (schema.items != null && schema.items.$ref != null) {
+    schema.items = defsParser.$refs.get(schema.items.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_putUsersPrivacyTerms_terms');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_putUsersPrivacyTerms_terms"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Users-putUsersPrivacyTerms-title-200"></h3>
+                            <p id="examples-Users-putUsersPrivacyTerms-description-200" class="marked"></p>
+                            <script>
+                              var responseUsers200_description = `OK`;
+                              var responseUsers200_description_break = responseUsers200_description.indexOf('\n');
+                              if (responseUsers200_description_break == -1) {
+                                $("#examples-Users-putUsersPrivacyTerms-title-200").text("Status: 200 - " + responseUsers200_description);
+                              } else {
+                                $("#examples-Users-putUsersPrivacyTerms-title-200").text("Status: 200 - " + responseUsers200_description.substring(0, responseUsers200_description_break));
+                                $("#examples-Users-putUsersPrivacyTerms-description-200").html(responseUsers200_description.substring(responseUsers200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Users-putUsersPrivacyTerms-200" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Users-putUsersPrivacyTerms-200-wrapper" style='margin-bottom: 10px;'>
+                              <div class="tab-pane active" id="responses-Users-putUsersPrivacyTerms-200-schema">
+                                <div id="responses-Users-putUsersPrivacyTerms-schema-200" class="exampleStyle">
+                                  <script>
+                                    $(document).ready(function() {
+                                      var schemaWrapper = {
+  "description" : "OK"
+};
+                                      var schema = findNode('schema',schemaWrapper).schema;
+                                      if (!schema) {
+                                        schema = schemaWrapper.schema;
+                                      }
+                                      if (schema == null) {
+                                        return;
+                                      }
+                                      if (schema.$ref != null) {
+                                        schema = defsParser.$refs.get(schema.$ref);
+                                        if (schema.properties != null) {
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        }
+                                      } else if (schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+                                      } else {
+                                        schemaWrapper.definitions = Object.assign({}, defs);
+                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                          console.log(err);
+                                        });
+                                      }
+
+                                      var view = new JSONSchemaView(schema, 3);
+                                      $('#responses-Users-putUsersPrivacyTerms-200-schema-data').val(JSON.stringify(schema));
+                                      var result = $('#responses-Users-putUsersPrivacyTerms-schema-200');
+                                      result.empty();
+                                      result.append(view.render());
+                                    });
+                                  </script>
+                                </div>
+                                <input id='responses-Users-putUsersPrivacyTerms-200-schema-data' type='hidden' value=''></input>
                               </div>
                             </div>
                         </article>
