@@ -3345,7 +3345,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0-beta.4</div>
+              <div class="app-desc">Version: 1.0.0-beta.5</div>
             <hr>
             <div id="app-description" class="app-desc">
                 Selfnet APP public API documentation.
@@ -13631,7 +13631,7 @@ pub fn main() {
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  \
  -H "Content-Type: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/invoices?type=type_example&date_start=dateStart_example&date_end=dateEnd_example" \
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/invoices?status=status_example&date_start=dateStart_example&date_end=dateEnd_example" \
  -d ''
 </code></pre>
                           </div>
@@ -13655,13 +13655,13 @@ public class InvoicesApiExample {
         // Create an instance of the API class
         InvoicesApi apiInstance = new InvoicesApi();
         Integer supplierId = 56; // Integer | 
-        String type = type_example; // String | 
+        String status = status_example; // String | It can be "processing" or "history"
         String dateStart = dateStart_example; // String | UNIX datetime. Used only if type == "processing".
         String dateEnd = dateEnd_example; // String | UNIX datetme. Used only if type == "processing".
         GetInvoicesRequest getInvoicesRequest = ; // GetInvoicesRequest | 
 
         try {
-            apiInstance.getInvoices(supplierId, type, dateStart, dateEnd, getInvoicesRequest);
+            apiInstance.getInvoices(supplierId, status, dateStart, dateEnd, getInvoicesRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoicesApi#getInvoices");
             e.printStackTrace();
@@ -13677,13 +13677,13 @@ public class InvoicesApiExample {
 final api_instance = DefaultApi();
 
 final Integer supplierId = new Integer(); // Integer | 
-final String type = new String(); // String | 
+final String status = new String(); // String | It can be "processing" or "history"
 final String dateStart = new String(); // String | UNIX datetime. Used only if type == "processing".
 final String dateEnd = new String(); // String | UNIX datetme. Used only if type == "processing".
 final GetInvoicesRequest getInvoicesRequest = new GetInvoicesRequest(); // GetInvoicesRequest | 
 
 try {
-    final result = await api_instance.getInvoices(supplierId, type, dateStart, dateEnd, getInvoicesRequest);
+    final result = await api_instance.getInvoices(supplierId, status, dateStart, dateEnd, getInvoicesRequest);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getInvoices: $e\n');
@@ -13699,13 +13699,13 @@ public class InvoicesApiExample {
     public static void main(String[] args) {
         InvoicesApi apiInstance = new InvoicesApi();
         Integer supplierId = 56; // Integer | 
-        String type = type_example; // String | 
+        String status = status_example; // String | It can be "processing" or "history"
         String dateStart = dateStart_example; // String | UNIX datetime. Used only if type == "processing".
         String dateEnd = dateEnd_example; // String | UNIX datetme. Used only if type == "processing".
         GetInvoicesRequest getInvoicesRequest = ; // GetInvoicesRequest | 
 
         try {
-            apiInstance.getInvoices(supplierId, type, dateStart, dateEnd, getInvoicesRequest);
+            apiInstance.getInvoices(supplierId, status, dateStart, dateEnd, getInvoicesRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoicesApi#getInvoices");
             e.printStackTrace();
@@ -13727,14 +13727,14 @@ public class InvoicesApiExample {
 // Create an instance of the API class
 InvoicesApi *apiInstance = [[InvoicesApi alloc] init];
 Integer *supplierId = 56; //  (default to null)
-String *type = type_example; //  (optional) (default to null)
+String *status = status_example; // It can be "processing" or "history" (optional) (default to null)
 String *dateStart = dateStart_example; // UNIX datetime. Used only if type == "processing". (optional) (default to null)
 String *dateEnd = dateEnd_example; // UNIX datetme. Used only if type == "processing". (optional) (default to null)
 GetInvoicesRequest *getInvoicesRequest = ; //  (optional)
 
 // Get invoices
 [apiInstance getInvoicesWith:supplierId
-    type:type
+    status:status
     dateStart:dateStart
     dateEnd:dateEnd
     getInvoicesRequest:getInvoicesRequest
@@ -13758,7 +13758,7 @@ Cognito.accessToken = "YOUR ACCESS TOKEN";
 var api = new SelfnetApp.InvoicesApi()
 var supplierId = 56; // {Integer} 
 var opts = {
-  'type': type_example, // {String} 
+  'status': status_example, // {String} It can be "processing" or "history"
   'dateStart': dateStart_example, // {String} UNIX datetime. Used only if type == "processing".
   'dateEnd': dateEnd_example, // {String} UNIX datetme. Used only if type == "processing".
   'getInvoicesRequest':  // {GetInvoicesRequest} 
@@ -13797,14 +13797,14 @@ namespace Example
             // Create an instance of the API class
             var apiInstance = new InvoicesApi();
             var supplierId = 56;  // Integer |  (default to null)
-            var type = type_example;  // String |  (optional)  (default to null)
+            var status = status_example;  // String | It can be "processing" or "history" (optional)  (default to null)
             var dateStart = dateStart_example;  // String | UNIX datetime. Used only if type == "processing". (optional)  (default to null)
             var dateEnd = dateEnd_example;  // String | UNIX datetme. Used only if type == "processing". (optional)  (default to null)
             var getInvoicesRequest = new GetInvoicesRequest(); // GetInvoicesRequest |  (optional) 
 
             try {
                 // Get invoices
-                apiInstance.getInvoices(supplierId, type, dateStart, dateEnd, getInvoicesRequest);
+                apiInstance.getInvoices(supplierId, status, dateStart, dateEnd, getInvoicesRequest);
             } catch (Exception e) {
                 Debug.Print("Exception when calling InvoicesApi.getInvoices: " + e.Message );
             }
@@ -13824,13 +13824,13 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\InvoicesApi();
 $supplierId = 56; // Integer | 
-$type = type_example; // String | 
+$status = status_example; // String | It can be "processing" or "history"
 $dateStart = dateStart_example; // String | UNIX datetime. Used only if type == "processing".
 $dateEnd = dateEnd_example; // String | UNIX datetme. Used only if type == "processing".
 $getInvoicesRequest = ; // GetInvoicesRequest | 
 
 try {
-    $api_instance->getInvoices($supplierId, $type, $dateStart, $dateEnd, $getInvoicesRequest);
+    $api_instance->getInvoices($supplierId, $status, $dateStart, $dateEnd, $getInvoicesRequest);
 } catch (Exception $e) {
     echo 'Exception when calling InvoicesApi->getInvoices: ', $e->getMessage(), PHP_EOL;
 }
@@ -13848,13 +13848,13 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::InvoicesApi->new();
 my $supplierId = 56; # Integer | 
-my $type = type_example; # String | 
+my $status = status_example; # String | It can be "processing" or "history"
 my $dateStart = dateStart_example; # String | UNIX datetime. Used only if type == "processing".
 my $dateEnd = dateEnd_example; # String | UNIX datetme. Used only if type == "processing".
 my $getInvoicesRequest = WWW::OPenAPIClient::Object::GetInvoicesRequest->new(); # GetInvoicesRequest | 
 
 eval {
-    $api_instance->getInvoices(supplierId => $supplierId, type => $type, dateStart => $dateStart, dateEnd => $dateEnd, getInvoicesRequest => $getInvoicesRequest);
+    $api_instance->getInvoices(supplierId => $supplierId, status => $status, dateStart => $dateStart, dateEnd => $dateEnd, getInvoicesRequest => $getInvoicesRequest);
 };
 if ($@) {
     warn "Exception when calling InvoicesApi->getInvoices: $@\n";
@@ -13874,14 +13874,14 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Create an instance of the API class
 api_instance = openapi_client.InvoicesApi()
 supplierId = 56 # Integer |  (default to null)
-type = type_example # String |  (optional) (default to null)
+status = status_example # String | It can be "processing" or "history" (optional) (default to null)
 dateStart = dateStart_example # String | UNIX datetime. Used only if type == "processing". (optional) (default to null)
 dateEnd = dateEnd_example # String | UNIX datetme. Used only if type == "processing". (optional) (default to null)
 getInvoicesRequest =  # GetInvoicesRequest |  (optional)
 
 try:
     # Get invoices
-    api_instance.get_invoices(supplierId, type=type, dateStart=dateStart, dateEnd=dateEnd, getInvoicesRequest=getInvoicesRequest)
+    api_instance.get_invoices(supplierId, status=status, dateStart=dateStart, dateEnd=dateEnd, getInvoicesRequest=getInvoicesRequest)
 except ApiException as e:
     print("Exception when calling InvoicesApi->getInvoices: %s\n" % e)</code></pre>
                             </div>
@@ -13891,13 +13891,13 @@ except ApiException as e:
 
 pub fn main() {
     let supplierId = 56; // Integer
-    let type = type_example; // String
+    let status = status_example; // String
     let dateStart = dateStart_example; // String
     let dateEnd = dateEnd_example; // String
     let getInvoicesRequest = ; // GetInvoicesRequest
 
     let mut context = InvoicesApi::Context::default();
-    let result = client.getInvoices(supplierId, type, dateStart, dateEnd, getInvoicesRequest, &context).wait();
+    let result = client.getInvoices(supplierId, status, dateStart, dateEnd, getInvoicesRequest, &context).wait();
 
     println!("{:?}", result);
 }
@@ -13996,17 +13996,20 @@ $(document).ready(function() {
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">type</td>
+                                <tr><td style="width:150px;">status</td>
 <td>
 
 
-    <div id="d2e199_getInvoices_type">
+    <div id="d2e199_getInvoices_status">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
                     String
                 </span>
 
+                    <div class="inner description marked">
+It can be &quot;processing&quot; or &quot;history&quot;
+                    </div>
             </div>
         </div>
     </div>
