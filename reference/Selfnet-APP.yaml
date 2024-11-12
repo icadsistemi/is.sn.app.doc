@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.4
+  version: 1.0.0-beta.5
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -774,7 +774,8 @@ paths:
               - processing
               - historical
           in: query
-          name: type
+          name: status
+          description: It can be "processing" or "history"
         - schema:
             type: string
           in: query
