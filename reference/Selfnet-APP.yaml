@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.6
+  version: 1.0.0-beta.7
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -1488,6 +1488,14 @@ components:
           x-stoplight:
             id: 6bmsu3klayd1k
           description: 'Id of the fuel coupon type, used for look up'
+        value:
+          type: integer
+          x-stoplight:
+            id: w1l1601c67nqv
+        residue:
+          type: number
+          x-stoplight:
+            id: w179eke481h5z
     FuelcouponBills:
       title: FuelcouponBills
       x-stoplight:
