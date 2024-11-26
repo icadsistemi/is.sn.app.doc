@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.5
+  version: 1.0.0-beta.6
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -57,6 +57,8 @@ paths:
           in: header
           name: supplier-id
           required: true
+      requestBody:
+        content: {}
     parameters:
       - schema:
           type: string
@@ -186,26 +188,6 @@ paths:
       tags:
         - cards
   /cards/pin/online:
-    get:
-      summary: Get online PIN enabled cards
-      tags:
-        - cards
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  cards:
-                    type: array
-                    x-stoplight:
-                      id: 5scbtjyu526bx
-                    items:
-                      $ref: '#/components/schemas/CardOnlinePin'
-      operationId: get-online-pin-cards
-      description: ''
     parameters: []
     post:
       summary: Generate an online PIN
@@ -1109,6 +1091,28 @@ components:
           type: boolean
           x-stoplight:
             id: 2fjdwjjh8g6az
+        pan:
+          type: string
+          x-stoplight:
+            id: cmiwucgk52jg0
+        otp_pin:
+          type: boolean
+          x-stoplight:
+            id: c9tynxan6dhrr
+          description: True if this card has dynamic or online pin enabled
+        vehicle:
+          type: object
+          x-stoplight:
+            id: wdzy36by588bm
+          properties:
+            plate:
+              type: string
+              x-stoplight:
+                id: om75am1ghbo2a
+            driver:
+              type: string
+              x-stoplight:
+                id: v4jgih6nl96ko
     CardDetails:
       title: CardDetails
       x-stoplight:
@@ -1450,7 +1454,7 @@ components:
           type: number
           x-stoplight:
             id: w94r22gtiv3w4
-        is_customer_recharge:
+        has_customer_recharge:
           type: boolean
           x-stoplight:
             id: xzf3av4vkax0a
@@ -1458,6 +1462,11 @@ components:
           type: number
           x-stoplight:
             id: ajjg3alwbn8pr
+        show_balance:
+          type: boolean
+          x-stoplight:
+            id: 8dra6ocdpnu2t
+          description: 'If True, the various customer and card balances are shown within the app'
     FuelCoupon:
       title: FuelCoupon
       x-stoplight:
@@ -2078,6 +2087,33 @@ components:
                   type: boolean
                   x-stoplight:
                     id: z9nume41drsns
+            ecommerce:
+              type: object
+              x-stoplight:
+                id: mfkrlxybh2u5u
+              properties:
+                is_active:
+                  type: boolean
+                  x-stoplight:
+                    id: jmym5fyi3ng8f
+            recharge:
+              type: object
+              x-stoplight:
+                id: ysvkvzxw14110
+              properties:
+                is_active:
+                  type: boolean
+                  x-stoplight:
+                    id: 5mkpwcki4plwr
+            fuelcoupon:
+              type: object
+              x-stoplight:
+                id: lf87icqehhnmk
+              properties:
+                is_active:
+                  type: boolean
+                  x-stoplight:
+                    id: 03gfhbr8asn2b
     Supplier:
       title: Supplier
       x-stoplight:
