@@ -957,6 +957,22 @@ ul.nav-tabs {
       "x-stoplight" : {
         "id" : "2fjdwjjh8g6az"
       }
+    },
+    "pan" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "cmiwucgk52jg0"
+      }
+    },
+    "otp_pin" : {
+      "type" : "boolean",
+      "description" : "True if this card has dynamic or online pin enabled",
+      "x-stoplight" : {
+        "id" : "c9tynxan6dhrr"
+      }
+    },
+    "vehicle" : {
+      "$ref" : "#/components/schemas/Card_vehicle"
     }
   },
   "x-stoplight" : {
@@ -1240,6 +1256,26 @@ ul.nav-tabs {
     "id" : "xh75bq4uw0uui"
   }
 };
+    defs["Card_vehicle"] = {
+  "type" : "object",
+  "properties" : {
+    "plate" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "om75am1ghbo2a"
+      }
+    },
+    "driver" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "v4jgih6nl96ko"
+      }
+    }
+  },
+  "x-stoplight" : {
+    "id" : "wdzy36by588bm"
+  }
+};
     defs["Configuration"] = {
   "title" : "Configuration",
   "type" : "object",
@@ -1492,7 +1528,7 @@ ul.nav-tabs {
         "id" : "w94r22gtiv3w4"
       }
     },
-    "is_customer_recharge" : {
+    "has_customer_recharge" : {
       "type" : "boolean",
       "x-stoplight" : {
         "id" : "xzf3av4vkax0a"
@@ -1502,6 +1538,13 @@ ul.nav-tabs {
       "type" : "number",
       "x-stoplight" : {
         "id" : "ajjg3alwbn8pr"
+      }
+    },
+    "show_balance" : {
+      "type" : "boolean",
+      "description" : "If True, the various customer and card balances are shown within the app",
+      "x-stoplight" : {
+        "id" : "8dra6ocdpnu2t"
       }
     }
   },
@@ -2076,20 +2119,6 @@ ul.nav-tabs {
       },
       "x-stoplight" : {
         "id" : "komg0hmif99ru"
-      }
-    }
-  }
-};
-    defs["get_online_pin_cards_200_response"] = {
-  "type" : "object",
-  "properties" : {
-    "cards" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/CardOnlinePin"
-      },
-      "x-stoplight" : {
-        "id" : "5scbtjyu526bx"
       }
     }
   }
@@ -2802,6 +2831,15 @@ ul.nav-tabs {
     },
     "online_pin" : {
       "$ref" : "#/components/schemas/Services_services_online_pin"
+    },
+    "ecommerce" : {
+      "$ref" : "#/components/schemas/Services_services_ecommerce"
+    },
+    "recharge" : {
+      "$ref" : "#/components/schemas/Services_services_recharge"
+    },
+    "fuelcoupon" : {
+      "$ref" : "#/components/schemas/Services_services_fuelcoupon"
     }
   },
   "x-stoplight" : {
@@ -2822,6 +2860,34 @@ ul.nav-tabs {
     "id" : "ximn5rd700c1g"
   }
 };
+    defs["Services_services_ecommerce"] = {
+  "type" : "object",
+  "properties" : {
+    "is_active" : {
+      "type" : "boolean",
+      "x-stoplight" : {
+        "id" : "jmym5fyi3ng8f"
+      }
+    }
+  },
+  "x-stoplight" : {
+    "id" : "mfkrlxybh2u5u"
+  }
+};
+    defs["Services_services_fuelcoupon"] = {
+  "type" : "object",
+  "properties" : {
+    "is_active" : {
+      "type" : "boolean",
+      "x-stoplight" : {
+        "id" : "03gfhbr8asn2b"
+      }
+    }
+  },
+  "x-stoplight" : {
+    "id" : "lf87icqehhnmk"
+  }
+};
     defs["Services_services_online_pin"] = {
   "type" : "object",
   "properties" : {
@@ -2834,6 +2900,20 @@ ul.nav-tabs {
   },
   "x-stoplight" : {
     "id" : "org83zovlnxpa"
+  }
+};
+    defs["Services_services_recharge"] = {
+  "type" : "object",
+  "properties" : {
+    "is_active" : {
+      "type" : "boolean",
+      "x-stoplight" : {
+        "id" : "5mkpwcki4plwr"
+      }
+    }
+  },
+  "x-stoplight" : {
+    "id" : "ysvkvzxw14110"
   }
 };
     defs["Supplier"] = {
@@ -3236,9 +3316,6 @@ ul.nav-tabs {
                     <li data-group="Cards" data-name="getCardsId" class="">
                       <a href="#api-Cards-getCardsId">getCardsId</a>
                     </li>
-                    <li data-group="Cards" data-name="getOnlinePinCards" class="">
-                      <a href="#api-Cards-getOnlinePinCards">getOnlinePinCards</a>
-                    </li>
                     <li data-group="Cards" data-name="getTransactions" class="">
                       <a href="#api-Cards-getTransactions">getTransactions</a>
                     </li>
@@ -3345,7 +3422,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0-beta.5</div>
+              <div class="app-desc">Version: 1.0.0-beta.6</div>
             <hr>
             <div id="app-description" class="app-desc">
                 Selfnet APP public API documentation.
@@ -5940,360 +6017,6 @@ Card ID
                                   </script>
                                 </div>
                                 <input id='responses-Cards-getCardsId-200-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Cards-getOnlinePinCards">
-                      <article id="api-Cards-getOnlinePinCards-0" data-group="User" data-name="getOnlinePinCards" data-version="0">
-                        <div class="pull-left">
-                          <h1>getOnlinePinCards</h1>
-                          <p>Get online PIN enabled cards</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/cards/pin/online</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Cards-getOnlinePinCards-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Cards-getOnlinePinCards-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Cards-getOnlinePinCards-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Cards-getOnlinePinCards-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Cards-getOnlinePinCards-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- \
- -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/cards/pin/online"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.CardsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class CardsApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure OAuth2 access token for authorization: Cognito
-        OAuth Cognito = (OAuth) defaultClient.getAuthentication("Cognito");
-        Cognito.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Create an instance of the API class
-        CardsApi apiInstance = new CardsApi();
-
-        try {
-            get_online_pin_cards_200_response result = apiInstance.getOnlinePinCards();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CardsApi#getOnlinePinCards");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-dart">
-                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-
-
-try {
-    final result = await api_instance.getOnlinePinCards();
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getOnlinePinCards: $e\n');
-}
-
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.CardsApi;
-
-public class CardsApiExample {
-    public static void main(String[] args) {
-        CardsApi apiInstance = new CardsApi();
-
-        try {
-            get_online_pin_cards_200_response result = apiInstance.getOnlinePinCards();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CardsApi#getOnlinePinCards");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure OAuth2 access token for authorization: (authentication scheme: Cognito)
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-
-// Create an instance of the API class
-CardsApi *apiInstance = [[CardsApi alloc] init];
-
-// Get online PIN enabled cards
-[apiInstance getOnlinePinCardsWithCompletionHandler: 
-              ^(get_online_pin_cards_200_response output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var SelfnetApp = require('selfnet_app');
-var defaultClient = SelfnetApp.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: Cognito
-var Cognito = defaultClient.authentications['Cognito'];
-Cognito.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new SelfnetApp.CardsApi()
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getOnlinePinCards(callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class getOnlinePinCardsExample
-    {
-        public void main()
-        {
-            // Configure OAuth2 access token for authorization: Cognito
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new CardsApi();
-
-            try {
-                // Get online PIN enabled cards
-                get_online_pin_cards_200_response result = apiInstance.getOnlinePinCards();
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling CardsApi.getOnlinePinCards: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure OAuth2 access token for authorization: Cognito
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\CardsApi();
-
-try {
-    $result = $api_instance->getOnlinePinCards();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CardsApi->getOnlinePinCards: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::CardsApi;
-
-# Configure OAuth2 access token for authorization: Cognito
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::CardsApi->new();
-
-eval {
-    my $result = $api_instance->getOnlinePinCards();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling CardsApi->getOnlinePinCards: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: Cognito
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.CardsApi()
-
-try:
-    # Get online PIN enabled cards
-    api_response = api_instance.get_online_pin_cards()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CardsApi->getOnlinePinCards: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Cards-getOnlinePinCards-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate CardsApi;
-
-pub fn main() {
-
-    let mut context = CardsApi::Context::default();
-    let result = client.getOnlinePinCards(&context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Cards-getOnlinePinCards-title-200"></h3>
-                            <p id="examples-Cards-getOnlinePinCards-description-200" class="marked"></p>
-                            <script>
-                              var responseCards200_description = `OK`;
-                              var responseCards200_description_break = responseCards200_description.indexOf('\n');
-                              if (responseCards200_description_break == -1) {
-                                $("#examples-Cards-getOnlinePinCards-title-200").text("Status: 200 - " + responseCards200_description);
-                              } else {
-                                $("#examples-Cards-getOnlinePinCards-title-200").text("Status: 200 - " + responseCards200_description.substring(0, responseCards200_description_break));
-                                $("#examples-Cards-getOnlinePinCards-description-200").html(responseCards200_description.substring(responseCards200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Cards-getOnlinePinCards-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Cards-getOnlinePinCards-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Cards-getOnlinePinCards-200-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Cards-getOnlinePinCards-200-schema">
-                                <div id="responses-Cards-getOnlinePinCards-schema-200" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/get_online_pin_cards_200_response"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Cards-getOnlinePinCards-200-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Cards-getOnlinePinCards-schema-200');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Cards-getOnlinePinCards-200-schema-data' type='hidden' value=''></input>
                               </div>
                             </div>
                         </article>
