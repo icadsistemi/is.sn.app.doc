@@ -57,8 +57,6 @@ paths:
           in: header
           name: supplier-id
           required: true
-      requestBody:
-        content: {}
     parameters:
       - schema:
           type: string
