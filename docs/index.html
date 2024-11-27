@@ -971,6 +971,12 @@ ul.nav-tabs {
         "id" : "c9tynxan6dhrr"
       }
     },
+    "residue" : {
+      "type" : "number",
+      "x-stoplight" : {
+        "id" : "bbvqcke0ru30b"
+      }
+    },
     "vehicle" : {
       "$ref" : "#/components/schemas/Card_vehicle"
     }
@@ -1534,7 +1540,7 @@ ul.nav-tabs {
         "id" : "xzf3av4vkax0a"
       }
     },
-    "residue" : {
+    "rechargeable_residue" : {
       "type" : "number",
       "x-stoplight" : {
         "id" : "ajjg3alwbn8pr"
@@ -1545,6 +1551,13 @@ ul.nav-tabs {
       "description" : "If True, the various customer and card balances are shown within the app",
       "x-stoplight" : {
         "id" : "8dra6ocdpnu2t"
+      }
+    },
+    "end_of_month_residue" : {
+      "type" : "number",
+      "description" : "If the value is -1, the credit is limitless",
+      "x-stoplight" : {
+        "id" : "p1c5qrktifge3"
       }
     }
   },
@@ -3434,7 +3447,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0-beta.8</div>
+              <div class="app-desc">Version: 1.0.0-beta.9</div>
             <hr>
             <div id="app-description" class="app-desc">
                 Selfnet APP public API documentation.
