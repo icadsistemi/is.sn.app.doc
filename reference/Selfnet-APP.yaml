@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.8
+  version: 1.0.0-beta.9
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -1098,6 +1098,10 @@ components:
           x-stoplight:
             id: c9tynxan6dhrr
           description: True if this card has dynamic or online pin enabled
+        residue:
+          type: number
+          x-stoplight:
+            id: bbvqcke0ru30b
         vehicle:
           type: object
           x-stoplight:
@@ -1456,7 +1460,7 @@ components:
           type: boolean
           x-stoplight:
             id: xzf3av4vkax0a
-        residue:
+        rechargeable_residue:
           type: number
           x-stoplight:
             id: ajjg3alwbn8pr
@@ -1465,6 +1469,11 @@ components:
           x-stoplight:
             id: 8dra6ocdpnu2t
           description: 'If True, the various customer and card balances are shown within the app'
+        end_of_month_residue:
+          type: number
+          x-stoplight:
+            id: p1c5qrktifge3
+          description: 'If the value is -1, the credit is limitless'
     FuelCoupon:
       title: FuelCoupon
       x-stoplight:
