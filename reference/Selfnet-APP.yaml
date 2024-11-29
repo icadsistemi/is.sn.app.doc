@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.9
+  version: 1.0.0-beta.10
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -785,6 +785,35 @@ paths:
                     id: komg0hmif99ru
                   items:
                     $ref: '#/components/schemas/Invoice'
+  '/invoices/details/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: invoice detail id
+    put:
+      summary: Update invoice detail
+      operationId: update-invoice-detail-by-id
+      responses:
+        '204':
+          description: No Content
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+      description: Update and invoice detail and related payments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInvoiceDetail'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: 'If there is no update on payments, the object could be omitted from body, otherwise all payments must be listed.'
   '/invoices/{id}':
     parameters:
       - schema:
@@ -2354,6 +2383,54 @@ components:
           type: string
           x-stoplight:
             id: ffmppj89bsc3y
+    UpdateInvoiceDetail:
+      type: object
+      x-stoplight:
+        id: a222954b0d309
+      x-examples:
+        Example 1:
+          id: 0
+          article_id: 0
+          vehicle_id: 0
+          unit_price: 0
+          total_amount: 0
+          transaction_timestamp: '14:15:22Z'
+          receipt_number: string
+          km: 0
+          payments:
+            payment_method_code: string
+            amount: 0
+      properties:
+        id:
+          type: integer
+        article_id:
+          type: integer
+        vehicle_id:
+          type: integer
+        unit_price:
+          type: integer
+        total_amount:
+          type: integer
+        transaction_timestamp:
+          type: string
+        receipt_number:
+          type: string
+        km:
+          type: integer
+        payments:
+          type: object
+          properties:
+            payment_method_code:
+              type: string
+            amount:
+              type: integer
+      required:
+        - id
+        - unit_price
+        - total_amount
+        - transaction_timestamp
+      title: Update invoice detail
+      description: ''
   securitySchemes:
     Cognito:
       type: oauth2
