@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.10
+  version: 1.0.0-beta.11
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -793,27 +793,6 @@ paths:
         in: path
         required: true
         description: invoice detail id
-    put:
-      summary: Update invoice detail
-      operationId: update-invoice-detail-by-id
-      responses:
-        '204':
-          description: No Content
-        '403':
-          description: Forbidden
-        '500':
-          description: Internal Server Error
-      description: Update and invoice detail and related payments
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateInvoiceDetail'
-          application/xml:
-            schema:
-              type: object
-              properties: {}
-        description: 'If there is no update on payments, the object could be omitted from body, otherwise all payments must be listed.'
   '/invoices/{id}':
     parameters:
       - schema:
