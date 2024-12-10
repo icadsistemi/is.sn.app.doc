@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.11
+  version: 1.0.0-beta.12
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -1106,7 +1106,7 @@ components:
           x-stoplight:
             id: c9tynxan6dhrr
           description: True if this card has dynamic or online pin enabled
-        residue:
+        daily_residue:
           type: number
           x-stoplight:
             id: bbvqcke0ru30b
