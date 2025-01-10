@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0-beta.13
+  version: 1.0.0
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -887,6 +887,11 @@ paths:
           in: header
           name: supplier-id
           required: true
+        - schema:
+            type: number
+          in: query
+          name: card
+          description: Filter recharges by card
   '/recharges/{id}':
     parameters:
       - schema:
