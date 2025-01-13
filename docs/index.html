@@ -163,10 +163,10 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
         } else {
             // Use a for loop instead of forEach to avoid nested functions
             // Otherwise "return" will not work properly
-            for(var propt in currentNode){
-                if (currentNode.hasOwnProperty(propt)) {
-                    currentChild = currentNode[propt]
-                    if (id == propt) {
+            for(var property in currentNode){
+                if (currentNode.hasOwnProperty(property)) {
+                    currentChild = currentNode[property]
+                    if (id == property) {
                         return currentChild;
                     } else {
                         // Search in the current child
@@ -3518,7 +3518,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0-beta.13</div>
+              <div class="app-desc">Version: 1.0.0</div>
             <hr>
             <div id="app-description" class="app-desc">
                 Selfnet APP public API documentation.
@@ -14418,7 +14418,7 @@ Id of the requested invoice
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  \
  -H "Accept: application/json" \
- "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/recharges?date_start=dateStart_example&date_end=dateEnd_example"
+ "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1/recharges?date_start=dateStart_example&date_end=dateEnd_example&card=8.14"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Recharges-getRecharges-0-java">
@@ -14443,9 +14443,10 @@ public class RechargesApiExample {
         Integer supplierId = 56; // Integer | 
         String dateStart = dateStart_example; // String | UNIX datetime
         String dateEnd = dateEnd_example; // String | UNIX datetime
+        BigDecimal card = 8.14; // BigDecimal | Filter recharges by card
 
         try {
-            get_recharges_200_response result = apiInstance.getRecharges(supplierId, dateStart, dateEnd);
+            get_recharges_200_response result = apiInstance.getRecharges(supplierId, dateStart, dateEnd, card);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RechargesApi#getRecharges");
@@ -14464,9 +14465,10 @@ final api_instance = DefaultApi();
 final Integer supplierId = new Integer(); // Integer | 
 final String dateStart = new String(); // String | UNIX datetime
 final String dateEnd = new String(); // String | UNIX datetime
+final BigDecimal card = new BigDecimal(); // BigDecimal | Filter recharges by card
 
 try {
-    final result = await api_instance.getRecharges(supplierId, dateStart, dateEnd);
+    final result = await api_instance.getRecharges(supplierId, dateStart, dateEnd, card);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getRecharges: $e\n');
@@ -14484,9 +14486,10 @@ public class RechargesApiExample {
         Integer supplierId = 56; // Integer | 
         String dateStart = dateStart_example; // String | UNIX datetime
         String dateEnd = dateEnd_example; // String | UNIX datetime
+        BigDecimal card = 8.14; // BigDecimal | Filter recharges by card
 
         try {
-            get_recharges_200_response result = apiInstance.getRecharges(supplierId, dateStart, dateEnd);
+            get_recharges_200_response result = apiInstance.getRecharges(supplierId, dateStart, dateEnd, card);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RechargesApi#getRecharges");
@@ -14511,11 +14514,13 @@ RechargesApi *apiInstance = [[RechargesApi alloc] init];
 Integer *supplierId = 56; //  (default to null)
 String *dateStart = dateStart_example; // UNIX datetime (optional) (default to null)
 String *dateEnd = dateEnd_example; // UNIX datetime (optional) (default to null)
+BigDecimal *card = 8.14; // Filter recharges by card (optional) (default to null)
 
 // Get all recharges
 [apiInstance getRechargesWith:supplierId
     dateStart:dateStart
     dateEnd:dateEnd
+    card:card
               completionHandler: ^(get_recharges_200_response output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -14540,7 +14545,8 @@ var api = new SelfnetApp.RechargesApi()
 var supplierId = 56; // {Integer} 
 var opts = {
   'dateStart': dateStart_example, // {String} UNIX datetime
-  'dateEnd': dateEnd_example // {String} UNIX datetime
+  'dateEnd': dateEnd_example, // {String} UNIX datetime
+  'card': 8.14 // {BigDecimal} Filter recharges by card
 };
 
 var callback = function(error, data, response) {
@@ -14578,10 +14584,11 @@ namespace Example
             var supplierId = 56;  // Integer |  (default to null)
             var dateStart = dateStart_example;  // String | UNIX datetime (optional)  (default to null)
             var dateEnd = dateEnd_example;  // String | UNIX datetime (optional)  (default to null)
+            var card = 8.14;  // BigDecimal | Filter recharges by card (optional)  (default to null)
 
             try {
                 // Get all recharges
-                get_recharges_200_response result = apiInstance.getRecharges(supplierId, dateStart, dateEnd);
+                get_recharges_200_response result = apiInstance.getRecharges(supplierId, dateStart, dateEnd, card);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling RechargesApi.getRecharges: " + e.Message );
@@ -14604,9 +14611,10 @@ $api_instance = new OpenAPITools\Client\Api\RechargesApi();
 $supplierId = 56; // Integer | 
 $dateStart = dateStart_example; // String | UNIX datetime
 $dateEnd = dateEnd_example; // String | UNIX datetime
+$card = 8.14; // BigDecimal | Filter recharges by card
 
 try {
-    $result = $api_instance->getRecharges($supplierId, $dateStart, $dateEnd);
+    $result = $api_instance->getRecharges($supplierId, $dateStart, $dateEnd, $card);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RechargesApi->getRecharges: ', $e->getMessage(), PHP_EOL;
@@ -14627,9 +14635,10 @@ my $api_instance = WWW::OPenAPIClient::RechargesApi->new();
 my $supplierId = 56; # Integer | 
 my $dateStart = dateStart_example; # String | UNIX datetime
 my $dateEnd = dateEnd_example; # String | UNIX datetime
+my $card = 8.14; # BigDecimal | Filter recharges by card
 
 eval {
-    my $result = $api_instance->getRecharges(supplierId => $supplierId, dateStart => $dateStart, dateEnd => $dateEnd);
+    my $result = $api_instance->getRecharges(supplierId => $supplierId, dateStart => $dateStart, dateEnd => $dateEnd, card => $card);
     print Dumper($result);
 };
 if ($@) {
@@ -14652,10 +14661,11 @@ api_instance = openapi_client.RechargesApi()
 supplierId = 56 # Integer |  (default to null)
 dateStart = dateStart_example # String | UNIX datetime (optional) (default to null)
 dateEnd = dateEnd_example # String | UNIX datetime (optional) (default to null)
+card = 8.14 # BigDecimal | Filter recharges by card (optional) (default to null)
 
 try:
     # Get all recharges
-    api_response = api_instance.get_recharges(supplierId, dateStart=dateStart, dateEnd=dateEnd)
+    api_response = api_instance.get_recharges(supplierId, dateStart=dateStart, dateEnd=dateEnd, card=card)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RechargesApi->getRecharges: %s\n" % e)</code></pre>
@@ -14668,9 +14678,10 @@ pub fn main() {
     let supplierId = 56; // Integer
     let dateStart = dateStart_example; // String
     let dateEnd = dateEnd_example; // String
+    let card = 8.14; // BigDecimal
 
     let mut context = RechargesApi::Context::default();
-    let result = client.getRecharges(supplierId, dateStart, dateEnd, &context).wait();
+    let result = client.getRecharges(supplierId, dateStart, dateEnd, card, &context).wait();
 
     println!("{:?}", result);
 }
@@ -14755,6 +14766,26 @@ UNIX datetime
 
                     <div class="inner description marked">
 UNIX datetime
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">card</td>
+<td>
+
+
+    <div id="d2e199_getRecharges_card">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    BigDecimal
+                </span>
+
+                    <div class="inner description marked">
+Filter recharges by card
                     </div>
             </div>
         </div>
