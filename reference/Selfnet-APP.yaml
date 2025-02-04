@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.0.0
+  version: 1.1.0
   description: Selfnet APP public API documentation.
 servers:
   - url: 'https://mxp-public-sn-app-api.dev.icadsistemi.com/v1'
@@ -159,33 +159,7 @@ paths:
           in: header
           name: supplier-id
           required: true
-  /cards/pin/dynamic:
-    parameters: []
-    post:
-      summary: Generate Dynamic PIN seeds
-      operationId: post-cards-pin-offline
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  cards:
-                    type: array
-                    x-stoplight:
-                      id: 3iwtx9zitx4ht
-                    items:
-                      $ref: '#/components/schemas/CardOfflinePin'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CardOfflinePinInput'
-      tags:
-        - cards
-  /cards/pin/online:
+  /cards/pin/generate:
     parameters: []
     post:
       summary: Generate an online PIN
@@ -785,14 +759,6 @@ paths:
                     id: komg0hmif99ru
                   items:
                     $ref: '#/components/schemas/Invoice'
-  '/invoices/details/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: invoice detail id
   '/invoices/{id}':
     parameters:
       - schema:
@@ -2114,15 +2080,6 @@ components:
                   type: boolean
                   x-stoplight:
                     id: kj9ukonuxku55
-            online_pin:
-              type: object
-              x-stoplight:
-                id: org83zovlnxpa
-              properties:
-                is_active:
-                  type: boolean
-                  x-stoplight:
-                    id: z9nume41drsns
             ecommerce:
               type: object
               x-stoplight:
