@@ -3,7 +3,7 @@ x-stoplight:
   id: ff85zzu171gza
 info:
   title: Selfnet APP
-  version: 1.1.0
+  version: 1.2.0
   description: Selfnet APP public API documentation.
 servers:
   - url: "https://mxp-public-sn-app-api.dev.icadsistemi.com/v1"
@@ -15,7 +15,7 @@ paths:
     get:
       summary: Get all reward campaigns
       tags:
-        - campaigns
+        - Campaigns
       responses:
         "200":
           description: OK
@@ -42,7 +42,7 @@ paths:
     get:
       summary: Retrieve rewards campaign details
       tags:
-        - campaigns
+        - Campaigns
       responses:
         "200":
           description: OK
@@ -68,7 +68,7 @@ paths:
     get:
       summary: List available rewards
       tags:
-        - campaigns
+        - Campaigns
       responses:
         "200":
           description: OK
@@ -94,7 +94,7 @@ paths:
     get:
       summary: Rewards redemption history
       tags:
-        - campaigns
+        - Campaigns
       responses:
         "200":
           description: OK
@@ -137,7 +137,7 @@ paths:
     get:
       summary: Card List
       tags:
-        - cards
+        - Cards
       responses:
         "200":
           description: OK
@@ -177,13 +177,13 @@ paths:
             schema:
               $ref: "#/components/schemas/CardOnlinePinRequestInput"
       tags:
-        - cards
+        - Cards
   /cards/transactions:
     parameters: []
     get:
       summary: Get transactions
       tags:
-        - cards
+        - Cards
       responses:
         "200":
           description: ""
@@ -231,6 +231,11 @@ paths:
           in: header
           name: supplier-id
           required: true
+        - schema:
+            type: integer
+          in: query
+          name: card
+          description: Filter transactions by card
   "/cards/{id}":
     parameters:
       - schema:
@@ -242,7 +247,7 @@ paths:
     get:
       summary: Card details
       tags:
-        - cards
+        - Cards
       responses:
         "200":
           description: OK
@@ -269,7 +274,7 @@ paths:
             schema:
               $ref: "#/components/schemas/CardInput"
       tags:
-        - cards
+        - Cards
   "/cards/{id}/movements":
     parameters:
       - schema:
@@ -278,9 +283,10 @@ paths:
         in: path
         required: true
     get:
+      deprecated: true
       summary: Retrieve a list of all the movements by card
       tags:
-        - cards
+        - Cards
       responses:
         "200":
           description: OK
@@ -306,7 +312,7 @@ paths:
     get:
       summary: Info for basic settings
       tags:
-        - configuration
+        - Configuration
       responses:
         "200":
           description: OK
@@ -315,8 +321,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Configuration"
       operationId: get-configuration
-    parameters: []
-  "/customers/{id}":
+  /customers/{id}:
     parameters:
       - schema:
           type: string
@@ -326,7 +331,7 @@ paths:
     get:
       summary: Get customer details by id
       tags:
-        - customers
+        - Customers
       responses:
         "200":
           description: OK
@@ -345,7 +350,7 @@ paths:
     get:
       summary: Get ecommerce active rechargeable card bills
       tags:
-        - ecommerce
+        - Ecommerce
       responses:
         "200":
           description: OK
@@ -367,7 +372,7 @@ paths:
     get:
       summary: Get ecommerce active fuelcoupon bills
       tags:
-        - ecommerce
+        - Ecommerce
       responses:
         "200":
           description: OK
@@ -385,7 +390,6 @@ paths:
           in: header
           name: supplier-id
           required: true
-    parameters: []
   /ecommerce/nexi/customers/contract:
     patch:
       summary: Save Nexi customer contract number
@@ -402,7 +406,7 @@ paths:
           name: supplier_id
           required: true
       tags:
-        - ecommerce
+        - Ecommerce
       requestBody:
         content:
           application/json:
@@ -411,12 +415,8 @@ paths:
               properties:
                 id:
                   type: integer
-                  x-stoplight:
-                    id: t4mfyolt53qoc
                 contract_number:
                   type: string
-                  x-stoplight:
-                    id: fg8egjzeqeom7
   /ecommerce/nexi/payments/start:
     post:
       summary: ""
@@ -501,7 +501,7 @@ paths:
                 - transaction_data
                 - icad_payment_type
       tags:
-        - ecommerce
+        - Ecommerce
     parameters: []
   /ecommerce/nexi/payments/notification:
     post:
@@ -579,7 +579,7 @@ paths:
       description: Handle response from Nexi cash page. All queryparams coming from Nexi page callback must be put in internal call
       parameters: []
       tags:
-        - ecommerce
+        - Ecommerce
       requestBody:
         content:
           application/json:
@@ -592,7 +592,7 @@ paths:
     get:
       summary: List active fuel coupons
       tags:
-        - fuelcoupons
+        - Fuelcoupons
       responses:
         "200":
           description: OK
@@ -614,7 +614,7 @@ paths:
           in: header
           name: supplier-id
           required: true
-  "/fuelcoupons/{id}":
+  /fuelcoupons/{id}:
     parameters:
       - schema:
           type: string
@@ -625,7 +625,7 @@ paths:
     get:
       summary: Fuel coupon details
       tags:
-        - fuelcoupons
+        - Fuelcoupons
       responses:
         "200":
           description: OK
@@ -644,7 +644,7 @@ paths:
     get:
       summary: GET fuelcoupon transactions
       tags:
-        - fuelcoupons
+        - Fuelcoupons
       responses:
         "200":
           description: OK
@@ -681,7 +681,7 @@ paths:
     get:
       summary: GET fuelstations
       tags:
-        - fuelstations
+        - Fuelstations
       responses:
         "200":
           description: OK
@@ -723,7 +723,7 @@ paths:
     get:
       summary: Get invoices
       tags:
-        - invoices
+        - Invoices
       responses:
         "200":
           description: OK
@@ -766,7 +766,7 @@ paths:
                     id: komg0hmif99ru
                   items:
                     $ref: "#/components/schemas/Invoice"
-  "/invoices/{id}":
+  /invoices/{id}:
     parameters:
       - schema:
           type: string
@@ -776,7 +776,7 @@ paths:
     get:
       summary: Get invoice details
       tags:
-        - invoices
+        - Invoices
       responses:
         "200":
           description: OK
@@ -796,7 +796,7 @@ paths:
             type: integer
           in: header
           name: supplier-id
-  "/invoices/{id}/print":
+  /invoices/{id}/print:
     parameters:
       - schema:
           type: string
@@ -807,7 +807,7 @@ paths:
     get:
       summary: Get printable invoice PDF
       tags:
-        - invoices
+        - Invoices
       responses:
         "200":
           description: OK
@@ -828,7 +828,7 @@ paths:
     get:
       summary: Get all recharges
       tags:
-        - recharges
+        - Recharges
       responses:
         "200":
           description: OK
@@ -865,7 +865,7 @@ paths:
           in: query
           name: card
           description: Filter recharges by card
-  "/recharges/{id}":
+  /recharges/{id}:
     parameters:
       - schema:
           type: string
@@ -875,7 +875,7 @@ paths:
     get:
       summary: Get recharge details
       tags:
-        - recharges
+        - Recharges
       responses:
         "200":
           description: OK
@@ -895,7 +895,7 @@ paths:
     get:
       summary: Get active services for logged user
       tags:
-        - services
+        - Services
       responses:
         "200":
           description: OK
@@ -914,7 +914,7 @@ paths:
     get:
       summary: Get user info
       tags:
-        - suppliers
+        - Suppliers
       responses:
         "200":
           description: OK
@@ -924,7 +924,7 @@ paths:
                 $ref: "#/components/schemas/Suppliers"
       operationId: get-users-id
       description: Get all the suppliers available for the logged user
-  "/suppliers/{id}":
+  /suppliers/{id}:
     parameters:
       - schema:
           type: string
@@ -934,7 +934,7 @@ paths:
     get:
       summary: Get supplier details by id
       tags:
-        - suppliers
+        - Suppliers
       responses:
         "200":
           description: OK
@@ -956,8 +956,7 @@ paths:
                 $ref: "#/components/schemas/Terms"
       operationId: get-user-terms-and-conditions
       tags:
-        - users
-    parameters: []
+        - Users
     put:
       summary: Write user terms and conditions approvals
       operationId: put-users-privacy-terms
@@ -970,12 +969,12 @@ paths:
             schema:
               $ref: "#/components/schemas/Terms"
       tags:
-        - users
+        - Users
   "/versions/{platform}":
     get:
       summary: Get latest app version
       tags:
-        - versions
+        - Versions
       responses:
         "200":
           description: OK
