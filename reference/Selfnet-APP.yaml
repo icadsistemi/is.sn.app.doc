@@ -321,7 +321,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Configuration"
       operationId: get-configuration
-  /customers/{id}:
+  "/customers/{id}":
     parameters:
       - schema:
           type: string
@@ -614,7 +614,7 @@ paths:
           in: header
           name: supplier-id
           required: true
-  /fuelcoupons/{id}:
+  "/fuelcoupons/{id}":
     parameters:
       - schema:
           type: string
@@ -771,7 +771,7 @@ paths:
                     id: komg0hmif99ru
                   items:
                     $ref: "#/components/schemas/Invoice"
-  /invoices/{id}:
+  "/invoices/{id}":
     parameters:
       - schema:
           type: string
@@ -801,7 +801,7 @@ paths:
             type: integer
           in: header
           name: supplier-id
-  /invoices/{id}/print:
+  "/invoices/{id}/print":
     parameters:
       - schema:
           type: string
@@ -870,7 +870,7 @@ paths:
           in: query
           name: card
           description: Filter recharges by card
-  /recharges/{id}:
+  "/recharges/{id}":
     parameters:
       - schema:
           type: string
@@ -929,7 +929,7 @@ paths:
                 $ref: "#/components/schemas/Suppliers"
       operationId: get-users-id
       description: Get all the suppliers available for the logged user
-  /suppliers/{id}:
+  "/suppliers/{id}":
     parameters:
       - schema:
           type: string
@@ -2222,6 +2222,10 @@ components:
           x-stoplight:
             id: 2yf1t4uzchp4v
           format: date-time
+        individual_email:
+          type: string
+          x-stoplight:
+            id: kbhg0dkdiwed0
         fuel_station:
           type: object
           x-stoplight:
@@ -2304,7 +2308,10 @@ components:
               type: number
               x-stoplight:
                 id: 9tvb170jbvz3d
-      description: ""
+            vehicle_plate:
+              type: string
+              x-stoplight:
+                id: x4h7fbqp95u11
     Version:
       title: Version
       x-stoplight:
