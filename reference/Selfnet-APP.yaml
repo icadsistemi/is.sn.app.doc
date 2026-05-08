@@ -689,6 +689,26 @@ paths:
         name: id
         in: path
         required: true
+      - schema:
+          type: integer
+        in: header
+        name: supplier_id
+        required: true
+      - schema:
+          type: integer
+        in: query
+        name: date_start
+        description: Unit datetime
+      - schema:
+          type: integer
+        in: query
+        name: date_end
+        description: Unit datetime
+      - schema:
+          type: string
+        in: query
+        name: fuelcoupon_code
+        description: Filter transactions by fuelcoupon code
     get:
       summary: GET fuelstation prices
       tags:
@@ -707,10 +727,6 @@ paths:
                       id: 3lxzkhq6pe5b4
                     items:
                       $ref: '#/components/schemas/Price'
-          headers:
-            supplier-id:
-              schema:
-                type: integer
         '403':
           description: Forbidden - Service not enabled for the supplier or supplier cannot show prices on app
         '500':
