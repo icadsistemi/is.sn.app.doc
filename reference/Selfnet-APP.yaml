@@ -691,7 +691,8 @@ paths:
         required: true
     get:
       summary: GET fuelstation prices
-      tags: []
+      tags:
+        - Fuelstations
       responses:
         '200':
           description: OK
