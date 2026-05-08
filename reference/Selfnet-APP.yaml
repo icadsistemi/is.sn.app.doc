@@ -694,21 +694,6 @@ paths:
         in: header
         name: supplier_id
         required: true
-      - schema:
-          type: integer
-        in: query
-        name: date_start
-        description: Unit datetime
-      - schema:
-          type: integer
-        in: query
-        name: date_end
-        description: Unit datetime
-      - schema:
-          type: string
-        in: query
-        name: fuelcoupon_code
-        description: Filter transactions by fuelcoupon code
     get:
       summary: GET fuelstation prices
       tags:
