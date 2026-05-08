@@ -707,6 +707,10 @@ paths:
                       id: 3lxzkhq6pe5b4
                     items:
                       $ref: '#/components/schemas/Price'
+          headers:
+            supplier-id:
+              schema:
+                type: integer
         '403':
           description: Forbidden - Service not enabled for the supplier or supplier cannot show prices on app
         '500':
