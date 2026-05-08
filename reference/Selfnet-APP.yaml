@@ -682,6 +682,35 @@ paths:
           in: query
           name: fuelcoupon_code
           description: Filter transactions by fuelcoupon code
+  '/fuelstations/{id}/prices':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET fuelstation prices
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prices:
+                    type: array
+                    x-stoplight:
+                      id: 3lxzkhq6pe5b4
+                    items:
+                      $ref: '#/components/schemas/Price'
+        '403':
+          description: Forbidden - Service not enabled for the supplier or supplier cannot show prices on app
+        '500':
+          description: Internal Server Error
+      operationId: get-fuelstations-id-prices
   /fuelstations/search:
     get:
       summary: GET fuelstations
@@ -714,15 +743,20 @@ paths:
           name: longitude
           description: 'Optional, used for nearby fuel stations'
         - schema:
-            type: string
-          in: query
-          name: articles
-          description: 'Optional, used to filter fuel stations'
-        - schema:
             type: integer
           in: header
           name: supplier-id
           required: true
+        - schema:
+            type: string
+          in: query
+          name: is_code
+          description: 'Optional, used to filter fuel stations by product'
+        - schema:
+            type: string
+          in: query
+          name: level_id
+          description: 'Optional, used to filter fuel stations by operating mode'
     parameters: []
   /invoices:
     get:
@@ -1673,6 +1707,10 @@ components:
           type: string
           x-stoplight:
             id: bufc9wm1kv858
+        price:
+          type: number
+          x-stoplight:
+            id: vwrjiuh0480mc
     Invoice:
       title: Invoice
       x-stoplight:
@@ -1875,18 +1913,30 @@ components:
         id: hdhifgrj9qkxx
       type: object
       properties:
-        price_level:
+        is_code:
+          type: integer
+          x-stoplight:
+            id: mvok01gs4byqw
+        service_level_id:
           type: integer
           x-stoplight:
             id: uu419r7j4zyno
-        article_name:
-          type: string
-          x-stoplight:
-            id: mvok01gs4byqw
         price:
-          type: integer
+          type: number
           x-stoplight:
             id: i8z43d6ogjbbe
+    PriceLevel:
+      title: PriceLevel
+      x-stoplight:
+        id: 9egb169b6ze4q
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          x-stoplight:
+            id: pa9oak07up68h
     PrintableInvoice:
       title: PrintableInvoice
       x-stoplight:
@@ -1900,6 +1950,20 @@ components:
           x-stoplight:
             id: d4o5q1ltjfksm
           description: Base64 string representing the invoice pdf
+    Product:
+      title: Product
+      x-stoplight:
+        id: ypevk4lvynb2u
+      type: object
+      properties:
+        is_code:
+          type: integer
+          x-stoplight:
+            id: 4c1ipic34ay0k
+        name:
+          type: string
+          x-stoplight:
+            id: ue0h2avp3ho0e
     Recharge:
       title: Recharge
       x-stoplight:
@@ -2172,6 +2236,18 @@ components:
               x-stoplight:
                 id: vhq1esjz1jfdz
               description: '"[{\"id\":0,\"tipo\":\"Easy\",\"alias\":\"ALIAS_WEB_00014162\",\"secretKey\":\"WJ8PHHAKUWDKXOKL2TVU5JONUACFMT4M\",\"gruppo\":\"GRP_24264\"},{\"id\":1,\"tipo\":\"Pro\",\"alias\":\"ALIAS_RICO_00014163\",\"secretKey\":\"BPF4Z5UT59LU5NNL49K4KV1HS0SBA2MI\",\"gruppo\":\"GRP_24264\"}]"'
+        products:
+          type: array
+          x-stoplight:
+            id: 2pk3qx1ocuhhg
+          items:
+            $ref: '#/components/schemas/Product'
+        price_levels:
+          type: array
+          x-stoplight:
+            id: fj190jpsysuwf
+          items:
+            $ref: '#/components/schemas/PriceLevel'
     Suppliers:
       title: Suppliers
       x-stoplight:
