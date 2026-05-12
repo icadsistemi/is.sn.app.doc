@@ -692,7 +692,7 @@ paths:
       - schema:
           type: integer
         in: header
-        name: supplier_id
+        name: supplier-id
         required: true
     get:
       summary: GET fuelstation prices
